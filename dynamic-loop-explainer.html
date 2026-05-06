@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarMax — Dynamic Loop Email: How It Works</title>
+<style>
+  :root {
+    --navy: #003087;
+    --dark-navy: #002060;
+    --blue: #0057B8;
+    --light-blue: #E6EEF8;
+    --white: #FFFFFF;
+    --gray-dark: #333333;
+    --gray-mid: #767676;
+    --gray-light: #F5F5F5;
+    --border: #CCCCCC;
+    --green: #2E7D32;
+    --red: #C62828;
+    --yellow: #FFC107;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: var(--gray-light);
+    color: var(--gray-dark);
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    background: var(--navy);
+    color: white;
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .logo-text {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: white;
+  }
+  .logo-bars {
+    display: flex; gap: 4px; margin-top: 4px;
+  }
+  .logo-bars span {
+    display: block; width: 10px; height: 4px; border-radius: 1px;
+    background: white; opacity: 0.85;
+  }
+  .header-title {
+    margin-left: auto;
+    text-align: right;
+  }
+  .header-title h1 {
+    font-size: 20px; font-weight: 700;
+  }
+  .header-title p {
+    font-size: 13px; opacity: 0.75; margin-top: 4px;
+  }
+
+  /* ── Layout ── */
+  .stage {
+    max-width: 1200px;
+    margin: 48px auto;
+    padding: 0 32px;
+  }
+
+  .use-case-label {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--dark-navy);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+
+  .stage > h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .stage > p.subtitle {
+    font-size: 16px;
+    color: var(--gray-mid);
+    margin-bottom: 40px;
+    max-width: 680px;
+    line-height: 1.6;
+  }
+
+  /* ── Main flow diagram ── */
+  .flow {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 56px;
+  }
+
+  /* ── Email mockup ── */
+  .email-mockup {
+    width: 260px;
+    flex-shrink: 0;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+    overflow: hidden;
+    font-size: 11px;
+  }
+  .email-chrome {
+    background: var(--gray-light);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 12px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .email-dots { display: flex; gap: 4px; }
+  .email-dots span {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--border);
+  }
+  .email-header {
+    background: var(--navy);
+    padding: 10px 14px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .email-logo { color: white; font-weight: 700; font-size: 13px; letter-spacing: -0.3px; }
+  .email-body { padding: 12px 14px; }
+  .email-subject {
+    font-size: 12px; font-weight: 700; color: var(--navy);
+    margin-bottom: 6px; line-height: 1.3;
+  }
+  .email-subline {
+    font-size: 10px; color: var(--gray-mid); margin-bottom: 12px;
+  }
+  .vehicles-row {
+    display: flex; gap: 8px; margin-bottom: 10px;
+  }
+  .vehicle-card {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+  }
+  .vehicle-card:hover { box-shadow: 0 2px 8px rgba(0,48,135,0.18); }
+  .vehicle-img {
+    width: 100%; height: 64px;
+    background: linear-gradient(135deg, #dde8f5 0%, #c5d8ef 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    position: relative;
+  }
+
+  /* Heart icon */
+  .heart-btn {
+    position: absolute;
+    top: 5px; right: 5px;
+    width: 20px; height: 20px;
+    cursor: pointer;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.20));
+    transition: transform 0.15s;
+  }
+  .heart-btn:hover { transform: scale(1.25); }
+  .heart-btn .heart-path {
+    fill: none;
+    stroke: #C62828;
+    stroke-width: 1.8;
+    transition: fill 0.15s;
+  }
+  .heart-btn.favorited .heart-path {
+    fill: #C62828;
+  }
+
+  .vehicle-info { padding: 5px 7px 7px; }
+  .vehicle-name { font-size: 9px; font-weight: 700; color: var(--navy); }
+  .vehicle-price { font-size: 9px; color: var(--gray-mid); margin-top: 1px; }
+  .vehicle-year { font-size: 8px; color: var(--gray-mid); }
+
+  .email-cta {
+    display: block; width: 100%;
+    background: var(--navy); color: white;
+    border: none; border-radius: 3px;
+    padding: 7px; font-size: 10px; font-weight: 700;
+    text-align: center; margin-top: 8px;
+    letter-spacing: 0.3px;
+  }
+  .email-footer {
+    background: var(--gray-light);
+    padding: 7px 14px;
+    font-size: 8px; color: var(--gray-mid);
+    text-align: center; border-top: 1px solid var(--border);
+  }
+
+  /* ── Click annotation ── */
+  .click-annotation {
+    position: relative;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    padding-top: 80px;
+  }
+  .click-label {
+    background: var(--yellow);
+    color: var(--dark-navy);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 7px;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin-bottom: 6px;
+  }
+  .click-cursor {
+    font-size: 22px;
+    animation: cursorBounce 1.8s ease-in-out infinite;
+  }
+  @keyframes cursorBounce {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(6px); }
+  }
+
+  /* ── Arrow connector ── */
+  .connector {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    padding-top: 30px;
+    gap: 6px;
+  }
+  .arrow-line {
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue) 0%, var(--navy) 100%);
+    position: relative;
+    overflow: visible;
+  }
+  .arrow-line::after {
+    content: '';
+    position: absolute;
+    right: -8px; top: -6px;
+    width: 0; height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 10px solid var(--navy);
+  }
+  .arrow-label {
+    font-size: 9px;
+    color: var(--blue);
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+  }
+  /* animated dot traveling along arrow */
+  .arrow-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--blue);
+    position: absolute;
+    top: -3px; left: 0;
+    animation: travelArrow 2s linear infinite;
+  }
+  @keyframes travelArrow {
+    0% { left: 0; opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 80px; opacity: 0; }
+  }
+
+  /* ── Data Cloud hub ── */
+  .dc-hub {
+    flex: 1;
+    min-width: 240px;
+    background: white;
+    border-radius: 12px;
+    border: 2px solid var(--navy);
+    box-shadow: 0 4px 24px rgba(0,48,135,0.12);
+    overflow: hidden;
+  }
+  .dc-hub-header {
+    background: var(--navy);
+    padding: 14px 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .dc-icon {
+    width: 32px; height: 32px;
+    background: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .dc-hub-header h3 {
+    color: white;
+    font-size: 14px; font-weight: 700;
+  }
+  .dc-hub-header p {
+    color: rgba(255,255,255,0.7);
+    font-size: 10px; margin-top: 2px;
+  }
+
+  .dc-profile {
+    background: var(--light-blue);
+    margin: 16px;
+    border-radius: 8px;
+    padding: 12px 14px;
+    border-left: 4px solid var(--blue);
+  }
+  .dc-profile-label {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.8px; color: var(--blue); margin-bottom: 8px;
+  }
+  .profile-row {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 5px;
+  }
+  .profile-avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--navy); color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; flex-shrink: 0;
+  }
+  .profile-name { font-size: 11px; font-weight: 700; color: var(--navy); }
+  .profile-detail { font-size: 9px; color: var(--gray-mid); margin-top: 1px; }
+  .profile-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+  .tag {
+    background: var(--navy); color: white;
+    font-size: 8px; font-weight: 700;
+    padding: 2px 7px; border-radius: 10px;
+    letter-spacing: 0.3px;
+  }
+  .tag.new {
+    background: var(--green);
+    animation: tagAppear 0.4s ease-out 1s both;
+  }
+  @keyframes tagAppear {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .dc-divider {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.8px; color: var(--gray-mid);
+    padding: 0 16px 8px;
+  }
+
+  .capabilities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 0 16px 16px;
+  }
+  .cap-card {
+    background: var(--gray-light);
+    border-radius: 6px;
+    padding: 10px 10px 8px;
+    border: 1px solid var(--border);
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .cap-card:hover {
+    box-shadow: 0 2px 8px rgba(0,48,135,0.12);
+    border-color: var(--blue);
+  }
+  .cap-icon { font-size: 18px; margin-bottom: 4px; }
+  .cap-title { font-size: 10px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .cap-desc { font-size: 9px; color: var(--gray-mid); line-height: 1.4; }
+
+  /* ── Steps section ── */
+  .steps-heading {
+    font-size: 18px; font-weight: 700; color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .step {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: relative;
+  }
+  .step::after {
+    content: '→';
+    position: absolute;
+    right: -14px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .step:last-child::after { display: none; }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--navy); color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; margin-bottom: 10px;
+  }
+  .step h4 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .step p { font-size: 11px; color: var(--gray-mid); line-height: 1.5; }
+
+  /* ── Comparison table ── */
+  .compare-heading {
+    font-size: 18px; font-weight: 700; color: var(--navy);
+    margin-bottom: 20px;
+  }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 48px;
+  }
+  .compare-table th {
+    padding: 12px 20px;
+    font-size: 12px; font-weight: 700; text-align: left;
+    text-transform: uppercase; letter-spacing: 0.6px;
+  }
+  .compare-table th:first-child { background: var(--gray-light); color: var(--gray-mid); }
+  .compare-table th.mce { background: #e8eef8; color: var(--blue); }
+  .compare-table th.mca { background: var(--navy); color: white; }
+  .compare-table td {
+    padding: 11px 20px;
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .compare-table tr:nth-child(even) td { background: var(--gray-light); }
+  .compare-table td:nth-child(1) { font-weight: 600; color: var(--gray-mid); }
+  .compare-table td:nth-child(2) { color: var(--gray-dark); }
+  .compare-table td:nth-child(3) { color: var(--navy); font-weight: 600; }
+  .badge-x { color: var(--red); font-weight: 700; margin-right: 4px; }
+  .badge-check { color: var(--green); font-weight: 700; margin-right: 4px; }
+
+  /* ── Footer ── */
+  .page-footer {
+    background: var(--dark-navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    font-size: 11px;
+    padding: 20px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="page-header">
+  <div>
+    <img src="images/CarMax-Logo-Blue.png" alt="CarMax" style="height:44px;filter:brightness(0) invert(1);">
+  </div>
+  <div class="header-title">
+    <h1>Dynamic Loop Email — Use Case Explainer</h1>
+    <p>Powered by Marketing Cloud Advanced + Salesforce Data Cloud</p>
+  </div>
+</header>
+
+<main class="stage">
+
+  <div class="use-case-label">Use Case</div>
+  <h2>Heart a Car in the Email. Data Cloud Learns.</h2>
+  <p class="subtitle">
+    A customer receives a "Compare what matters to you" email with two vehicle listings.
+    They click the ❤️ on the one they like — and that single click flows back into
+    their unified Data Cloud profile, unlocking smarter segmentation, follow-up
+    triggers, and personalization — automatically.
+  </p>
+
+  <!-- ── MAIN DIAGRAM ── -->
+  <div class="flow">
+
+    <!-- Left: Email mockup -->
+    <div class="email-mockup">
+      <div class="email-chrome">
+        <div class="email-dots"><span></span><span></span><span></span></div>
+        <span style="font-size:9px;color:var(--gray-mid);margin-left:8px;">From: CarMax &lt;noreply@carmax.com&gt;</span>
+      </div>
+      <div class="email-header">
+        <span class="email-logo">CarMax</span>
+      </div>
+      <div class="email-body">
+        <div class="email-subject">Compare what matters<br>to you</div>
+        <div class="email-subline">Does your favorite stack up to a similar car?</div>
+        <div class="vehicles-row">
+
+          <!-- Vehicle 1: Ford -->
+          <div class="vehicle-card" data-make="Ford" onclick="toggleHeart(this)">
+            <div class="vehicle-img" style="font-size:32px;filter:hue-rotate(200deg) saturate(1.5);">🚙
+              <svg class="heart-btn" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="heart-path" d="M12 21C12 21 3 13.5 3 8a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-9 13-9 13z"/>
+              </svg>
+            </div>
+            <div class="vehicle-info">
+              <div class="vehicle-name">2024 Ford</div>
+              <div class="vehicle-year">Expedition XLT</div>
+              <div class="vehicle-price">$37,998</div>
+            </div>
+          </div>
+
+          <!-- Vehicle 2: Toyota -->
+          <div class="vehicle-card" data-make="Toyota" onclick="toggleHeart(this)">
+            <div class="vehicle-img" style="font-size:32px;">🚙
+              <svg class="heart-btn" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path class="heart-path" d="M12 21C12 21 3 13.5 3 8a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.5-9 13-9 13z"/>
+              </svg>
+            </div>
+            <div class="vehicle-info">
+              <div class="vehicle-name">2024 Toyota</div>
+              <div class="vehicle-year">4Runner SR5</div>
+              <div class="vehicle-price">$43,499</div>
+            </div>
+          </div>
+
+        </div>
+        <button class="email-cta">Explore the differences</button>
+      </div>
+      <div class="email-footer">carmax.com &nbsp;·&nbsp; Privacy Policy &nbsp;·&nbsp; Unsubscribe</div>
+    </div>
+
+    <!-- Click annotation -->
+    <div class="click-annotation">
+      <div class="click-label">Click!</div>
+      <div class="click-cursor">👆</div>
+    </div>
+
+    <!-- Arrow: click → Streaming API -->
+    <div class="connector">
+      <div class="arrow-label">Streaming<br>API Event</div>
+      <div class="arrow-line" style="margin-top:6px;">
+        <div class="arrow-dot"></div>
+      </div>
+      <div class="arrow-label" style="margin-top:8px;font-size:8px;color:var(--gray-mid);">subscriber key<br>+ vehicle ID</div>
+    </div>
+
+    <!-- Data Cloud hub -->
+    <div class="dc-hub">
+      <div class="dc-hub-header">
+        <div class="dc-icon">☁️</div>
+        <div>
+          <h3>Salesforce Data Cloud</h3>
+          <p>Unified Customer Profile — real-time writeback</p>
+        </div>
+      </div>
+
+      <!-- Profile card -->
+      <div class="dc-profile">
+        <div class="dc-profile-label">Unified Individual Profile</div>
+        <div class="profile-row">
+          <div class="profile-avatar">JD</div>
+          <div>
+            <div class="profile-name">Jane D.</div>
+            <div class="profile-detail">jane.d@email.com · Customer ID 4821</div>
+          </div>
+        </div>
+        <div class="profile-tags">
+          <span class="tag">SUV Shopper</span>
+          <span class="tag" id="make-tag" style="display:none;"></span>
+          <span class="tag">Pre-qual'd</span>
+          <span class="tag new" id="favorited-tag" style="display:none;">❤️ VIN A8321 — Favorited</span>
+        </div>
+      </div>
+
+      <div class="dc-divider">Now available across Data Cloud →</div>
+
+      <!-- Capabilities grid -->
+      <div class="capabilities">
+        <div class="cap-card">
+          <div class="cap-icon">🎯</div>
+          <div class="cap-title">Segmentation</div>
+          <div class="cap-desc">Add Jane to a "Favorited SUV" segment for targeted campaigns</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">⚡</div>
+          <div class="cap-title">Triggered Flow</div>
+          <div class="cap-desc">Fire a follow-up email or SMS with price drop alerts for that VIN</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">📊</div>
+          <div class="cap-title">Calculated Insights</div>
+          <div class="cap-desc">Score engagement — "3 favorites, no test drive" = high-intent signal</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-icon">🔔</div>
+          <div class="cap-title">Data Actions</div>
+          <div class="cap-desc">Notify sales team in CRM when a favorited vehicle matches a lot transfer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STEPS ── -->
+  <h3 class="steps-heading">How it works — step by step</h3>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Email Sent via MCA</h4>
+      <p>Each vehicle card includes a tracked link containing the vehicle ID as a URL parameter, rendered via Handlebars JS from a Data Graph.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Customer Clicks ❤️</h4>
+      <p>The click resolves to a Data Cloud Streaming Ingestion API endpoint, passing the subscriber key and vehicle ID in real time.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Profile Updated</h4>
+      <p>Data Cloud writes a new engagement record — "favorited vehicle" — on to the customer's Unified Individual profile instantly.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Platform Reacts</h4>
+      <p>Segments refresh, flows trigger, calculated insights update, and CRM surfaces the signal — all on the Salesforce platform, no custom dev.</p>
+    </div>
+  </div>
+
+  <!-- ── COMPARISON TABLE ── -->
+  <h3 class="compare-heading">Why MCA vs. Legacy Marketing Cloud (MCE)?</h3>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th class="mce">MCE (Legacy)</th>
+        <th class="mca">MCA + Data Cloud</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Click → Profile writeback</td>
+        <td><span class="badge-x">✗</span>CloudPage + custom REST/SOAP API required</td>
+        <td><span class="badge-check">✓</span>Native Streaming API — built in</td>
+      </tr>
+      <tr>
+        <td>Identity resolution</td>
+        <td><span class="badge-x">✗</span>Manual subscriber key → CRM ID mapping</td>
+        <td><span class="badge-check">✓</span>Built-in identity resolution on Unified Individual</td>
+      </tr>
+      <tr>
+        <td>Downstream segmentation</td>
+        <td><span class="badge-x">✗</span>Siloed in MC — not available to CRM or other tools</td>
+        <td><span class="badge-check">✓</span>Unified profile available to all Salesforce clouds</td>
+      </tr>
+      <tr>
+        <td>Trigger follow-up flow</td>
+        <td><span class="badge-x">✗</span>Custom automation + API events in Journey Builder</td>
+        <td><span class="badge-check">✓</span>Data Cloud–Triggered Flow fires automatically</td>
+      </tr>
+      <tr>
+        <td>Engagement scoring</td>
+        <td><span class="badge-x">✗</span>Custom data extension logic, manual maintenance</td>
+        <td><span class="badge-check">✓</span>Calculated Insights — SQL-based, auto-refreshed</td>
+      </tr>
+      <tr>
+        <td>Development effort</td>
+        <td><span class="badge-x">✗</span>Significant custom dev, CloudPages, AMPScript</td>
+        <td><span class="badge-check">✓</span>Lower-code — Flow Builder + Data Cloud config</td>
+      </tr>
+    </tbody>
+  </table>
+
+</main>
+
+<script>
+  function toggleHeart(card) {
+    const heart = card.querySelector('.heart-btn');
+    const wasActive = heart.classList.contains('favorited');
+
+    // Unfavorite all cards first
+    document.querySelectorAll('.vehicle-card').forEach(c => {
+      c.querySelector('.heart-btn').classList.remove('favorited');
+    });
+
+    const makeTag = document.getElementById('make-tag');
+    const favTag = document.getElementById('favorited-tag');
+
+    if (!wasActive) {
+      heart.classList.add('favorited');
+      makeTag.textContent = card.dataset.make;
+      makeTag.style.display = '';
+      favTag.style.display = '';
+    } else {
+      makeTag.textContent = '';
+      makeTag.style.display = 'none';
+      favTag.style.display = 'none';
+    }
+  }
+</script>
+
+<footer class="page-footer">
+  CarMax × Salesforce &nbsp;·&nbsp; Marketing Cloud Advanced + Data Cloud &nbsp;·&nbsp; Dynamic Loop Email Use Case
+</footer>
+
+</body>
+</html>
