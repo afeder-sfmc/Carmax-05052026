@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarMax MCA Demo — May 20, 2026</title>
+<style>
+  :root {
+    --navy: #003087;
+    --dark-navy: #002060;
+    --blue: #0057B8;
+    --light-blue: #E6EEF8;
+    --white: #FFFFFF;
+    --gray-dark: #333333;
+    --gray-mid: #767676;
+    --gray-light: #F5F5F5;
+    --border: #CCCCCC;
+    --green: #2E7D32;
+    --yellow: #FFC107;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: var(--gray-light);
+    color: var(--gray-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  .page-header {
+    background: var(--navy);
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .page-header img { height: 36px; filter: brightness(0) invert(1); }
+  .header-right {
+    text-align: right;
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: linear-gradient(120deg, var(--navy) 0%, var(--dark-navy) 100%);
+    color: white;
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -60px; bottom: -60px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 860px; }
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--dark-navy);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
+  .meta-item { display: flex; align-items: flex-start; gap: 10px; }
+  .meta-icon { font-size: 18px; margin-top: 1px; opacity: 0.85; }
+  .meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 2px;
+  }
+  .meta-value { font-size: 15px; font-weight: 600; color: white; }
+
+  /* ── Main content ── */
+  .main { max-width: 860px; margin: 0 auto; padding: 48px 48px 80px; width: 100%; }
+
+  /* ── Attendees ── */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-mid);
+    margin-bottom: 14px;
+  }
+  .attendees {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .attendee {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .attendee-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 2px solid var(--border);
+  }
+  .attendee-avatar img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .attendee-name { font-size: 14px; font-weight: 600; color: var(--gray-dark); }
+  .attendee-org { font-size: 11px; color: var(--gray-mid); margin-top: 1px; }
+
+  /* ── Document links ── */
+  .docs { display: flex; flex-direction: column; gap: 14px; }
+  .doc-link {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 24px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .doc-link:hover {
+    box-shadow: 0 6px 20px rgba(0,48,135,0.12);
+    border-color: var(--blue);
+    transform: translateY(-2px);
+  }
+  .doc-icon-wrap {
+    width: 48px; height: 48px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .doc-icon-wrap.navy { background: var(--navy); }
+  .doc-icon-wrap.blue { background: var(--light-blue); }
+  .doc-text { flex: 1; min-width: 0; }
+  .doc-title { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .doc-desc { font-size: 13px; color: var(--gray-mid); line-height: 1.4; }
+  .doc-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+  .doc-badge.latest { background: #EEF8EF; color: var(--green); border: 1px solid #A5D6A7; }
+  .doc-badge.explainer { background: var(--light-blue); color: var(--blue); border: 1px solid #b3cde8; }
+  .doc-arrow { font-size: 18px; color: var(--border); flex-shrink: 0; }
+  .doc-link:hover .doc-arrow { color: var(--blue); }
+
+  /* ── Footer ── */
+  .page-footer {
+    margin-top: auto;
+    background: var(--dark-navy);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    font-size: 11px;
+    padding: 18px;
+  }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <img src="images/CarMax-Logo-Blue.png" alt="CarMax">
+  <div class="header-right">Demo Materials &nbsp;·&nbsp; Confidential</div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Demo Session</div>
+    <h1>Marketing Cloud Advanced<br>Harbor Cruise Demo</h1>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <div class="meta-icon">📅</div>
+        <div>
+          <div class="meta-label">Date</div>
+          <div class="meta-value">May 20, 2026</div>
+        </div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-icon">📍</div>
+        <div>
+          <div class="meta-label">Location</div>
+          <a href="https://www.google.com/maps/search/?api=1&query=12800+Tuckahoe+Creek+Parkway+Richmond+VA+23238" target="_blank" rel="noopener" style="text-decoration:none;">
+            <div class="meta-value" style="color:white;">CarMax Headquarters</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.6);margin-top:2px;text-decoration:underline;text-underline-offset:2px;">12800 Tuckahoe Creek Pkwy, Richmond, VA 23238</div>
+          </a>
+        </div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-icon">⏱</div>
+        <div>
+          <div class="meta-label">Duration</div>
+          <div class="meta-value">2 Hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="main">
+
+  <!-- Attendees -->
+  <div class="section-label">Attendees</div>
+  <div class="attendees">
+    <div class="attendee">
+      <div class="attendee-avatar"><img src="images/andrewgordon.png" alt="Andrew Gordon"></div>
+      <div>
+        <div class="attendee-name">Andrew Gordon</div>
+        <div class="attendee-org">Salesforce · AE</div>
+      </div>
+    </div>
+    <div class="attendee">
+      <div class="attendee-avatar"><img src="images/christiannorcia.png" alt="Christian Norcia"></div>
+      <div>
+        <div class="attendee-name">Christian Norcia</div>
+        <div class="attendee-org">Salesforce · AE</div>
+      </div>
+    </div>
+    <div class="attendee">
+      <div class="attendee-avatar"><img src="images/burkemaxwell.jpeg" alt="Burke Maxwell"></div>
+      <div>
+        <div class="attendee-name">Burke Maxwell</div>
+        <div class="attendee-org">Salesforce · SE</div>
+      </div>
+    </div>
+    <div class="attendee">
+      <div class="attendee-avatar"><img src="images/adamfeder.jpeg" alt="Adam Feder"></div>
+      <div>
+        <div class="attendee-name">Adam Feder</div>
+        <div class="attendee-org">Salesforce · SE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Documents -->
+  <div class="section-label">Demo Materials</div>
+  <div class="docs">
+
+    <a class="doc-link" href="carmax-demo-plan-v3.html">
+      <div class="doc-icon-wrap navy">📋</div>
+      <div class="doc-text">
+        <div class="doc-title">Demo Plan — Harbor Cruise Run of Show</div>
+        <div class="doc-desc">60-minute run of show with all 6 harbor stops, use cases, readiness checklist, and risks & mitigations.</div>
+      </div>
+      <span class="doc-badge latest">v3 · Latest</span>
+      <div class="doc-arrow">›</div>
+    </a>
+
+    <a class="doc-link" href="dynamic-loop-explainer.html">
+      <div class="doc-icon-wrap blue">❤️</div>
+      <div class="doc-text">
+        <div class="doc-title">Dynamic Loop Email — Use Case Explainer</div>
+        <div class="doc-desc">Interactive explainer showing how in-email heart clicks write back to the Data Cloud unified profile and power downstream segmentation, flows, and actions.</div>
+      </div>
+      <span class="doc-badge explainer">Explainer</span>
+      <div class="doc-arrow">›</div>
+    </a>
+
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  CarMax × Salesforce &nbsp;·&nbsp; MCA Demo &nbsp;·&nbsp; May 20, 2026 &nbsp;·&nbsp; Confidential
+</footer>
+
+</body>
+</html>

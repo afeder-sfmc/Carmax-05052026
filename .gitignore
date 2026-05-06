@@ -41,8 +41,13 @@ $RECYCLE.BIN/
 
 # Local environment variables
 .env
+.envrc
 
 # Python Salesforce Functions
 **/__pycache__/
 **/.venv/
 **/venv/
+
+# Project-scoped Salesforce CLI auth/state
+.sf-state/
+.sf-home/
