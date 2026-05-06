@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarMax Demo Plan v3 - MCA Harbor Cruise</title>
+  <style>
+    :root {
+      --carmax-navy: #003087;
+      --carmax-dark-navy: #002060;
+      --carmax-blue: #0057B8;
+      --carmax-light-blue: #E6EEF8;
+      --carmax-white: #FFFFFF;
+      --carmax-gray-dark: #333333;
+      --carmax-gray-mid: #767676;
+      --carmax-gray-light: #F5F5F5;
+      --carmax-border: #CCCCCC;
+      --carmax-green: #2E7D32;
+      --carmax-red: #C62828;
+      --carmax-yellow: #FFC107;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "CarMax Sans", "Helvetica Neue", Arial, sans-serif;
+      color: var(--carmax-gray-dark);
+      background: var(--carmax-white);
+      line-height: 1.45;
+    }
+
+    .topbar {
+      background: var(--carmax-white);
+      color: var(--carmax-dark-navy);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--carmax-border);
+    }
+    .topbar-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .logo { height: 36px; width: auto; display: block; }
+    .topbar-title { font-weight: 700; letter-spacing: 0.02em; white-space: nowrap; }
+    .version-tag { font-size: 12px; color: #7A8CB3; }
+
+    .hero {
+      background: linear-gradient(120deg, var(--carmax-navy), var(--carmax-dark-navy));
+      color: var(--carmax-white);
+      padding: 40px 24px;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .hero h1 { margin: 0 0 10px; font-size: 42px; line-height: 1.08; }
+    .hero p { margin: 0; color: #DCE7FA; font-size: 17px; max-width: 900px; }
+
+    .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .stat {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 8px;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .stat .value { font-size: 22px; font-weight: 700; color: var(--carmax-yellow); }
+    .stat .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; color: #DCE7FA; }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--carmax-white);
+      border-bottom: 1px solid var(--carmax-border);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 12px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .nav-link {
+      display: inline-block;
+      padding: 12px 10px;
+      margin-right: 6px;
+      text-decoration: none;
+      color: var(--carmax-gray-mid);
+      border-bottom: 3px solid transparent;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--carmax-navy); border-bottom-color: var(--carmax-blue); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 28px 20px 80px; }
+    .section { margin-bottom: 28px; scroll-margin-top: 60px; }
+    .section h2 { margin: 0 0 10px; font-size: 29px; color: var(--carmax-navy); }
+    .card {
+      background: var(--carmax-white);
+      border: 1px solid var(--carmax-border);
+      border-radius: 10px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .callout {
+      border-left: 4px solid var(--carmax-navy);
+      background: var(--carmax-light-blue);
+      padding: 12px 14px;
+      border-radius: 6px;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+
+    .phase { border: 1px solid var(--carmax-border); border-radius: 10px; overflow: hidden; background: var(--carmax-white); }
+    .phase-head {
+      background: var(--carmax-navy);
+      color: var(--carmax-white);
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .phase-title { font-weight: 700; font-size: 17px; }
+    .phase-time { font-size: 13px; color: #DCE7FA; font-weight: 600; }
+    .phase-body { padding: 14px; }
+
+    .list { margin: 0; padding-left: 18px; }
+    .list li { margin: 6px 0; }
+
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .pill {
+      font-size: 12px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--carmax-border);
+      background: var(--carmax-gray-light);
+      color: var(--carmax-gray-dark);
+      font-weight: 600;
+    }
+    .pill.success { border-color: #A5D6A7; background: #EEF8EF; color: var(--carmax-green); }
+    .pill.warn { border-color: #FFE082; background: #FFF9E6; color: #8A6A00; }
+    .pill.stop { border-color: #EF9A9A; background: #FCEEEE; color: var(--carmax-red); }
+
+    .details-toggle {
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--carmax-border);
+      background: var(--carmax-white);
+      color: var(--carmax-navy);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-top: 10px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .details {
+      display: none;
+      margin-top: 10px;
+      border-top: 1px dashed var(--carmax-border);
+      padding-top: 10px;
+      font-size: 14px;
+    }
+    .details.open { display: block; }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .check-item {
+      border: 1px solid var(--carmax-border);
+      border-radius: 8px;
+      padding: 10px;
+      background: var(--carmax-gray-light);
+    }
+    .check-item input { margin-right: 8px; }
+
+    .footer {
+      border-top: 1px solid var(--carmax-border);
+      margin-top: 30px;
+      padding-top: 14px;
+      color: var(--carmax-gray-mid);
+      font-size: 13px;
+    }
+
+    @media (max-width: 920px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .grid-2, .check-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 34px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-left">
+      <img class="logo" src="images/CarMax-Logo-Blue.png" alt="CarMax logo" />
+      <div class="topbar-title">MCA Harbor Cruise Demo Plan</div>
+    </div>
+    <div class="version-tag">carmax-demo-plan-v3</div>
+  </header>
+
+  <section class="hero" id="overview">
+    <div class="hero-inner">
+      <div>
+        <h1>CarMax Marketing Cloud Advanced Demo</h1>
+        <p>
+          A 60-minute, business-first harbor cruise showing how CarMax moves from campaign brief
+          to segmentation and orchestration in MCA, using web engagement data streams as triggers.
+          Data Cloud appears where it strengthens CIs, engagement logic, and waterfall prioritization.
+        </p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="value">60</div><div class="label">Minutes</div></div>
+        <div class="stat"><div class="value">8</div><div class="label">Harbor Stops</div></div>
+        <div class="stat"><div class="value">MCA</div><div class="label">Primary Focus</div></div>
+        <div class="stat"><div class="value">Late</div><div class="label">Feedback Loop Concept</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="nav-wrap">
+    <nav class="nav-inner" id="phaseNav">
+      <a class="nav-link" href="#story">Storyline</a>
+      <a class="nav-link" href="#runofshow">Run of Show</a>
+      <a class="nav-link" href="#usecases">Use Cases</a>
+      <a class="nav-link" href="#datacloud">Data Cloud Scope</a>
+      <a class="nav-link" href="#checklist">Readiness Checklist</a>
+      <a class="nav-link" href="#risks">Risks & Mitigations</a>
+    </nav>
+  </div>
+
+  <main class="container">
+    <section class="section" id="story">
+      <h2>Storyline</h2>
+      <div class="card">
+        <p>
+          CarMax marketers launch lifecycle campaigns in MCA. They draft with Campaign Agent,
+          build the audience using Einstein Segmentation, enrich and prioritize it with CIs, engagement data, and waterfall logic,
+          then deliver web-engagement-triggered dynamic email content, orchestrate with SMS in MCA Flow, close with reporting,
+          and finish with a concept-only dynamic feedback loop stop.
+        </p>
+        <div class="pill-row">
+          <span class="pill success">Marketer Speed</span>
+          <span class="pill success">AI-Assisted Build</span>
+          <span class="pill warn">Data Cloud Time-Boxed</span>
+          <span class="pill">Waterfall Prioritization</span>
+          <span class="pill">SMS In MCA Flow</span>
+          <span class="pill">Reporting Loop</span>
+        </div>
+        <div class="callout">
+          Keep this positioning line consistent: <strong>Data Cloud supports the decisioning layer; MCA is the execution center, with web engagement already stream-fed for activation.</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="runofshow">
+      <h2>Harbor Cruise Run of Show (60 min)</h2>
+      <div class="grid-2">
+        <article class="phase">
+          <div class="phase-head"><div class="phase-title">Dock: Business Framing</div><div class="phase-time">4 min</div></div>
+          <div class="phase-body">
+            <ul class="list">
+              <li>Set objective and KPI intent.</li>
+              <li>Frame the end-to-end live flow.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head"><div class="phase-title">Stop 1: Campaign Agent</div><div class="phase-time">9 min</div></div>
+          <div class="phase-body">
+            <ul class="list">
+              <li>Draft campaign from business brief.</li>
+              <li>Validate message and channel direction.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head"><div class="phase-title">Stop 2: Segmentation + CIs + Engagement + Waterfall</div><div class="phase-time">16 min</div></div>
+          <div class="phase-body">
+            <ul class="list">
+              <li>Create audience with Einstein natural language.</li>
+              <li>Refine rules with value/recency/loyalty fields.</li>
+              <li>Add CI and engagement overlays.</li>
+              <li>Demonstrate waterfall prioritization for overlap.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head"><div class="phase-title">Stop 3: Web-Triggered Dynamic Email</div><div class="phase-time">10 min</div></div>
+          <div class="phase-body">
+            <ul class="list">
+              <li>Use "view a car page" as the trigger scenario via stream-fed web engagement data.</li>
+              <li>Show dynamic content blocks and repeaters/loops for personalized modules.</li>
+              <li>Preview multiple personas and outcomes.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head"><div class="phase-title">Stop 4: MCA Flow + Upper Funnel SMS</div><div class="phase-time">9 min</div></div>
+          <div class="phase-body">
+            <ul class="list">
+              <li>Entry logic, branching, waits, and suppression paths.</li>
+              <li>Show SMS authoring in MCA and SMS inclusion in campaign flow.</li>
+              <li>Show controlled cross-channel execution.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head"><div class="phase-title">Stop 5: Reporting & Optimization</div><div class="phase-time">5 min</div></div>
+          <div class="phase-body">
+            <ul class="list">
+              <li>Show campaign and journey outcomes.</li>
+              <li>Identify next optimization decision.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head"><div class="phase-title">Stop 6: Dynamic Feedback Loop Concept</div><div class="phase-time">5 min</div></div>
+          <div class="phase-body">
+            <ul class="list">
+              <li>Present concept graphic for in-email feedback loops and recommendation refinement.</li>
+              <li>Clarify this step is explanatory and not live-demonstrated in this session.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-head"><div class="phase-title">Wrap: Executive Recap</div><div class="phase-time">2 min</div></div>
+          <div class="phase-body">
+            <ul class="list">
+              <li>Restate value: speed, precision, and control.</li>
+              <li>Close with adoption confidence.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="usecases">
+      <h2>Use Cases in the Demo</h2>
+      <div class="card">
+        <ul class="list">
+          <li><strong>Primary:</strong> Web-engagement-triggered email (for example, "view a car page").</li>
+          <li><strong>Feature moment:</strong> Dynamic content blocks + loop/repeater personalization in email.</li>
+          <li><strong>Channel proof:</strong> Upper-funnel SMS authored in MCA and placed in flow.</li>
+          <li><strong>Late concept moment:</strong> Dynamic feedback loops explained with visual narrative (no live demo).</li>
+          <li><strong>Governance moment:</strong> Waterfall prioritization + engagement suppression.</li>
+        </ul>
+
+        <button class="details-toggle" data-target="useCaseDetails">Show detailed talk track guidance</button>
+        <div class="details" id="useCaseDetails">
+          <ul class="list">
+              <li>Keep Stop 2 as one cohesive targeting/prioritization block.</li>
+              <li>In Stop 3, state that web engagement events are already stream-fed into Data Cloud.</li>
+              <li>In Stop 4, keep SMS scope focused on message build + flow inclusion.</li>
+              <li>Transition line: "Now that we know who gets what, let's show what they see."</li>
+              <li>Keep technical depth bounded to what changes send decisions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="datacloud">
+      <h2>Data Cloud Scope (Deliberately Narrow)</h2>
+      <div class="card">
+        <div class="grid-2">
+          <div>
+            <h3>Show This</h3>
+            <ul class="list">
+              <li>Einstein segment logic and output quality.</li>
+              <li>Calculated Insights used in qualification.</li>
+              <li>Engagement signals for suppression/exclusion.</li>
+              <li>Waterfall campaign prioritization method.</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Avoid This</h3>
+            <ul class="list">
+              <li>Ingestion and identity architecture detours.</li>
+              <li>Broad CDP replacement debates.</li>
+              <li>Execution-heavy process details not needed for demo value.</li>
+              <li>Live demonstration of dynamic feedback loop interactions in this session.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="checklist">
+      <h2>Readiness Checklist</h2>
+      <div class="card">
+        <p>Use these checkboxes before the live session starts.</p>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" />Fallback campaign and segment tabs open</label>
+          <label class="check-item"><input type="checkbox" />CI fields and engagement signals populated</label>
+          <label class="check-item"><input type="checkbox" />Waterfall overlap scenario configured</label>
+          <label class="check-item"><input type="checkbox" />Dynamic loop previews tested on 3 personas</label>
+          <label class="check-item"><input type="checkbox" />Flow path tested for suppression branch</label>
+          <label class="check-item"><input type="checkbox" />Reporting screen seeded or fallback narrative ready</label>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="risks">
+      <h2>Risks & Mitigations</h2>
+      <div class="card">
+        <ul class="list">
+          <li><strong>Generation lag:</strong> keep fallback assets visible.</li>
+          <li><strong>Sparse reporting data:</strong> use seeded/historical examples.</li>
+          <li><strong>Scope drift:</strong> keep all commentary tied to send decisions.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill stop">Risk: Lag</span>
+          <span class="pill warn">Risk: Scope Drift</span>
+          <span class="pill success">Mitigation: Prepared Fallbacks</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      CarMax Demo Plan v3 · 60-minute MCA harbor cruise with web-triggered dynamic email, SMS in MCA flow, and a late concept stop for dynamic feedback loops.
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const navLinks = document.querySelectorAll(".nav-link");
+      const sections = Array.from(document.querySelectorAll("section[id]"));
+      const toggles = document.querySelectorAll(".details-toggle");
+
+      function setActiveLink() {
+        const scrollY = window.scrollY + 90;
+        let activeId = "";
+        for (const section of sections) {
+          if (scrollY >= section.offsetTop) activeId = section.id;
+        }
+        navLinks.forEach((link) => {
+          const target = link.getAttribute("href").replace("#", "");
+          link.classList.toggle("active", target === activeId);
+        });
+      }
+
+      window.addEventListener("scroll", setActiveLink);
+      setActiveLink();
+
+      toggles.forEach((button) => {
+        button.addEventListener("click", function () {
+          const id = button.getAttribute("data-target");
+          const panel = document.getElementById(id);
+          if (!panel) return;
+          panel.classList.toggle("open");
+          button.textContent = panel.classList.contains("open")
+            ? "Hide detailed talk track guidance"
+            : "Show detailed talk track guidance";
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

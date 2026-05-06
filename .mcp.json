@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "Salesforce DX": {
+      "command": "npx",
+      "args": ["-y", "@salesforce/mcp", "--orgs", "carmax-demo-sdo", "--toolsets", "orgs,metadata,data,users"]
+    }
+  }
+}

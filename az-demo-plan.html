@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoZone MMH Demo Plan — 45-Minute Demonstration (v9)</title>
+  <script src="https://assets.meshmesh.io/system/tailwindcss-browser-4.js"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #F26D0D;
+      --color-secondary: #D52B1E;
+      --color-accent: #F37F00;
+      --color-surface: #F2F2F2;
+      --color-muted: #6E6E6E;
+      --color-dark: #202124;
+      --color-light: #FFFFFF;
+      --color-border: #E6E6E6;
+      --color-success: #1F7400;
+      --color-warning: #FFC800;
+      --color-error: #D52B1E;
+      --color-info: #015FCC;
+      --color-orange-light: #FCDFCC;
+      --color-orange-dark: #D36210;
+      --color-red-light: #F6E0E0;
+      --color-gray-light: #F2F2F2;
+      --color-gray-medium: #949494;
+      --color-gray-dark: #484848;
+      --color-b2b: #1B5E20;
+      --color-sap: #0070F2;
+      --color-sap-light: #E3F0FF;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 3.5rem;
+    }
+
+    /* Sticky nav: explicit rules so the bar stays pinned (Tailwind sticky can be unreliable in the browser build) */
+    .phase-nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: #FFFFFF;
+    }
+
+    .phase-card { transition: all 0.3s ease; }
+    .phase-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(32, 33, 36, 0.2); }
+    .talking-point { transition: all 0.2s ease; }
+    .talking-point:hover { background-color: #FCDFCC; }
+    .nav-link { transition: all 0.2s ease; }
+    .nav-link:hover, .nav-link.active { color: #F26D0D; border-bottom-color: #F26D0D; }
+    .rfi-tag { font-size: 10px; letter-spacing: 0.5px; }
+    .braze-tag { font-size: 10px; letter-spacing: 0.5px; }
+    @media print {
+      .no-print { display: none !important; }
+      .phase-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="bg-light text-dark font-sans">
+
+  <!-- Top Bar -->
+  <div class="bg-dark text-light">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <div class="text-2xl font-bold tracking-tight" style="color: #F26D0D;">AUTO<span style="color: #D52B1E;">ZONE</span></div>
+        <span class="text-gray-medium text-sm">×</span>
+        <span class="text-sm text-gray-medium">Agentforce Marketing</span>
+      </div>
+      <div class="text-sm text-gray-medium">Multi-Channel Marketing Hub Demo · v9</div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <div class="bg-dark text-light relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 70% 50%, #F26D0D 0%, transparent 60%);"></div>
+    <div class="max-w-7xl mx-auto px-6 py-16 relative z-10">
+      <div class="max-w-3xl">
+        <p class="text-primary font-bold text-sm uppercase tracking-widest mb-3">Demonstration Playbook — v9</p>
+        <h1 class="text-5xl font-bold leading-tight mb-4">
+          AutoZone MMH<br>
+          <span style="color: #F26D0D;">Demo Plan</span>
+        </h1>
+        <p class="text-xl text-gray-medium leading-relaxed mb-3">
+          A 45-minute marketer-focused live demonstration. Opens with a brief look at data streams to show how any data source flows into the marketing platform, then moves into campaign creation, segmentation, journey orchestration, on-site personalization, and analytics — all live, for a room of marketing directors.
+        </p>
+        <p class="text-sm text-gray-medium leading-relaxed mb-8 italic">
+          v9 changes: Replaced Phase 5 — the old GCMO-based abandoned cart + Salesforce Personalization "light touch" section is replaced with <strong class="text-gray-medium">Salesforce Personalization NTO demo</strong>. Two new sections: (1) <strong class="text-gray-medium">Personalized On-Site Experience</strong> — anonymous-to-known journey with real-time behavioral personalization, product recs, and web agent curator; (2) <strong class="text-gray-medium">Web Personalization Manager</strong> — visual, code-free configuration of on-site personalization regardless of front-end technology. Demo env: SF Personalization NTO (dedicated Chrome profile). All v8 content retained for other phases.
+        </p>
+        <div class="flex gap-6 flex-wrap">
+          <div class="bg-gray-dark/50 rounded-lg px-5 py-3 text-center">
+            <div class="text-2xl font-bold text-primary">45</div>
+            <div class="text-xs text-gray-medium uppercase tracking-wider">Minutes</div>
+          </div>
+          <div class="bg-gray-dark/50 rounded-lg px-5 py-3 text-center">
+            <div class="text-2xl font-bold text-primary">7</div>
+            <div class="text-xs text-gray-medium uppercase tracking-wider">Demo Phases</div>
+          </div>
+          <div class="bg-gray-dark/50 rounded-lg px-5 py-3 text-center">
+            <div class="text-2xl font-bold text-primary">100%</div>
+            <div class="text-xs text-gray-medium uppercase tracking-wider">Live Demo</div>
+          </div>
+          <div class="bg-gray-dark/50 rounded-lg px-5 py-3 text-center">
+            <div class="text-2xl font-bold text-primary">0</div>
+            <div class="text-xs text-gray-medium uppercase tracking-wider">Slides</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Nav (stays at top of viewport while scrolling) -->
+  <div class="phase-nav-wrap no-print">
+  <nav class="bg-light border-b border-border shadow-sm">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex gap-1 overflow-x-auto" id="phase-nav">
+        <a href="#strategy" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">Strategy</a>
+        <a href="#setup" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">Setup</a>
+        <a href="#phase0" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">Opening</a>
+        <a href="#phase1" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">1 · Data Streams</a>
+        <a href="#phase2" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">2 · Campaign Build</a>
+        <a href="#phase3" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">3 · Segmentation</a>
+        <a href="#phase4" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">4 · Journey</a>
+        <a href="#phase5" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">5 · Personalization</a>
+        <a href="#phase6" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">6 · Analytics</a>
+        <a href="#phase7" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">7 · Wrap-Up</a>
+        <a href="#sap" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">vs. SAP EC</a>
+        <a href="#braze" class="nav-link py-3 px-4 text-sm font-semibold text-muted border-b-2 border-transparent whitespace-nowrap">vs. Braze</a>
+      </div>
+    </div>
+  </nav>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+
+    <!-- STRATEGY SECTION -->
+    <section id="strategy" class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 uppercase tracking-wide">Demo Strategy & Audience</h2>
+      <div class="w-20 h-1 bg-primary mb-8"></div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-10">
+        <!-- Audience -->
+        <div class="bg-light rounded-lg border border-border p-6">
+          <h3 class="text-lg font-bold mb-4 text-dark flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-primary text-light flex items-center justify-center text-sm font-bold">👥</span>
+            Audience — Marketing Directors
+          </h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-primary font-bold mt-0.5">▸</span>
+              <div><strong>Primary audience:</strong> Marketing directors — loyalty marketing, brand marketing, direct marketing, product management</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-primary font-bold mt-0.5">▸</span>
+              <div><strong>Confirmed attendees:</strong> Dave, Andrew, Ellen + 3 new director-level (Louisa — Brand Loyalty/Direct Marketing, + 2 others)</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-primary font-bold mt-0.5">▸</span>
+              <div><strong>These are marketers, not engineers.</strong> They care about: "How fast can I build a campaign? Do I need IT? How does this prevent over-messaging? Can it handle our scale?"</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-primary font-bold mt-0.5">▸</span>
+              <div><strong>Louisa is key.</strong> She owns loyalty + direct marketing — the on-site personalization and loyalty segmentation moments are specifically for her.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Strategic Notes -->
+        <div class="bg-light rounded-lg border border-border p-6">
+          <h3 class="text-lg font-bold mb-4 text-dark flex items-center gap-2">
+            <span class="w-8 h-8 rounded-full bg-secondary text-light flex items-center justify-center text-sm font-bold">🎯</span>
+            Strategic Positioning
+          </h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-secondary font-bold mt-0.5">▸</span>
+              <div><strong>Data-grounded, campaign-first flow.</strong> Quick data streams tour to ground the audience, then straight into campaign building. The audience, data, and journey follow naturally from there.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-secondary font-bold mt-0.5">▸</span>
+              <div><strong>Segmentation enters when you need it.</strong> When the campaign brief asks "who should see this?" — that's when we show the segmentation power. Natural, not staged.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-secondary font-bold mt-0.5">▸</span>
+              <div><strong>B2B angle — AutoZonePro.</strong> After the B2C campaign, pivot to commercial. ~20K AutoZonePro members today. Show how the same platform handles both B2C and B2B without separate tools.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-secondary font-bold mt-0.5">▸</span>
+              <div><strong>No slides.</strong> Two minutes to frame, then straight into the product for the full session.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- v9 Changes callout -->
+      <div class="bg-orange-light/40 rounded-lg border-2 border-primary p-6 mb-10">
+        <h3 class="text-lg font-bold mb-3 text-primary flex items-center gap-2">
+          🔄 What Changed from v8 → v9
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div>
+            <p class="font-bold text-dark mb-2">Replaced in v9:</p>
+            <div class="space-y-1 text-muted">
+              <p>▸ <strong>Phase 5 completely replaced</strong> — removed GCMO-based abandoned cart + "light touch" Salesforce Personalization</p>
+              <p>▸ <strong>New Step 1: Personalized On-Site Experience</strong> — anonymous browsing → behavioral profiling → email capture → known-customer personalization with hero banners, product recs, and web agent curator. Shows the full unknown-to-known journey live on the NTO site</p>
+              <p>▸ <strong>New Step 2: Web Personalization Manager (WPM)</strong> — visual, code-free tool to configure on-site personalization experiences. Select personalization points, choose templates, target page elements, and preview — all without touching the website's front-end code</p>
+              <p>▸ <strong>Demo env: SF Personalization NTO</strong> — uses dedicated Chrome browser profile (SF Personalization)</p>
+            </div>
+          </div>
+          <div>
+            <p class="font-bold text-dark mb-2">Carried forward from v8:</p>
+            <div class="space-y-1 text-muted">
+              <p>▸ SETUP — Demo Organization table with Chrome profiles and tab numbers per phase</p>
+              <p>▸ EES + EEF in segmentation; EEF as journey-level throttle in Phase 4; Marketing Performance in Phase 2; Phase 3 SMS inside MCA Flow; demo environment tags per phase; Phase 6 = Marketing Intelligence + Data Export</p>
+              <p>▸ SAP EC primary competitor framing, Agentforce vs. Joule, channel availability matrix, and all prior strategic notes unchanged</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SAP Competitive Reality Box -->
+      <div class="bg-sap-light rounded-lg border-2 border-sap p-6 mb-10">
+        <h3 class="text-lg font-bold mb-3 text-sap flex items-center gap-2">
+          ⚡ SAP Engagement Cloud — Know the Battlefield
+        </h3>
+        <div class="grid md:grid-cols-2 gap-6 text-sm">
+          <div>
+            <p class="font-bold text-dark mb-2">What SAP Will Argue:</p>
+            <div class="space-y-1 text-muted">
+              <p>▸ "SAP EC is natively connected to SAP CDP — no integration needed"</p>
+              <p>▸ "Your customer data already lives in SAP — why move it?"</p>
+              <p>▸ "Joule provides AI-assisted marketing across the SAP ecosystem"</p>
+              <p>▸ "One vendor, one data model, one contract"</p>
+            </div>
+          </div>
+          <div>
+            <p class="font-bold text-dark mb-2">The Reality:</p>
+            <div class="space-y-1 text-muted">
+              <p>▸ SAP CDP → SAP EC <strong>still pushes data via activation</strong> — it's not a live, shared data model. Segments are exported, not queried in real time</p>
+              <p>▸ SAP EC's marketing automation maturity is <strong>early-stage</strong> compared to MC Advanced — limited journey branching, basic personalization</p>
+              <p>▸ Joule is a <strong>copilot (recommendation engine)</strong>, not an autonomous agent. It suggests — it doesn't create campaigns or execute decisions</p>
+              <p>▸ SAP EC lacks native <strong>campaign prioritization</strong>, <strong>waterfall segmentation</strong>, <strong>Einstein STO</strong>, and <strong>AI-powered content generation</strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 p-3 bg-white rounded border border-sap/20">
+          <p class="text-xs font-bold text-sap uppercase tracking-wider mb-1">Key Insight: "Native" Doesn't Mean "Better"</p>
+          <p class="text-xs text-muted">SAP CDP publishes segments to SAP EC in exactly the same way Data 360 will publish segments to MC Advanced — it's an activation push, not a shared in-memory data layer. The "native" argument is a perception play, not an architecture advantage. What actually matters is what the marketer can <strong>do</strong> with the data once it arrives — and that's where Agentforce Marketing has a generational lead.</p>
+        </div>
+      </div>
+
+      <!-- Channel Availability Box -->
+      <div class="bg-warning/10 rounded-lg border-2 border-warning p-6 mb-10">
+        <h3 class="text-lg font-bold mb-3 text-dark flex items-center gap-2">
+          📱 Channel Availability — What We Can and Can't Demo
+        </h3>
+        <div class="grid md:grid-cols-3 gap-4 text-sm">
+          <div class="bg-success/5 rounded p-4 border border-success/20">
+            <p class="font-bold text-success mb-2">✅ Available</p>
+            <div class="space-y-1 text-muted">
+              <p>▸ <strong>Email</strong> — full send + 2-way conversational</p>
+              <p>▸ <strong>SMS</strong> — outbound messaging</p>
+              <p>▸ <strong>Push notifications</strong></p>
+              <p>▸ <strong>Paid media</strong> — activation / exclusion</p>
+              <p>▸ <strong>Web personalization</strong> — Salesforce Personalization</p>
+              <p>▸ <strong>2-way email with Agentforce</strong> — customer replies, agent responds</p>
+            </div>
+          </div>
+          <div class="bg-secondary/5 rounded p-4 border border-secondary/20">
+            <p class="font-bold text-secondary mb-2">❌ Not Available (No Digital Engagement)</p>
+            <div class="space-y-1 text-muted">
+              <p>▸ <strong>2-way SMS</strong> — requires Digital Engagement on Core</p>
+              <p>▸ <strong>2-way WhatsApp</strong> — requires Digital Engagement on Core</p>
+              <p>▸ <strong>Live chat / messaging</strong> — requires Service Cloud</p>
+            </div>
+            <p class="text-xs text-muted mt-2 italic">AutoZone will not have Salesforce Core platform, so Digital Engagement is not in scope.</p>
+          </div>
+          <div class="bg-info/5 rounded p-4 border border-info/20">
+            <p class="font-bold text-info mb-2">💡 Demo Implication</p>
+            <div class="space-y-1 text-muted">
+              <p>▸ Lean into <strong>2-way email</strong> as the conversational channel differentiator</p>
+              <p>▸ SAP EC doesn't have 2-way email with AI agents either — this is still a win</p>
+              <p>▸ Frame SMS as <strong>outbound-only</strong> — still in the journey waterfall, just not conversational</p>
+              <p>▸ Don't promise 2-way SMS/WhatsApp — it requires Digital Engagement</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AutoZone Context Quick Ref -->
+      <div class="bg-dark text-light rounded-lg p-6">
+        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+          <span class="text-primary">⚡</span> AutoZone Key Context for Talking Points
+        </h3>
+        <div class="grid md:grid-cols-4 gap-6 text-sm">
+          <div>
+            <div class="text-primary text-2xl font-bold">450M</div>
+            <div class="text-gray-medium">Total customer records</div>
+          </div>
+          <div>
+            <div class="text-primary text-2xl font-bold">41M</div>
+            <div class="text-gray-medium">Active loyalty members</div>
+          </div>
+          <div>
+            <div class="text-primary text-2xl font-bold">1.5–2B</div>
+            <div class="text-gray-medium">Annual emails sent</div>
+          </div>
+          <div>
+            <div class="text-primary text-2xl font-bold">~55</div>
+            <div class="text-gray-medium">Journeys to migrate</div>
+          </div>
+          <div>
+            <div class="text-primary text-2xl font-bold">$52 / $36</div>
+            <div class="text-gray-medium">AOV (Loyalty / Non-Loyalty)</div>
+          </div>
+          <div>
+            <div class="text-primary text-2xl font-bold">3 GEOs</div>
+            <div class="text-gray-medium">US, Mexico, Brazil</div>
+          </div>
+          <div>
+            <div class="text-primary text-2xl font-bold">~20K</div>
+            <div class="text-gray-medium">AutoZonePro members</div>
+          </div>
+          <div>
+            <div class="text-primary text-2xl font-bold">Feb 2027</div>
+            <div class="text-gray-medium">Target go-live (Epsilon ends)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIMELINE OVERVIEW -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 uppercase tracking-wide">Demo Timeline Overview</h2>
+      <div class="w-20 h-1 bg-primary mb-8"></div>
+
+      <div class="bg-surface rounded-lg p-6 overflow-x-auto">
+        <div class="flex gap-0 min-w-[900px]">
+          <div class="flex-none text-center" style="width: 4.4%;">
+            <div class="h-3 rounded-l-full bg-dark"></div>
+            <div class="text-xs mt-2 font-semibold text-dark">Opening</div>
+            <div class="text-xs text-muted">2 min</div>
+          </div>
+          <div class="flex-none text-center" style="width: 8.9%;">
+            <div class="h-3 bg-info"></div>
+            <div class="text-xs mt-2 font-semibold text-info">1 · Data Streams</div>
+            <div class="text-xs text-muted">4 min</div>
+          </div>
+          <div class="flex-none text-center" style="width: 20%;">
+            <div class="h-3 bg-accent"></div>
+            <div class="text-xs mt-2 font-semibold text-accent">2 · Campaign</div>
+            <div class="text-xs text-muted">9 min</div>
+          </div>
+          <div class="flex-none text-center" style="width: 20%;">
+            <div class="h-3 bg-primary"></div>
+            <div class="text-xs mt-2 font-semibold text-primary">3 · Segmentation</div>
+            <div class="text-xs text-muted">9 min</div>
+          </div>
+          <div class="flex-none text-center" style="width: 24.4%;">
+            <div class="h-3 bg-secondary"></div>
+            <div class="text-xs mt-2 font-semibold text-secondary">4 · Journey</div>
+            <div class="text-xs text-muted">11 min</div>
+          </div>
+          <div class="flex-none text-center" style="width: 8.9%;">
+            <div class="h-3 bg-success"></div>
+            <div class="text-xs mt-2 font-semibold text-success">5 · Cart</div>
+            <div class="text-xs text-muted">4 min</div>
+          </div>
+          <div class="flex-none text-center" style="width: 6.7%;">
+            <div class="h-3" style="background: #B8960E;"></div>
+            <div class="text-xs mt-2 font-semibold" style="color: #B8960E;">6 · Analytics</div>
+            <div class="text-xs text-muted">3 min</div>
+          </div>
+          <div class="flex-none text-center" style="width: 6.7%;">
+            <div class="h-3 rounded-r-full bg-dark"></div>
+            <div class="text-xs mt-2 font-semibold text-dark">Wrap</div>
+            <div class="text-xs text-muted">3 min</div>
+          </div>
+        </div>
+        <div class="flex justify-between mt-4 text-xs text-muted min-w-[900px]">
+          <span>0:00</span>
+          <span>0:10</span>
+          <span>0:20</span>
+          <span>0:30</span>
+          <span>0:40</span>
+          <span>0:45</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHASE 0: OPENING ===== -->
+    <section id="phase0" class="mb-12">
+      <div class="phase-card bg-light rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="bg-dark px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="bg-gray-dark text-light text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Opening</span>
+            <h3 class="text-light text-lg font-bold">Set the Stage + Quick Data Context</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-gray-medium text-sm">⏱ 2 minutes</span>
+            <span class="bg-gray-dark text-gray-medium text-xs px-2 py-0.5 rounded">0:00 – 0:02</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-muted mb-4 text-sm italic">"No slides. Two minutes to frame it, then the full session is the product talking."</p>
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">1</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Quick Framing (60 seconds)</p>
+                  <p class="text-sm text-muted">"We're going to spend the full hour today in the product. No slides. Salesforce has rebuilt Marketing Cloud from the ground up — it's fundamentally different from traditional ESPs, and fundamentally different from channel-first messaging tools. Everything you're about to see is live, and it's built for the way marketers actually want to work."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">2</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Demo Roadmap (30 seconds)</p>
+                  <p class="text-sm text-muted">"Here's what you'll see: First, a quick look at data streams — how any data source flows into the marketing platform. Then we'll build a campaign with an AI agent, create an audience in plain English, wire it into a cross-channel journey, see real-time on-site personalization, and finish with measurement. Jump in with questions anytime."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">3</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Handoff to Data Streams (10 seconds)</p>
+                  <p class="text-sm text-muted">"Before we build anything, let me show you where the data comes from — it takes two minutes and sets the foundation for everything else you're about to see."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHASE 1: DATA STREAMS & THE MARKETING DATA LAYER ===== -->
+    <section id="phase1" class="mb-12">
+      <div class="phase-card bg-light rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="bg-info px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="bg-white/20 text-light text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phase 1</span>
+            <h3 class="text-light text-lg font-bold">Data Streams & the Marketing Data Layer</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-white/70 text-sm">⏱ 4 minutes</span>
+            <span class="bg-white/20 text-white/70 text-xs px-2 py-0.5 rounded">0:02 – 0:06</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="rfi-tag bg-info/10 text-info font-bold px-2 py-0.5 rounded uppercase">RFP 1.0 — Platform Overview</span>
+            <span class="rfi-tag bg-info/10 text-info font-bold px-2 py-0.5 rounded uppercase">Tech 1.0 — Connectors & Data Ingestion</span>
+            <span class="braze-tag bg-sap/10 text-sap font-bold px-2 py-0.5 rounded uppercase">vs. SAP EC — "Native" Claim Neutralizer</span>
+          </div>
+
+          <p class="text-muted mb-5 text-sm"><strong>Goal:</strong> Quick, visual tour of data streams — how any data source flows into the marketing platform. Position Data 360 as the <em>data layer underneath the marketing tools</em>, not as a replacement for SAP CDP. Keep it brief and marketer-friendly.</p>
+
+          <div class="mb-5 px-4 py-2 rounded-lg bg-info/5 border border-info/20 flex flex-wrap items-center gap-2">
+            <span class="text-info font-bold text-xs">🖥️ DEMO ENV:</span>
+            <span class="text-xs text-muted font-semibold">AutoZone CDO + Badger</span>
+          </div>
+
+          <!-- Critical Positioning Callout -->
+          <div class="bg-secondary/5 border-2 border-secondary rounded-lg p-4 mb-5">
+            <div class="flex items-start gap-3">
+              <span class="text-secondary font-bold text-xl mt-0.5">⚠️</span>
+              <div>
+                <p class="font-bold text-secondary text-sm mb-1">Critical Positioning — Say This, Not That</p>
+                <div class="grid md:grid-cols-2 gap-4 text-xs mt-2">
+                  <div class="bg-success/5 rounded p-3 border border-success/20">
+                    <p class="font-bold text-success mb-1">✅ SAY:</p>
+                    <p class="text-muted">"Data 360 is the data layer underneath your marketing tools."</p>
+                    <p class="text-muted mt-1">"It's additive to SAP — your SAP segments flow right through."</p>
+                    <p class="text-muted mt-1">"It brings data together so your marketers can use it directly."</p>
+                  </div>
+                  <div class="bg-secondary/5 rounded p-3 border border-secondary/20">
+                    <p class="font-bold text-secondary mb-1">❌ DON'T SAY:</p>
+                    <p class="text-muted">"Data 360 replaces your CDP."</p>
+                    <p class="text-muted mt-1">"You won't need SAP anymore."</p>
+                    <p class="text-muted mt-1">"This is our customer data platform."</p>
+                    <p class="text-muted mt-1">Anything that positions Data 360 as competing with SAP CDP.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border-2 border-info bg-info/5">
+              <div class="flex items-start gap-3">
+                <span class="text-info font-bold text-lg mt-0.5">1</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ Open Data Streams — "Where the Data Comes From" (90 seconds)</p>
+                  <p class="text-sm text-muted mb-2">Follow the tab setup below: use <strong class="text-dark">Badger</strong> first to show breadth of sources, then <strong class="text-dark">AutoZone CDO</strong> for the live customer stream and mapping. Still call out the kinds of streams feeding the platform — customers, purchases, rewards, app engagement, web engagement.</p>
+                  <div class="mt-3 rounded p-3 border border-info/20 bg-info/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-info uppercase tracking-wider">Environment — Tab 1</p>
+                    <p><strong class="text-dark">Browser:</strong> AutoZone Chrome profile on <strong class="text-dark">Desktop 1</strong>.</p>
+                    <p><strong class="text-dark">Tab 1 — Badger:</strong> Data Streams page with <strong class="text-dark">New Data stream</strong> already open. Use this to show data can arrive in many forms — <strong class="text-dark">web or mobile app streaming</strong>, a <strong class="text-dark">REST ingestion API</strong>, <strong class="text-dark">GCP</strong>, and many other sources.</p>
+                  </div>
+                  <div class="mt-2 rounded p-3 border border-info/20 bg-info/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-info uppercase tracking-wider">Environment — Tab 2</p>
+                    <p><strong class="text-dark">Same browser / Desktop 1.</strong></p>
+                    <p><strong class="text-dark">Tab 2 — AutoZone CDO:</strong> Data Streams page. Open the <strong class="text-dark">AutoZone Customer Data Stream</strong>; show that it is a <strong class="text-dark">profile category</strong>, then show <strong class="text-dark">mapping</strong>.</p>
+                  </div>
+                  <p class="text-sm text-dark mt-3"><strong>Key Talking Point:</strong> "Before we build campaigns, let me show you where the data comes from. These are data streams — connectors that bring data from any source into the marketing platform. Customer profiles, purchase history, loyalty rewards, app engagement, web behavior — it all flows in here. This is the data layer underneath everything you're about to see."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-info font-bold text-lg mt-0.5">2</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Data Model — How It All Connects to the Individual (60 seconds)</p>
+                  <p class="text-sm text-muted mb-2">Navigate to the Data Model view. Show the visual graph: Individual at the center, connected to Contact Points, Sales Orders, Rewards, App Engagement.</p>
+                  <div class="mt-3 rounded p-3 border border-info/20 bg-info/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-info uppercase tracking-wider">Environment — Tab 3</p>
+                    <p><strong class="text-dark">AutoZone Chrome on Desktop 1, Tab 3:</strong> Data Model — the view for the inbound data you just saw being mapped in the streams flow. Emphasize that this is a <strong class="text-dark">pre-built marketing data model</strong> and that you can also <strong class="text-dark">easily add custom objects</strong>.</p>
+                  </div>
+                  <p class="text-sm text-dark mt-3"><strong>Key Talking Point:</strong> "All of that data maps into a unified model with the individual at the center. Purchases, rewards, app engagement, contact info — all connected. When your marketer builds a segment or personalizes a message, they're drawing from this complete picture. No data exports, no CSV files, no waiting for IT."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-info font-bold text-lg mt-0.5">3</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">SAP Coexistence — The Additive Story (30 seconds)</p>
+                  <p class="text-sm text-muted mb-2">While still on the Data Model, call out that SAP segments are visible as data sources.</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "And this is additive to your SAP CDP — not a replacement. Your SAP segments, your existing customer definitions — they flow right through. What this adds is real-time engagement signals, loyalty attributes, and app behavior that your marketers can use directly inside campaigns and segments. SAP stays your system of record. This is the marketing data layer on top."</p>
+                  <div class="mt-3 bg-sap-light rounded p-3 border border-sap/20">
+                    <p class="text-xs font-bold text-sap uppercase tracking-wider mb-1">💡 SAP EC Counter-Point</p>
+                    <p class="text-xs text-muted">If they ask "why not just use SAP EC since it's already connected to SAP CDP?" — the answer is: "SAP EC still receives segments as a data push from SAP CDP, the same way MC Advanced receives segments from Data 360. The architecture is the same. The difference is what happens <strong>after</strong> the data arrives — and that's the marketing platform. Let me show you that next."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SAP Contrast -->
+          <div class="mt-6 bg-sap-light rounded-lg p-5 border border-sap/20">
+            <div class="flex items-start gap-3">
+              <span class="text-sap font-bold text-sm mt-0.5">🆚</span>
+              <div>
+                <p class="font-bold text-dark text-sm mb-2">Data Layer: Level Playing Field (SAP EC Contrast)</p>
+                <div class="grid md:grid-cols-2 gap-4 text-xs">
+                  <div class="bg-light rounded p-3">
+                    <p class="font-bold text-sap mb-1">SAP Engagement Cloud:</p>
+                    <p class="text-muted">SAP CDP publishes segments to SAP EC via activation — a batch or scheduled data push. Not a shared live data model. SAP EC receives a flattened audience list and attributes. Real-time engagement signals from SAP EC don't feed back into SAP CDP natively.</p>
+                  </div>
+                  <div class="bg-light rounded p-3 border border-primary/30">
+                    <p class="font-bold text-primary mb-1">Agentforce Marketing:</p>
+                    <p class="text-muted">Data 360 publishes segments to MC Advanced the same way — activation-based. But the marketing platform adds engagement scoring, real-time web signals, and loyalty attributes <strong>on top</strong>, accessible inside segmentation and personalization natively. The data layer enriches what SAP CDP provides.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg bg-surface border-l-4 border-info">
+            <p class="text-sm font-semibold text-dark">🔗 Transition to Phase 2 — Campaign Build:</p>
+            <p class="text-sm text-muted">"That's the data layer — it runs underneath everything. Now let me show you what your marketer actually does with it. Let's build a campaign."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHASE 2: AGENTIC CAMPAIGN BUILD ===== -->
+    <section id="phase2" class="mb-12">
+      <div class="phase-card bg-light rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="bg-accent px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="bg-white/20 text-light text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phase 2</span>
+            <h3 class="text-light text-lg font-bold">Agentic Campaign Creation with Agentforce</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-white/70 text-sm">⏱ 9 minutes</span>
+            <span class="bg-white/20 text-white/70 text-xs px-2 py-0.5 rounded">0:06 – 0:15</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="rfi-tag bg-accent/10 text-accent font-bold px-2 py-0.5 rounded uppercase">RFP 5.01 — AI Decisioning</span>
+            <span class="rfi-tag bg-accent/10 text-accent font-bold px-2 py-0.5 rounded uppercase">RFP 3.01 — Content Management</span>
+            <span class="rfi-tag bg-accent/10 text-accent font-bold px-2 py-0.5 rounded uppercase">RFP 1.08 — Roadmap</span>
+            <span class="rfi-tag bg-accent/10 text-accent font-bold px-2 py-0.5 rounded uppercase">RFP 4.01 — Campaign Performance</span>
+            <span class="braze-tag bg-sap/10 text-sap font-bold px-2 py-0.5 rounded uppercase">vs. SAP EC — Agentforce vs. Joule</span>
+          </div>
+
+          <p class="text-muted mb-5 text-sm"><strong>Goal:</strong> Start where the marketer starts — "I need to launch a campaign." Show the shift from "Automation to Autonomy." The agent builds the campaign from a brief. This is the biggest differentiation vs. both SAP EC and Braze — autonomous AI that creates, not just recommends.</p>
+
+          <div class="mb-5 px-4 py-2 rounded-lg bg-accent/5 border border-accent/20">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-accent font-bold text-xs">🖥️ DEMO ENV:</span>
+              <span class="text-xs text-muted font-semibold">AutoZone CDO</span>
+            </div>
+            <div class="text-xs text-muted"><strong>Exceptions:</strong> 2-way conversational email → Figma for the email + Badger to show the flow agent activity· Marketing Performance → AutoZone CDO using "2022 Winter SKU Update Email Campaign_DL" for actual campaign insights</div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border-2 border-accent bg-orange-light/20">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold text-lg mt-0.5">1</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ B2C Campaign Brief — Expiring Rewards Credits Re-engagement</p>
+                  <p class="text-sm text-muted mb-2">Open the Marketing Campaign agent. Provide a brief: <em>"Create a campaign to re-engage with AutoZone Rewards customers with credits that are going to expire in the next 2 weeks and haven't made a purchase in the last 60 days. Target them with an oil change bundle deal to get ready for the summer."</em></p>
+                  <div class="mt-3 rounded p-3 border border-accent/20 bg-accent/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-accent uppercase tracking-wider">Environment — Tab 4</p>
+                    <p><strong class="text-dark">AutoZone Chrome on Desktop 1.</strong></p>
+                    <p><strong class="text-dark">Tab 4:</strong> Marketing Home Page — perform <strong class="text-dark">agentic campaign creation</strong> here.</p>
+                  </div>
+                  <p class="text-sm text-dark mt-3"><strong>Key Talking Point:</strong> "This is how it starts. Your marketer describes what they want — just like they'd tell a colleague. The agent builds the campaign structure, drafts the content, and recommends an audience. Brief to campaign in minutes, not days."</p>
+                  <div class="mt-3 bg-sap-light rounded p-3 border border-sap/20">
+                    <p class="text-xs font-bold text-sap uppercase tracking-wider mb-1">🆚 Agentforce vs. Joule — The Key Moment</p>
+                    <p class="text-xs text-muted">SAP's Joule can help a marketer <strong>find data or suggest next steps</strong> — it's a copilot that assists. Agentforce <strong>creates the campaign</strong> — structure, content, audience recommendation, channel strategy — autonomously. Joule recommends. Agentforce acts. This is the single most visible differentiator. Let the audience watch the agent work in real time.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold text-lg mt-0.5">2</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">AI-Generated Content with AutoZone Branding</p>
+                  <p class="text-sm text-muted mb-2">Show the generated email in Content Builder. Point out dynamic content blocks, personalization (first name, loyalty tier, nearest store), and content variations.</p>
+                  <div class="mt-3 rounded p-3 border border-accent/20 bg-accent/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-accent uppercase tracking-wider">Environment — Tab 5</p>
+                    <p><strong class="text-dark">Same browser:</strong> AutoZone Chrome on Desktop 1.</p>
+                    <p><strong class="text-dark">Tab 5:</strong> Open to <strong class="text-dark">AZ Rewards Credit Status v2</strong> email in Content Builder. Cover <strong class="text-dark">dynamic content</strong>, personalized content, easy drag-and-drop, and <strong class="text-dark">repeaters</strong> for lists such as multiple products on a purchase order.</p>
+                  </div>
+                  <div class="mt-2 rounded p-3 border border-accent/20 bg-accent/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-accent uppercase tracking-wider">Environment — Tab 6</p>
+                    <p><strong class="text-dark">Tab 6:</strong> Show preview for <strong class="text-dark">Benjamin Taylor</strong>.</p>
+                  </div>
+                  <p class="text-sm text-dark mt-3"><strong>Key Talking Point:</strong> "The content is on-brand because the agent uses your templates, your brand guidelines, your product catalog. Notice the dynamic blocks — this customer sees their nearest store and a battery recommendation based on their vehicle year. 1:1 personalization at scale."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold text-lg mt-0.5">3</span>
+                <div class="line-through">
+                  <p class="font-semibold text-dark mb-1">Two-Way Conversational Email — Loyalty Inquiry</p>
+                  <p class="text-sm text-muted mb-2"><strong>FIGMA:</strong>Show a marketing email with a conversational element: "Have a question about your Rewards? Reply and ask!" Demo an Agentforce agent responding to the reply.</p>
+                  <p class="text-sm text-muted mb-2"><strong>BADGER:</strong>Show a flow of the agent activity in the flow that this is where you put it so the AI agent can reply.</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "This is where marketing becomes a conversation. Customer gets your promo, sees their rewards balance, replies 'How many bonus points do Gold members earn?' An agent handles it instantly — no call center ticket, no wait. Marketing that talks back."</p>
+                  <div class="mt-3 bg-accent/5 rounded p-3">
+                    <p class="text-xs font-bold text-accent uppercase tracking-wider mb-1">💡 2-Way Email — Our Conversational Differentiator</p>
+                    <p class="text-xs text-muted">Without Digital Engagement, we don't have 2-way SMS or WhatsApp. But <strong>2-way email with Agentforce is fully available</strong> and something neither SAP EC nor Braze can match. An AI agent that reads, understands, and responds to customer email replies — that's a fundamentally different experience. Lean into this hard.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- B2B CAMPAIGN SECTION -->
+            <div class="talking-point rounded-lg p-4 border-2 border-b2b" style="background: #E8F5E9;">
+              <div class="flex items-start gap-3">
+                <span class="text-b2b font-bold text-lg mt-0.5">4</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ B2B Pivot — AutoZonePro Commercial Campaign Brief</p>
+                  <p class="text-sm text-muted mb-2">Transition: <em>"That was a B2C campaign for your loyalty members. But AutoZone also has a commercial business — AutoZonePro, serving repair shops and fleet managers. Let me show you how the same platform handles B2B."</em></p>
+                  <p class="text-sm text-muted mb-2">Suggest a brief: <em>"Create a quarterly parts catalog update campaign for AutoZonePro commercial accounts. Target repair shops that haven't placed an order in 30+ days. Highlight new Duralast Professional brake line and free next-day delivery for orders over $250."</em></p>
+                  <div class="mt-3 rounded p-3 border border-accent/20 bg-accent/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-accent uppercase tracking-wider">Environment — Tab 7</p>
+                    <p><strong class="text-dark">Tab 7:</strong> Use this for the B2B pivot — you can run B2B campaigns as easily as B2C in the <strong class="text-dark">same environment</strong>. If you want separation, the platform is flexible enough for <strong class="text-dark">multiple Business Units</strong> (e.g. one BU B2C, another B2B). You can also support <strong class="text-dark">transactional messaging</strong> where needed.</p>
+                  </div>
+                  <p class="text-sm text-dark mt-3"><strong>Key Talking Point:</strong> "Same platform, same agent, same workflow — but now it's commercial. Your B2B team doesn't need a separate tool. One platform for your 41 million Rewards members and your 20,000 AutoZonePro accounts."</p>
+                  <div class="mt-2 bg-accent/5 rounded p-3">
+                    <p class="text-xs font-bold text-accent uppercase tracking-wider mb-1">💡 Demo Tip</p>
+                    <p class="text-xs text-muted">You don't need to fully generate this campaign — just type the brief, let the agent start, then pause and say "I'll let that finish. The point is: same platform, B2C and B2B. Let's go back to our consumer campaign and build the audience."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-accent font-bold text-lg mt-0.5">5</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Marketing Performance Dashboard — Campaign Insights</p>
+                  <p class="text-sm text-muted mb-2">Navigate to an existing campaign — use <strong>"2022 Winter SKU Update Email Campaign_DL"</strong> — to show actual campaign performance metrics.</p>
+                  <div class="mt-3 rounded p-3 border border-accent/20 bg-accent/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-accent uppercase tracking-wider">Environment — Tabs 8 &amp; 9</p>
+                    <p><strong class="text-dark">AutoZone Chrome on Desktop 1.</strong></p>
+                    <p><strong class="text-dark">Tab 8:</strong> Campaign-level <strong class="text-dark">insights</strong> and <strong class="text-dark">deliverability</strong>.</p>
+                    <p><strong class="text-dark">Tab 9:</strong> Switch to <strong class="text-dark">overall Marketing Performance</strong> (aggregate view).</p>
+                  </div>
+                  <p class="text-sm text-dark mt-3"><strong>Key Talking Point:</strong> "All performance data in one place — filterable by campaign, journey, or channel. Every engagement feeds back into the individual's profile, updating their engagement score and informing future segmentation. The system learns. This is what the marketer sees after a campaign runs."</p>
+                  <div class="mt-3 bg-accent/5 rounded p-3">
+                    <p class="text-xs font-bold text-accent uppercase tracking-wider mb-1">💡 Why Show This Now</p>
+                    <p class="text-xs text-muted">Showing performance early — right after campaign creation — plants the seed that <strong>measurement is built into the workflow</strong>, not a separate reporting step. The audience sees the full cycle: brief → content → performance — before we even get to segmentation and journeys.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SAP Contrast -->
+          <div class="mt-6 bg-sap-light rounded-lg p-5 border border-sap/20">
+            <div class="flex items-start gap-3">
+              <span class="text-sap font-bold text-sm mt-0.5">🆚</span>
+              <div>
+                <p class="font-bold text-dark text-sm mb-2">Autonomous AI: Agentforce vs. Joule (SAP Contrast)</p>
+                <div class="grid md:grid-cols-2 gap-4 text-xs">
+                  <div class="bg-light rounded p-3">
+                    <p class="font-bold text-sap mb-1">SAP Engagement Cloud + Joule:</p>
+                    <p class="text-muted">Joule is SAP's copilot-style AI. It can assist with data queries, suggest actions, and provide recommendations. But it <strong>does not create campaigns, generate content, or build audiences autonomously</strong>. Marketers still manually assemble campaigns, write content, and define segments. Joule helps navigate — it doesn't drive.</p>
+                  </div>
+                  <div class="bg-light rounded p-3 border border-primary/30">
+                    <p class="font-bold text-primary mb-1">Agentforce Marketing:</p>
+                    <p class="text-muted">Intelligent, autonomous agents use all your enterprise data to <strong>create entire campaigns from a brief</strong> — structure, content, audience, channel strategy. The AI doesn't just recommend — it produces. Brief-to-campaign in minutes. Two-way email lets customers reply and get AI-powered responses. One platform for B2C and B2B.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg bg-surface border-l-4 border-accent">
+            <p class="text-sm font-semibold text-dark">🔗 Transition to Phase 3 — Natural Audience Moment:</p>
+            <p class="text-sm text-muted">"The agent built the campaign — content, structure, channel strategy. Now it needs to know: <strong>who should see this?</strong> This is where segmentation comes in."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHASE 3: AI SEGMENTATION ===== -->
+    <section id="phase3" class="mb-12">
+      <div class="phase-card bg-light rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="bg-primary px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="bg-white/20 text-light text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phase 3</span>
+            <h3 class="text-light text-lg font-bold">AI-Powered Segmentation & Campaign Prioritization</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-white/70 text-sm">⏱ 9 minutes</span>
+            <span class="bg-white/20 text-white/70 text-xs px-2 py-0.5 rounded">0:15 – 0:24</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="rfi-tag bg-primary/10 text-primary font-bold px-2 py-0.5 rounded uppercase">RFP 2.07 — Real-time Personalization</span>
+            <span class="rfi-tag bg-primary/10 text-primary font-bold px-2 py-0.5 rounded uppercase">RFP 5.01 — AI & Decisioning</span>
+            <span class="rfi-tag bg-primary/10 text-primary font-bold px-2 py-0.5 rounded uppercase">RFP 2.06 — Customer-level Orchestration</span>
+            <span class="braze-tag bg-sap/10 text-sap font-bold px-2 py-0.5 rounded uppercase">vs. SAP EC — Segmentation Sophistication</span>
+          </div>
+
+          <p class="text-muted mb-5 text-sm"><strong>Goal:</strong> We just built a campaign — now we need the audience. This is a major differentiator vs. both SAP EC and Braze. Show a marketer building audiences with natural language, using engagement scores + loyalty fields as criteria, Einstein Engagement Scoring personas, Einstein Engagement Frequency status, then campaign prioritization waterfall.</p>
+
+          <div class="mb-5 px-4 py-2 rounded-lg bg-primary/5 border border-primary/20 flex flex-wrap items-center gap-2">
+            <span class="text-primary font-bold text-xs">🖥️ DEMO ENV:</span>
+            <span class="text-xs text-muted font-semibold">AutoZone CDO · for this phase swap to Desktop 2</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">1</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Einstein Natural Language Segment Builder</p>
+                  <div class="mt-3 rounded p-3 border border-primary/20 bg-primary/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-primary uppercase tracking-wider">Environment — Tab 1</p>
+                    <p><strong class="text-dark">AutoZone Chrome on Desktop 2.</strong></p>
+                  </div>
+                  <p class="text-sm text-muted mb-2 mt-3">Walk through the <strong class="text-dark">types of segments</strong> marketers build (behavioral, transactional, loyalty, engagement, etc.). Then open <strong class="text-dark">Einstein segment</strong> creation.</p>
+                  <p class="text-sm text-muted mb-2">Paste this natural-language segment description:</p>
+                  <p class="text-sm text-dark mb-3"><strong class="text-dark">Find all customers whose last sales order was more than 60 days ago and that order had more than 3 items in it, and they own either a Ford, a Chevy, or a Jeep, and have 3 or more rewards credits</strong></p>
+                  <p class="text-sm text-muted mb-2"><strong class="text-dark">Why this lands:</strong> With natural language, your marketer doesn't need to know <strong class="text-dark">where</strong> each field lives in the data model — Einstein maps the ask to the right entities.</p>
+                  <p class="text-sm text-muted mb-2">Let Einstein generate the segment, then open <strong class="text-dark">segment rules</strong>. Point out <strong class="text-dark">EES</strong>, <strong class="text-dark">EEF</strong>, and <strong class="text-dark">Calculated Insights</strong> that can be built in-platform (example: <strong class="text-dark">LTV</strong>).</p>
+                  <p class="text-sm text-dark mt-3"><strong>Key Talking Point:</strong> "Plain English in, segment logic out — then refine in the rule editor with engagement scores, frequency checks, and calculated KPIs without leaving the platform."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border bg-orange-light/20">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">2</span>
+                <div class="line-through">
+                  <p class="font-semibold text-dark mb-1">⭐ Engagement Scores & Loyalty Fields — Inside the Segment</p>
+                  <p class="text-sm text-muted mb-2">Show available fields: <strong>Einstein Engagement Score</strong>, <strong>Marketing Fit Score</strong>, <strong>Loyalty Tier</strong>, <strong>Points Balance</strong>, <strong>Last Purchase Date</strong>.</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "Engagement score, marketing fit, loyalty tier, points balance — all available as segment criteria right here. 'Give me Gold tier members with a high engagement score and expiring rewards in 14 days.' That's a segment that drives action. And the scores update automatically."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border-2 border-primary bg-orange-light/20">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">3</span>
+                <div class="line-through">
+                  <p class="font-semibold text-dark mb-1">⭐ NEW: Einstein Engagement Scoring (EES) — Who Is This Customer?</p>
+                  <p class="text-sm text-muted mb-2">Show the EES personas as segment enrichment criteria. These classify every individual based on their email/web engagement patterns:</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Points:</strong></p>
+                  <div class="text-sm text-muted mt-2 space-y-1">
+                    <p>▸ <strong>Loyalist</strong> (high open + high click): "These are your best customers. They open, they click, they convert. Target them for new product launches and exclusive previews — they'll amplify your message."</p>
+                    <p>▸ <strong>Selective Subscriber</strong> (high open, low click): "They open everything but rarely click. The content isn't compelling enough — or the offer doesn't match. Test different CTAs, more personalized offers for this group."</p>
+                    <p>▸ <strong>Window Shopper</strong> (low open, high click): "They don't open often, but when they do — they buy. Subject line optimization is the play here. Einstein STO + better subject lines will unlock this segment."</p>
+                    <p>▸ <strong>Winback Candidate</strong> (low open + low click, risk to unsubscribe): "These customers are fading. If you keep sending the same cadence, you'll lose them. Reduce frequency, change the channel, offer an incentive — or accept the unsubscribe gracefully."</p>
+                  </div>
+                  <div class="mt-3 bg-accent/10 rounded p-3 border border-accent/20">
+                    <p class="text-xs font-bold text-accent uppercase tracking-wider mb-1">💡 SAP Segment Enhancement Story</p>
+                    <p class="text-xs text-muted">"Remember that SAP CDP segment that came through? It's a flat audience list — 500K customers in the southern US. Einstein Engagement Scoring <strong>enriches</strong> that segment with behavioral intelligence. Now you know which 500K members are Loyalists vs. Winback Candidates, and you can route them through completely different journeys. SAP gives you the 'who.' Einstein tells you the 'how to reach them.'"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border-2 border-primary bg-orange-light/20">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">4</span>
+                <div class="line-through">
+                  <p class="font-semibold text-dark mb-1">⭐ NEW: Einstein Engagement Frequency (EEF) — Are We Over-Messaging?</p>
+                  <p class="text-sm text-muted mb-2">Show the EEF frequency status as a segment filter. Every individual gets classified into one of three frequency states:</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Points:</strong></p>
+                  <div class="text-sm text-muted mt-2 space-y-1">
+                    <p>▸ <strong>Undersaturated:</strong> "These customers can handle more messages — they're engaged and not fatigued. This is your opportunity group."</p>
+                    <p>▸ <strong>On Target:</strong> "The sweet spot. Current messaging frequency matches their engagement. Keep the cadence."</p>
+                    <p>▸ <strong>Oversaturated:</strong> "Stop. This customer is receiving too many messages. Continuing at this rate increases unsubscribe risk. Reduce frequency or skip this campaign for them."</p>
+                  </div>
+                  <p class="text-sm text-dark mt-3"><strong>Key Talking Point:</strong> "This is how you prevent over-messaging <strong>today</strong> — before cross-journey frequency capping ships. During final segmentation, filter out Oversaturated individuals. Or use it as the first gate in your journey flow — only let Undersaturated and On Target customers proceed. Einstein does the math so your marketers don't have to guess."</p>
+                  <div class="mt-3 bg-sap-light rounded p-3 border border-sap/20">
+                    <p class="text-xs font-bold text-sap uppercase tracking-wider mb-1">🆚 SAP EC has no equivalent</p>
+                    <p class="text-xs text-muted">SAP EC has no native engagement frequency scoring or per-individual saturation detection. Over-messaging prevention in SAP requires manual rules or custom logic. Einstein Engagement Frequency is ML-powered and continuously learning from each individual's engagement patterns.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">5</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">SAP Segments + Einstein Segments — Both Work</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "You bring in your SAP-built segments — they flow right through. Einstein Engagement Scoring and Frequency enrich them with behavioral intelligence. Or your marketers build their own segments with natural language. Both work. Both can be used in campaigns and journeys."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border-2 border-primary bg-orange-light/20">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">6</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ Campaign Prioritization — Waterfall Segmentation</p>
+                  <div class="mt-3 rounded p-3 border border-primary/20 bg-primary/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-primary uppercase tracking-wider">Environment — Tab 2</p>
+                    <p><strong class="text-dark">Still on Desktop 2.</strong></p>
+                    <p><strong class="text-dark">Tab 2:</strong> Waterfall segment <strong class="text-dark">AZ Rewards Spring Promotion - Waterfall</strong> — drag any segments onto the canvas and <strong class="text-dark">re-order priority</strong> freely. Explain that each customer qualifies for only <strong class="text-dark">one</strong> slot in the waterfall even if they match multiple segments underneath.</p>
+                  </div>
+                  <p class="text-sm text-muted mb-2 mt-3">Show how the ranked list resolves overlap: a customer eligible for multiple campaigns enters only the <strong class="text-dark">highest-priority</strong> tier.</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "Your customer might qualify for four campaigns. You don't want to send all four. With campaign prioritization, you rank them — drag to change priority. First slot wins. That prevents piling on when audiences overlap."</p>
+                  <div class="mt-3 bg-sap-light rounded p-3 border border-sap/20">
+                    <p class="text-xs font-bold text-sap uppercase tracking-wider mb-1">🆚 SAP EC Gap</p>
+                    <p class="text-xs text-muted">SAP EC does not have native campaign prioritization or waterfall segmentation. If a customer qualifies for four segments in SAP CDP, all four activate. Preventing over-messaging requires custom logic built outside the platform. This is native in MC Advanced.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-primary font-bold text-lg mt-0.5">7</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Multi-Channel Activation & Paid Media Exclusion</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "Same audience, two things happening: they enter the journey flow — email first, with SMS follow-up for non-openers built right into the same Flow — and your known customers are simultaneously excluded from paid acquisition campaigns. Why pay to acquire someone you already have?"</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SAP Contrast Callout -->
+          <div class="mt-6 bg-sap-light rounded-lg p-5 border border-sap/20">
+            <div class="flex items-start gap-3">
+              <span class="text-sap font-bold text-sm mt-0.5">🆚</span>
+              <div>
+                <p class="font-bold text-dark text-sm mb-2">Segmentation Depth (SAP EC Contrast)</p>
+                <div class="grid md:grid-cols-2 gap-4 text-xs">
+                  <div class="bg-light rounded p-3">
+                    <p class="font-bold text-sap mb-1">SAP Engagement Cloud:</p>
+                    <p class="text-muted">Segmentation happens in SAP CDP, not in the marketing tool. Segments are pre-built by data teams and published to SAP EC. Marketers cannot create or modify segments inside the marketing platform. No natural language segment builder. No native engagement scoring as segment criteria.</p>
+                  </div>
+                  <div class="bg-light rounded p-3 border border-primary/30">
+                    <p class="font-bold text-primary mb-1">Agentforce Marketing:</p>
+                    <p class="text-muted">Marketers build segments themselves in natural language — directly in the marketing platform. Full access to engagement scores, loyalty attributes, purchase history, web behavior. Einstein Engagement Scoring classifies each individual (Loyalist, Selective Subscriber, Window Shopper, Winback). Einstein Engagement Frequency flags Oversaturated individuals. SAP segments also flow through and get enriched. Campaign prioritization waterfall is native. No dependency on data team for audience creation.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg bg-surface border-l-4 border-primary">
+            <p class="text-sm font-semibold text-dark">🔗 Transition to Phase 4:</p>
+            <p class="text-sm text-muted">"We have the campaign and the audience. Now let me show you where they come together — the journey."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHASE 4: JOURNEY ORCHESTRATION ===== -->
+    <section id="phase4" class="mb-12">
+      <div class="phase-card bg-light rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="bg-secondary px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="bg-white/20 text-light text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phase 4</span>
+            <h3 class="text-light text-lg font-bold">Cross-Channel Journey Orchestration</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-white/70 text-sm">⏱ 11 minutes</span>
+            <span class="bg-white/20 text-white/70 text-xs px-2 py-0.5 rounded">0:24 – 0:35</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="rfi-tag bg-secondary/10 text-secondary font-bold px-2 py-0.5 rounded uppercase">RFP 2.01 — Real-time Journeys</span>
+            <span class="rfi-tag bg-secondary/10 text-secondary font-bold px-2 py-0.5 rounded uppercase">RFP 2.02 — Multi-Channel Journeys</span>
+            <span class="rfi-tag bg-secondary/10 text-secondary font-bold px-2 py-0.5 rounded uppercase">RFP 2.03 — Behavioral Triggers</span>
+            <span class="braze-tag bg-sap/10 text-sap font-bold px-2 py-0.5 rounded uppercase">vs. SAP EC — Journey Maturity + AI Optimization</span>
+          </div>
+
+          <p class="text-muted mb-5 text-sm"><strong>Goal:</strong> Heart of the demo. Multi-step, cross-channel journey with behavioral branching, STO, Agentforce optimization in Flow, Einstein Engagement Frequency throttling, and practical A/B testing strategies. This is where the maturity gap vs. SAP EC is most visible.</p>
+
+          <div class="mb-5 px-4 py-2 rounded-lg bg-secondary/5 border border-secondary/20">
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-secondary font-bold text-xs">🖥️ DEMO ENV:</span>
+              <span class="text-xs text-muted font-semibold">Badger</span>
+              <span class="text-xs text-muted">for Einstein + Agentforce optimization conversation</span>
+            </div>
+            <div class="text-xs text-muted"><strong>Also:</strong> AutoZone CDO for multi-channel campaign build on canvas</div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border-2 border-secondary bg-red-light/30">
+              <div class="flex items-start gap-3">
+                <span class="text-secondary font-bold text-lg mt-0.5">1</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ "AZ Winter Freeze Campaign Flow" — Live on Canvas (AutoZone CDO)</p>
+                  <div class="mt-3 rounded p-3 border border-secondary/20 bg-secondary/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-secondary uppercase tracking-wider">Environment — Tab 3</p>
+                    <p><strong class="text-dark">Tab 3</strong> already open to <strong class="text-dark">AZ Winter Freeze Campaign Flow</strong> in <strong class="text-dark">AutoZone CDO</strong>.</p>
+                  </div>
+                  <p class="text-sm text-muted mb-2 mt-3">Walk <strong class="text-dark">preferences</strong> and channel choice so each person gets the right message type — example: <strong class="text-dark">SMS vs. email</strong>. The same journey patterns extend to <strong class="text-dark">WhatsApp</strong> and <strong class="text-dark">mobile app messaging</strong> where enabled.</p>
+                  <p class="text-sm text-muted mb-2"><strong class="text-dark">Mid-flow behaviors:</strong> Did they click in the email? If not, branch to a reminder or alternate touch; if yes, advance to the next email in the series — show that you can <strong class="text-dark">test and branch on real engagement</strong> mid-journey.</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Points:</strong></p>
+                  <div class="text-sm text-muted mt-2 space-y-1">
+                    <p>▸ <strong>Channel by preference:</strong> "Route each individual to SMS, email, or other supported channels based on consent and preference — not one-size-fits-all."</p>
+                    <p>▸ <strong>Behavioral splits:</strong> "Click vs. no-click changes what happens next — reminder paths vs. nurture continuation."</p>
+                    <p>▸ <strong>Einstein STO (where applicable):</strong> "Individual send-time optimization still applies when email is in the mix."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-secondary font-bold text-lg mt-0.5">2</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Behavioral Mid-Flow Triggers — "A Click Suppresses the SMS"</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "Customer clicks the email on Monday? They don't get the SMS on Wednesday. The journey reacts in real time. That saves cost and prevents over-messaging."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border-2 border-primary bg-orange-light/20">
+              <div class="flex items-start gap-3">
+                <span class="text-secondary font-bold text-lg mt-0.5">3</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ Einstein Engagement Frequency (EEF) — Journey-Level Throttle + Agent Pathing</p>
+                  <div class="mt-3 rounded p-3 border border-secondary/20 bg-secondary/5 text-xs text-muted space-y-1.5 mb-3">
+                    <p class="font-bold text-secondary uppercase tracking-wider">Environment — Tab 4 (Badger)</p>
+                    <p><strong class="text-dark">Badger</strong> · open to flow <strong class="text-dark">Sustainable Vehicle Awareness Flow</strong>. Here you combine <strong class="text-dark">EES</strong> and <strong class="text-dark">EEF</strong> for journey-level throttling, route to an <strong class="text-dark">Agentforce</strong> decision for next-best-action, or run a <strong class="text-dark">Path Experiment</strong> to learn which branch drives more engagement.</p>
+                  </div>
+                  <p class="text-sm text-muted mb-2">Show how EEF can be used as a Decision element inside the Flow — the first activity after entry, and again at wait points between messages.</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Points:</strong></p>
+                  <div class="text-sm text-muted mt-2 space-y-1">
+                    <p>▸ <strong>Entry gate:</strong> "First thing in the journey — an Einstein Decision activity checks the individual's EEF status. Undersaturated or On Target? Proceed. Oversaturated? Exit gracefully or route to a lower-frequency path. This is real-time, per-individual throttling."</p>
+                    <p>▸ <strong>Mid-journey re-check:</strong> "After the email send and before the SMS follow-up, check EEF again. Maybe the customer received messages from another journey since entering this one. If they're now Oversaturated, skip the SMS. The system adapts in-flight."</p>
+                    <p>▸ <strong>Alternative to frequency capping:</strong> "Until cross-journey frequency capping ships, this is how you prevent over-messaging at the journey level. Combined with campaign prioritization from Phase 3, you have two layers of protection — one at the segment level, one inside the journey."</p>
+                  </div>
+                  <div class="mt-3 bg-accent/10 rounded p-3 border border-accent/20">
+                    <p class="text-xs font-bold text-accent uppercase tracking-wider mb-1">💡 Two-Layer Over-Messaging Prevention</p>
+                    <p class="text-xs text-muted"><strong>Layer 1 (Segmentation):</strong> EEF filters Oversaturated individuals out before they enter the journey. <strong>Layer 2 (Journey):</strong> EEF Decision activity re-checks at each communication step. Combined with campaign prioritization waterfall, this gives you intelligent throttling across campaigns — without waiting for native frequency capping.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border-2 border-accent bg-orange-light/20">
+              <div class="flex items-start gap-3">
+                <span class="text-secondary font-bold text-lg mt-0.5">4</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ Agentforce Optimization in Flow</p>
+                  <p class="text-sm text-muted mb-2">Show the AI optimization capabilities within Flow Builder — automatic path selection, send-time optimization, content variant selection.</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "Here's something neither SAP EC nor any channel-first tool can do: AI optimization <strong>inside</strong> the journey flow. The system doesn't just execute the path you built — it optimizes which path each individual takes, which content variant they see, and when they receive it. It learns from every interaction and gets smarter over time. This is AI that's embedded in the orchestration engine, not bolted on."</p>
+                  <div class="mt-3 bg-sap-light rounded p-3 border border-sap/20">
+                    <p class="text-xs font-bold text-sap uppercase tracking-wider mb-1">🆚 SAP EC has no equivalent</p>
+                    <p class="text-xs text-muted">SAP EC's journey capabilities are rule-based. Joule can suggest optimizations, but the system doesn't autonomously optimize paths, timing, or content within a live journey. This is a maturity gap that may take SAP years to close.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border-2 border-primary bg-blue-50/30">
+              <div class="flex items-start gap-3">
+                <span class="text-secondary font-bold text-lg mt-0.5">5</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ Journey Testing & A/B Optimization (Practical Approach)</p>
+                  <p class="text-sm text-muted mb-2">MC Advanced doesn't have a dedicated "A/B test" button like legacy SFMC. Instead, testing is accomplished through Flow's native capabilities — and in many ways, it's more powerful because you're testing entire journey paths, not just subject lines.</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Points:</strong></p>
+                  <div class="text-sm text-muted mt-2 space-y-1">
+                    <p>▸ <strong>Flow Path Splits for test/control:</strong> "Add a Decision element at the journey entry — random assignment sends 50/50 (or any split) down Path A vs. Path B. Each path can have completely different channel sequences, timing, and content. This isn't just subject-line testing — you're testing entire strategies."</p>
+                    <p>▸ <strong>Segment-based holdout groups:</strong> "Before the journey even starts, create a holdout segment in the audience builder — 10% control group that doesn't enter the journey at all. Compare conversion rates between journey participants and the holdout. That's your true incrementality measurement."</p>
+                    <p>▸ <strong>Content variation within a single send:</strong> "Use dynamic content blocks inside the email — Data Cloud attributes or random assignment to show different hero images, CTAs, or offers. Track which variant drives more clicks. No separate email versions needed."</p>
+                    <p>▸ <strong>Agentforce-powered optimization:</strong> "Here's where it gets interesting — the AI optimization in Step 3 effectively does continuous A/B testing at scale. Instead of you manually setting up a 50/50 split, the system automatically routes each individual to the path, timing, and content most likely to convert. It's A/B testing on autopilot."</p>
+                    <p>▸ <strong>Versioned journeys for iteration:</strong> "Clone the journey, make changes, run it against a fresh audience cohort next week. Compare period-over-period. Customers already in-flight on the original version aren't disrupted — they finish their path."</p>
+                  </div>
+                  <div class="mt-3 bg-accent/10 rounded p-3 border border-accent/20">
+                    <p class="text-xs font-bold text-accent uppercase tracking-wider mb-1">💡 Real-World Practice</p>
+                    <p class="text-xs text-muted">In practice, marketers combine these approaches: a segment holdout for incrementality, a Flow path split for journey-level A/B testing, and dynamic content for creative-level testing — all within a single campaign launch. The AI optimization layer then learns from results and improves over time. This is actually more flexible than a rigid "A/B test" wizard because you control every variable independently.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SAP Contrast -->
+          <div class="mt-6 bg-sap-light rounded-lg p-5 border border-sap/20">
+            <div class="flex items-start gap-3">
+              <span class="text-sap font-bold text-sm mt-0.5">🆚</span>
+              <div>
+                <p class="font-bold text-dark text-sm mb-2">Journey Orchestration Maturity (SAP EC Contrast)</p>
+                <div class="grid md:grid-cols-2 gap-4 text-xs">
+                  <div class="bg-light rounded p-3">
+                    <p class="font-bold text-sap mb-1">SAP Engagement Cloud:</p>
+                    <p class="text-muted">Basic journey automation with rule-based branching. Limited mid-journey behavioral triggers. No native Einstein STO. No AI-powered path optimization. A/B testing limited to content variants, not journey paths or channel sequences. Joule assists but doesn't optimize live flows.</p>
+                  </div>
+                  <div class="bg-light rounded p-3 border border-primary/30">
+                    <p class="font-bold text-primary mb-1">Agentforce Marketing:</p>
+                    <p class="text-muted">Mature journey engine built on Flow — behavioral branching, real-time event triggers, Einstein STO, AI path optimization, Flow-based A/B testing of entire journey paths and channel sequences. Agentforce optimizes inside the live flow — paths, timing, and content — learning from every interaction.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg bg-surface border-l-4 border-secondary">
+            <p class="text-sm font-semibold text-dark">🔗 Transition to Phase 5:</p>
+            <p class="text-sm text-muted">"That was orchestration — getting the right message to the right person through the right channel. Now let me show you what happens on the website. How do you personalize the on-site experience in real time — even for someone you don't know yet?"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHASE 5: SALESFORCE PERSONALIZATION (NTO) ===== -->
+    <section id="phase5" class="mb-12">
+      <div class="phase-card bg-light rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="px-6 py-4 flex items-center justify-between" style="background: #1F7400;">
+          <div class="flex items-center gap-4">
+            <span class="bg-white/20 text-light text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phase 5</span>
+            <h3 class="text-light text-lg font-bold">Salesforce Personalization — On-Site Experience & Configuration</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-white/70 text-sm">⏱ 4 minutes</span>
+            <span class="bg-white/20 text-white/70 text-xs px-2 py-0.5 rounded">0:35 – 0:39</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="rfi-tag bg-success/10 text-success font-bold px-2 py-0.5 rounded uppercase">RFP 2.08 — Personalization Tactics</span>
+            <span class="rfi-tag bg-success/10 text-success font-bold px-2 py-0.5 rounded uppercase">RFP 2.07 — Real-Time Personalization</span>
+            <span class="braze-tag bg-sap/10 text-sap font-bold px-2 py-0.5 rounded uppercase">vs. SAP EC — Real-Time Web Personalization</span>
+          </div>
+
+          <p class="text-muted mb-5 text-sm"><strong>Goal:</strong> Show two sides of Salesforce Personalization: (1) the <strong>customer-facing experience</strong> — how the website adapts in real time from an anonymous first visit through to a fully personalized known-customer experience, and (2) the <strong>marketer-facing configuration</strong> — how a business user visually sets up on-site personalization without writing code or needing to change the website's front-end.</p>
+
+          <div class="mb-5 px-4 py-2 rounded-lg bg-success/5 border border-success/20">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="text-success font-bold text-xs">🖥️ DEMO ENV:</span>
+              <span class="text-xs text-muted font-semibold">Salesforce Personalization NTO · Desktop 3</span>
+            </div>
+            <div class="text-xs text-muted">Use the <strong>SF Personalization Chrome Browser Profile</strong> (already configured)</div>
+          </div>
+
+          <div class="space-y-3">
+            <!-- STEP 1: Front-End Personalized Experience -->
+            <div class="talking-point rounded-lg p-4 border-2 border-success bg-success/5">
+              <div class="flex items-start gap-3">
+                <span class="text-success font-bold text-lg mt-0.5">1</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ Personalized On-Site Experience — Anonymous to Known</p>
+                  <div class="mt-3 rounded p-3 border border-success/30 bg-success/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-success uppercase tracking-wider">Environment — Tab 1</p>
+                    <p><strong class="text-dark">Desktop 3.</strong> The <strong class="text-dark">NTO site</strong> is on this tab.</p>
+                    <p>Walk the shopper through selecting a raincoat (<strong class="text-dark">Anorak</strong>), then asking for help finding <strong class="text-dark">boots</strong> — highlight the <strong class="text-dark">adaptive web experience</strong>. Show that the system understood both <strong class="text-dark">click behavior</strong> and the <strong class="text-dark">agentic conversation</strong> to refine recommendations, then <strong class="text-dark">encourage email sign-up</strong>.</p>
+                  </div>
+                  <div class="mt-2 rounded p-3 border border-success/30 bg-success/5 text-xs text-muted space-y-1.5">
+                    <p class="font-bold text-success uppercase tracking-wider">Environment — Tab 2</p>
+                    <p><strong class="text-dark">Tab 2</strong> is already open to the <strong class="text-dark">High Likelihood to Buy</strong> flow — because the shopper identified himself, you can message him; the same pattern applies to <strong class="text-dark">abandoned cart</strong>, <strong class="text-dark">abandoned browse</strong>, or any other web signal feeding the platform <strong class="text-dark">in real time</strong>.</p>
+                  </div>
+                  <p class="text-sm text-dark mt-3"><strong>Summary:</strong> Tie it together — anonymous browsing plus agent-assisted discovery builds context before identity; once captured, behavioral and declarative signals flow into journeys and messaging immediately.</p>
+                  <div class="mt-3 bg-sap-light rounded p-3 border border-sap/20">
+                    <p class="text-xs font-bold text-sap uppercase tracking-wider mb-1">🆚 SAP EC has no equivalent</p>
+                    <p class="text-xs text-muted">SAP EC does not provide real-time on-site personalization with anonymous-to-known conversion. There is no native web SDK capturing browsing behavior, no ML-powered product recommendations adapting in-session, and no web agent curator for conversational product discovery. This is a capability gap SAP would need a separate third-party tool to address.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 2: Web Personalization Manager -->
+            <div class="talking-point rounded-lg p-4 border-2 border-success bg-success/5">
+              <div class="flex items-start gap-3">
+                <span class="text-success font-bold text-lg mt-0.5">2</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ Web Personalization Manager — Visual, Code-Free Configuration</p>
+                  <div class="mt-3 rounded p-3 border border-success/30 bg-success/5 text-xs text-muted space-y-1.5 mb-3">
+                    <p class="font-bold text-success uppercase tracking-wider">Environment — Tab 3 (if time)</p>
+                    <p><strong class="text-dark">Tab 3:</strong> Visual <strong class="text-dark">Web Personalization Manager</strong> — use when you have a minute to show marketer-side configuration.</p>
+                  </div>
+                  <p class="text-sm text-muted mb-2">Show how a marketer or merchandiser visually configures on-site personalization experiences without needing to modify the website's front-end code.</p>
+                  <p class="text-sm text-dark"><strong>Summary:</strong> The Web Personalization Manager (WPM) opens as an overlay directly on top of the live website — activated by adding a URL parameter. From here, a business user can create new personalization experiences: choose the type (embedded content vs. web custom experience), select a personalization point (e.g., "Boots Recs") from pre-configured options, pick a template (e.g., "Simple Recs"), then visually define where on the page the personalization should render by selecting a page element using a point-and-click selector. The content tab controls where engagement data flows (product engagement, etc.), and preview settings let you test the experience against a specific individual. The marketer previews the personalized result — if it looks good, they publish it live. All of this happens without any front-end code changes, regardless of what technology powers the website.</p>
+                  <div class="mt-3 bg-accent/10 rounded p-3 border border-accent/20">
+                    <p class="text-xs font-bold text-accent uppercase tracking-wider mb-1">💡 Key Positioning Point</p>
+                    <p class="text-xs text-muted">"This works on <strong>any website</strong> — regardless of the front-end technology. AutoZone.com doesn't need to be rebuilt. The WPM sits on top of whatever you have today. Your marketing team configures it, previews it, publishes it — no developer tickets, no sprint planning, no code deploys."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg bg-surface border-l-4 border-success">
+            <p class="text-sm font-semibold text-dark">🔗 Transition to Phase 6:</p>
+            <p class="text-sm text-muted">"Everything we've shown you — the campaigns, the journeys, the on-site personalization — it all generates data that feeds back into the engagement scores. Let me show you Marketing Intelligence — how AI helps optimize your media spend across channels."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHASE 6: ANALYTICS & MARKETING INTELLIGENCE ===== -->
+    <section id="phase6" class="mb-12">
+      <div class="phase-card bg-light rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="px-6 py-4 flex items-center justify-between" style="background: #B8960E;">
+          <div class="flex items-center gap-4">
+            <span class="bg-white/20 text-light text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Phase 6</span>
+            <h3 class="text-light text-lg font-bold">Marketing Intelligence & Data Export</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-white/70 text-sm">⏱ 3 minutes</span>
+            <span class="bg-white/20 text-white/70 text-xs px-2 py-0.5 rounded">0:39 – 0:42</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="rfi-tag bg-warning/10 font-bold px-2 py-0.5 rounded uppercase" style="color: #B8960E;">RFP 4.02 — Journey Comparison</span>
+            <span class="rfi-tag bg-warning/10 font-bold px-2 py-0.5 rounded uppercase" style="color: #B8960E;">RFP 4.06 — Google Cloud Export</span>
+            <span class="braze-tag bg-sap/10 text-sap font-bold px-2 py-0.5 rounded uppercase">vs. SAP EC — AI Media Optimization</span>
+          </div>
+
+          <p class="text-muted mb-5 text-sm"><strong>Goal:</strong> Quick flyover of Marketing Intelligence on Core — AI-powered media optimization and cross-channel analytics. Plant the seed that Agentforce can assist with media campaign optimization — a capability SAP EC + Joule cannot match. Plus data export to Google BigQuery.</p>
+
+          <div class="mb-5 px-4 py-2 rounded-lg border border-border bg-warning/5">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="font-bold text-xs" style="color: #B8960E;">🖥️ DEMO ENV:</span>
+              <span class="text-xs text-muted font-semibold">Ford Pro org · Desktop 4</span>
+            </div>
+            <div class="text-xs text-muted"><strong>Stretch goal:</strong> If time permits, load MI into AutoZone CDO and have MeshMesh load data</div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border-2 border-accent bg-orange-light/20">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-lg mt-0.5" style="color: #B8960E;">1</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">⭐ Marketing Intelligence — Home &amp; Agentic Optimization</p>
+                  <div class="mt-3 rounded p-3 border border-border bg-warning/10 text-xs text-muted space-y-1.5 mb-3">
+                    <p class="font-bold uppercase tracking-wider mb-0" style="color: #B8960E;">Environment — Tab 1</p>
+                    <p><strong class="text-dark">Ford Pro org · Desktop 4.</strong></p>
+                    <p><strong class="text-dark">Tab 1:</strong> Marketing Intelligence <strong class="text-dark">home</strong> — shows how <strong class="text-dark">campaigns are performing</strong> and includes an <strong class="text-dark">agentic interface</strong>: interact in <strong class="text-dark">natural language</strong>, get optimization guidance, and let the agent help optimize spend — including <strong class="text-dark">taking actions</strong> such as pausing types of ad campaigns when appropriate.</p>
+                  </div>
+                  <p class="text-sm text-muted mb-2">Ground the room: MI on Core (not legacy Datorama) — unified performance view plus Agentforce assist, not a static dashboard.</p>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "This isn't just charts — you ask what's underperforming, where to shift budget, and the agent can recommend and execute changes like pulling back underperforming paid placements."</p>
+                  <div class="mt-3 bg-sap-light rounded p-3 border border-sap/20">
+                    <p class="text-xs font-bold text-sap uppercase tracking-wider mb-1">🆚 vs. SAP Analytics Cloud</p>
+                    <p class="text-xs text-muted">SAP Analytics Cloud provides reporting and visualization. Marketing Intelligence adds <strong>agent-driven analysis and actions</strong> on top of unified campaign data — a different league from read-only BI.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-lg mt-0.5" style="color: #B8960E;">2</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Segment Intelligence</p>
+                  <div class="mt-3 rounded p-3 border border-border bg-warning/10 text-xs text-muted space-y-1.5 mb-3">
+                    <p class="font-bold uppercase tracking-wider mb-0" style="color: #B8960E;">Environment — Tab 2</p>
+                    <p><strong class="text-dark">Tab 2:</strong> <strong class="text-dark">Segment Intelligence</strong> — today the experience focuses on <strong class="text-dark">ads</strong>; <strong class="text-dark">owned channels</strong> are slated for a <strong class="text-dark">future release</strong> (call that out so expectations are clear).</p>
+                  </div>
+                  <p class="text-sm text-dark"><strong>Key Talking Point:</strong> "You get intelligence at the segment level alongside media — and the roadmap brings owned-channel signals into the same lens."</p>
+                  <p class="text-sm text-muted mt-2"><strong>RFP / ops note:</strong> Raw export to <strong class="text-dark">Google BigQuery</strong> remains available for analytics teams who want warehouse access (see stretch goal above).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg bg-surface border-l-4" style="border-color: #B8960E;">
+            <p class="text-sm font-semibold text-dark">🔗 Transition to Wrap-Up:</p>
+            <p class="text-sm text-muted">"Let me bring it all together."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHASE 7: WRAP-UP ===== -->
+    <section id="phase7" class="mb-12">
+      <div class="phase-card bg-light rounded-xl border border-border shadow-sm overflow-hidden">
+        <div class="bg-dark px-6 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <span class="bg-gray-dark text-light text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Wrap-Up</span>
+            <h3 class="text-light text-lg font-bold">Closing — Why This Platform, Not That Platform</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-gray-medium text-sm">⏱ 3 minutes</span>
+            <span class="bg-gray-dark text-gray-medium text-xs px-2 py-0.5 rounded">0:42 – 0:45</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-dark font-bold text-lg mt-0.5">1</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Three Shifts That Matter</p>
+                  <div class="text-sm text-muted mt-2 space-y-3">
+                    <div class="flex items-start gap-3 p-3 bg-surface rounded-lg">
+                      <span class="text-primary font-bold text-xl">①</span>
+                      <div><strong>From Campaigns to Continuity.</strong> Every interaction your customer has with AutoZone builds on the last one. No more "starting over." Your loyalty data, purchase history, email engagement, website behavior — it's all one continuous story. You saw that when the campaign fed the segment fed the journey.</div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-surface rounded-lg">
+                      <span class="text-primary font-bold text-xl">②</span>
+                      <div><strong>From Channels to Context.</strong> It's not about which channel — it's about understanding who this customer is and what they need right now. The on-site personalization: the website adapts based on browsing behavior, even before you know who the customer is. Once they identify themselves, every channel tells the same story because they share the same context.</div>
+                    </div>
+                    <div class="flex items-start gap-3 p-3 bg-surface rounded-lg">
+                      <span class="text-primary font-bold text-xl">③</span>
+                      <div><strong>From Automation to Autonomy.</strong> AI built an audience from plain English, an agent created an entire campaign from a brief, a customer replied to a marketing email and got an intelligent response, and the system optimized the journey flow in real time. That's not faster automation — that's a fundamentally different way of working. SAP's Joule recommends. Agentforce acts.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-dark font-bold text-lg mt-0.5">2</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">The Platform Question — SAP EC vs. Agentforce Marketing</p>
+                  <p class="text-sm text-muted">"SAP EC is the 'safe' choice because it's in the SAP ecosystem. But 'native' doesn't mean 'better.' SAP CDP still pushes data to SAP EC the same way Data 360 pushes data to MC Advanced. The difference is what happens after the data arrives. And what you saw today — autonomous campaign creation, natural language segmentation, AI-optimized journeys, conversational email, media optimization — that's a generational lead. This isn't incremental. It's a different class of platform."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-dark font-bold text-lg mt-0.5">3</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">The Single Framework Advantage</p>
+                  <p class="text-sm text-muted">"One more thing: everything you saw today — campaign creation, segmentation, journeys, personalization, analytics, media optimization — it's all one framework. Not stitched together. All your marketing applications, all your AI agents, all your data — one platform. That means when Agentforce learns something in a journey, that intelligence is available in segmentation, in analytics, in the next campaign. And it scales to your 450 million records and 1.5 billion emails per year."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border border-border">
+              <div class="flex items-start gap-3">
+                <span class="text-dark font-bold text-lg mt-0.5">4</span>
+                <div>
+                  <p class="font-semibold text-dark mb-1">Open for Questions (Remaining Time)</p>
+                  <p class="text-sm text-muted">"What questions can I answer? What would you like to see deeper?"</p>
+                  <p class="text-sm text-muted mt-2 italic">Use remaining 5+ minutes for open discussion. Be ready to go back to any phase.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VS. SAP EC COMPETITIVE SECTION ===== -->
+    <section id="sap" class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 uppercase tracking-wide">Primary Competitor — SAP Engagement Cloud</h2>
+      <div class="w-20 h-1 bg-sap mb-8"></div>
+      <p class="text-muted mb-6 text-sm italic">SAP EC is the most likely alternative given AutoZone's existing SAP CDP investment. The "native" narrative is SAP's strongest card — here's how to neutralize it and win on capability.</p>
+
+      <!-- Core Narrative -->
+      <div class="bg-dark text-light rounded-lg p-6 mb-8">
+        <h3 class="text-lg font-bold mb-4 text-sap">Core Narrative: "Native" ≠ "Better"</h3>
+        <div class="grid md:grid-cols-2 gap-8 text-sm">
+          <div>
+            <p class="text-gray-medium mb-3">SAP will argue that SAP EC is "natively connected" to SAP CDP. <strong class="text-light">But the architecture is the same:</strong> SAP CDP publishes segments to SAP EC via an activation push — just like Data 360 publishes segments to MC Advanced.</p>
+            <p class="text-gray-medium mb-3">There is <strong class="text-light">no shared in-memory data model</strong> between SAP CDP and SAP EC. Segments are exported, not queried in real time. The "native" label is a vendor narrative, not a technical advantage.</p>
+            <p class="text-gray-medium"><strong class="text-primary">What actually matters is what the marketer can do once the data arrives.</strong> And that's where we have a generational lead.</p>
+          </div>
+          <div>
+            <p class="text-gray-medium mb-3"><strong class="text-light">Agentforce vs. Joule</strong> is the defining contrast. Joule is a copilot — it navigates, suggests, and answers questions. Agentforce is autonomous — it creates campaigns, builds audiences, optimizes journeys, and responds to customers.</p>
+            <p class="text-gray-medium mb-3"><strong class="text-light">Marketing maturity gap:</strong> SAP EC is an early-stage marketing execution platform. MC Advanced has 15+ years of marketing automation DNA now rebuilt on a modern architecture with AI-native capabilities.</p>
+            <p class="text-gray-medium"><strong class="text-primary">The single-framework advantage:</strong> All our marketing applications — campaign creation, segmentation, journeys, personalization, analytics, media optimization — share one platform. Agentforce has access to everything. That compounds.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Grid -->
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-light rounded-lg border-2 border-primary p-5">
+          <h3 class="font-bold text-primary mb-3 uppercase text-sm tracking-wider">Where We Win vs. SAP EC</h3>
+          <div class="space-y-2 text-sm text-muted">
+            <p>▸ Autonomous AI agents that <strong>create campaigns from briefs</strong> (Agentforce vs. Joule)</p>
+            <p>▸ Natural language segmentation — marketers build audiences, no IT</p>
+            <p>▸ Einstein Engagement Scoring — Loyalist/Winback persona classification</p>
+            <p>▸ Einstein Engagement Frequency — per-individual saturation detection</p>
+            <p>▸ Native campaign prioritization waterfall</p>
+            <p>▸ AI optimization inside live journey flows</p>
+            <p>▸ Einstein STO — individual-level send-time optimization</p>
+            <p>▸ Two-way conversational email with AI agents</p>
+            <p>▸ Marketing Intelligence with agentic media optimization</p>
+            <p>▸ Salesforce Personalization — unknown-to-known web recognition</p>
+            <p>▸ Flow-based A/B testing of entire journey paths (not just subject lines)</p>
+            <p>▸ B2C and B2B on one platform</p>
+            <p>▸ Paid media exclusion audiences (native)</p>
+            <p>▸ Google Cloud partnership for hosting</p>
+          </div>
+        </div>
+        <div class="bg-light rounded-lg border border-border p-5">
+          <h3 class="font-bold text-sap mb-3 uppercase text-sm tracking-wider">What SAP Will Claim</h3>
+          <div class="space-y-2 text-sm text-muted">
+            <p>▸ <strong>"Native connection to SAP CDP"</strong> → Still a data push / activation. Same architecture as Data 360 → MC Advanced</p>
+            <p>▸ <strong>"Your data already lives in SAP"</strong> → True, but Data 360 is additive, not competitive. SAP data flows through</p>
+            <p>▸ <strong>"Joule provides AI across the ecosystem"</strong> → Copilot only. Recommends, doesn't create or execute</p>
+            <p>▸ <strong>"One vendor, one contract"</strong> → Appealing operationally, but capability gap is significant</p>
+            <p>▸ <strong>"Less integration risk"</strong> → Data 360 is designed to sit alongside SAP, not replace it</p>
+          </div>
+        </div>
+        <div class="bg-light rounded-lg border border-border p-5">
+          <h3 class="font-bold text-dark mb-3 uppercase text-sm tracking-wider">Watch Out For</h3>
+          <div class="space-y-2 text-sm text-muted">
+            <p>▸ <strong>Don't compete with SAP CDP</strong> — position Data 360 as additive, not replacing</p>
+            <p>▸ <strong>No Salesforce Core platform</strong> — don't claim CRM-level advantages we can't deliver</p>
+            <p>▸ <strong>No 2-way SMS/WhatsApp</strong> — Digital Engagement requires Core. Don't promise it</p>
+            <p>▸ <strong>"One vendor" is emotionally appealing</strong> — counter with capability gap, not architecture diagrams</p>
+            <p>▸ <strong>Louisa (Brand Loyalty)</strong> — win her with on-site personalization + loyalty segmentation</p>
+            <p>▸ <strong>Epsilon ends 2/28/2027</strong> — show timeline confidence and migration plan</p>
+            <p>▸ <strong>AutoZone's no-AWS policy</strong> — emphasize Google partnership</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detailed Comparison Table -->
+      <div class="bg-surface rounded-lg p-6">
+        <h3 class="font-bold text-dark mb-4 text-lg">Agentforce Marketing vs. SAP Engagement Cloud — Detailed Comparison</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr>
+                <th class="text-left py-3 px-4 font-semibold bg-dark text-light rounded-tl-lg">Dimension</th>
+                <th class="text-left py-3 px-4 font-semibold bg-sap text-light">SAP Engagement Cloud</th>
+                <th class="text-left py-3 px-4 font-semibold bg-primary text-light rounded-tr-lg">Agentforce Marketing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border">
+                <td class="py-3 px-4 font-semibold">Data Integration</td>
+                <td class="py-3 px-4 text-muted">Segment push from SAP CDP (activation-based). Not a shared live model.</td>
+                <td class="py-3 px-4 text-dark">Segment push from Data 360 (same architecture) PLUS engagement scoring, real-time signals, and loyalty attributes layered on top.</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="py-3 px-4 font-semibold">AI Capability</td>
+                <td class="py-3 px-4 text-muted">Joule copilot — recommends, navigates, answers questions. Does not create campaigns or execute decisions autonomously.</td>
+                <td class="py-3 px-4 text-dark">Agentforce — autonomous agents that create campaigns from briefs, build audiences, optimize journeys, and handle customer replies via 2-way email.</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="py-3 px-4 font-semibold">Segmentation</td>
+                <td class="py-3 px-4 text-muted">Segmentation in SAP CDP, published to EC. Marketers cannot create/modify segments inside the marketing tool.</td>
+                <td class="py-3 px-4 text-dark">Natural language segment builder inside the marketing platform. SAP segments accepted and enriched with Einstein Engagement Scoring (Loyalist/Winback personas) and Engagement Frequency (saturation detection). Campaign prioritization waterfall native.</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="py-3 px-4 font-semibold">Journey Orchestration</td>
+                <td class="py-3 px-4 text-muted">Basic rule-based journeys. Limited mid-flow behavioral triggers. No AI path optimization. No Einstein STO.</td>
+                <td class="py-3 px-4 text-dark">Mature Flow-based engine. Behavioral branching, STO, AI path optimization, Flow-based A/B testing of entire journey paths and sequences, Agentforce continuous optimization.</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="py-3 px-4 font-semibold">Content & Personalization</td>
+                <td class="py-3 px-4 text-muted">Template-based content creation. Basic personalization tokens. No AI content generation.</td>
+                <td class="py-3 px-4 text-dark">AI-generated content from briefs. Dynamic content blocks. Salesforce Personalization for web. Unknown-to-known recognition.</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="py-3 px-4 font-semibold">Conversational Channels</td>
+                <td class="py-3 px-4 text-muted">Outbound messaging only. No conversational email with AI agents.</td>
+                <td class="py-3 px-4 text-dark">2-way email with Agentforce responses. (Note: 2-way SMS/WhatsApp not available without Digital Engagement.)</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="py-3 px-4 font-semibold">Analytics & Optimization</td>
+                <td class="py-3 px-4 text-muted">SAP Analytics Cloud — dashboards and reporting. No agentic media optimization.</td>
+                <td class="py-3 px-4 text-dark">Marketing Intelligence on Core — unified cross-channel analytics with Agentforce-powered media campaign optimization and budget recommendations.</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="py-3 px-4 font-semibold">Over-Messaging Prevention</td>
+                <td class="py-3 px-4 text-muted">No native campaign prioritization. No cross-campaign frequency capping. Must build custom logic.</td>
+                <td class="py-3 px-4 text-dark">Campaign prioritization waterfall + Einstein Engagement Frequency (per-individual saturation detection) — two-layer protection. EEF as journey-entry gate and mid-journey re-check. Cross-journey frequency capping on the roadmap (release 264, Winter 2026).</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-semibold">Platform Maturity</td>
+                <td class="py-3 px-4 text-muted">Early-stage marketing execution. SAP's marketing cloud is relatively new compared to their ERP/CRM heritage.</td>
+                <td class="py-3 px-4 text-dark">15+ years of marketing automation DNA rebuilt on a modern, AI-native architecture. Proven at enterprise scale.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VS. BRAZE (RETAINED AS SECONDARY) ===== -->
+    <section id="braze" class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 uppercase tracking-wide">Secondary Reference — vs. Braze</h2>
+      <div class="w-20 h-1 bg-info mb-8"></div>
+      <p class="text-muted mb-6 text-sm italic">Braze may still come up in conversation. Retain these contrasts as secondary reference, but SAP EC is the primary competitive threat.</p>
+
+      <!-- Core Narrative -->
+      <div class="bg-dark text-light rounded-lg p-6 mb-8">
+        <h3 class="text-lg font-bold mb-4 text-info">The Point Solution Ceiling</h3>
+        <div class="grid md:grid-cols-2 gap-8 text-sm">
+          <div>
+            <p class="text-gray-medium mb-3">Channel-first tools make it easy to send messages faster. But <strong class="text-light">fast + irrelevant = disengaged.</strong></p>
+            <p class="text-gray-medium">Those quick wins diminish because context has to be imported, synced, and rebuilt. <strong class="text-primary">Next Gen Marketing Cloud gives you speed AND context.</strong></p>
+          </div>
+          <div>
+            <p class="text-gray-medium mb-3"><strong class="text-light">The inflection point:</strong> Early on, Braze ramps faster. But as programs scale, each new use case adds integration work and coordination overhead.</p>
+            <p class="text-gray-medium">With Agentforce Marketing, data is already integrated. <strong class="text-primary">New programs activate without rebuilding the foundation.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Braze Comparison Table -->
+      <div class="bg-surface rounded-lg p-6">
+        <h3 class="font-bold text-dark mb-4 text-lg">Quick-Reference: Braze Comparison</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm border-collapse">
+            <thead>
+              <tr>
+                <th class="text-left py-3 px-4 font-semibold bg-dark text-light rounded-tl-lg">Dimension</th>
+                <th class="text-left py-3 px-4 font-semibold bg-dark text-light">Braze</th>
+                <th class="text-left py-3 px-4 font-semibold bg-primary text-light rounded-tr-lg">Agentforce Marketing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border">
+                <td class="py-3 px-4 font-semibold">Customer View</td>
+                <td class="py-3 px-4 text-muted">Recent in-channel behavior. External data batched, 30-day window.</td>
+                <td class="py-3 px-4 text-dark">Full view across purchases, service, web. Real-time. No data prep.</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="py-3 px-4 font-semibold">AI Strategy</td>
+                <td class="py-3 px-4 text-muted">Execution-only. Managed service model. Optimizes within campaigns.</td>
+                <td class="py-3 px-4 text-dark">Individual-level. Autonomous agents create campaigns, build audiences, optimize flows.</td>
+              </tr>
+              <tr class="border-b border-border">
+                <td class="py-3 px-4 font-semibold">B2B + B2C</td>
+                <td class="py-3 px-4 text-muted">Consumer-focused. No native B2B marketing tools.</td>
+                <td class="py-3 px-4 text-dark">One platform for both — Rewards members and AutoZonePro accounts.</td>
+              </tr>
+              <tr class="border-b border-border bg-light">
+                <td class="py-3 px-4 font-semibold">Scaling Cost</td>
+                <td class="py-3 px-4 text-muted">Each new use case adds integration work, data bottlenecks.</td>
+                <td class="py-3 px-4 text-dark">Build once, activate everywhere. No rebuilding the foundation.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-semibold">Customer Experience</td>
+                <td class="py-3 px-4 text-muted">Fire-and-forget. Each campaign behaves like a first impression.</td>
+                <td class="py-3 px-4 text-dark">One ongoing relationship. Every interaction builds on the last.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RFP COVERAGE MATRIX ===== -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 uppercase tracking-wide">RFP Requirements Coverage</h2>
+      <div class="w-20 h-1 bg-primary mb-8"></div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="bg-dark text-light">
+              <th class="text-left py-3 px-4 font-semibold">RFP Category</th>
+              <th class="text-left py-3 px-4 font-semibold">Key Requirements</th>
+              <th class="text-left py-3 px-4 font-semibold">Demo Phase</th>
+              <th class="text-center py-3 px-4 font-semibold">Covered</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-border">
+              <td class="py-3 px-4 font-semibold">1.0 Platform Overview</td>
+              <td class="py-3 px-4 text-muted">Multi-channel hub, consistency, business unit separation</td>
+              <td class="py-3 px-4">Opening + Phase 1 + Throughout</td>
+              <td class="py-3 px-4 text-center text-success font-bold">✓</td>
+            </tr>
+            <tr class="border-b border-border bg-surface/50">
+              <td class="py-3 px-4 font-semibold">2.0 Journey Orchestration</td>
+              <td class="py-3 px-4 text-muted">Real-time triggers, behavioral mid-flow, personalization, fatigue</td>
+              <td class="py-3 px-4">Phase 3, 4, 5</td>
+              <td class="py-3 px-4 text-center text-success font-bold">✓</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="py-3 px-4 font-semibold">3.0 Content & Templates</td>
+              <td class="py-3 px-4 text-muted">Visual editor, modular blocks, cross-channel reuse</td>
+              <td class="py-3 px-4">Phase 2</td>
+              <td class="py-3 px-4 text-center text-success font-bold">✓</td>
+            </tr>
+            <tr class="border-b border-border bg-surface/50">
+              <td class="py-3 px-4 font-semibold">4.0 Analytics & Measurement</td>
+              <td class="py-3 px-4 text-muted">Campaign/journey comparison, real-time reports, GCP export, media optimization</td>
+              <td class="py-3 px-4">Phase 6</td>
+              <td class="py-3 px-4 text-center text-success font-bold">✓</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="py-3 px-4 font-semibold">5.0 AI & Decisioning</td>
+              <td class="py-3 px-4 text-muted">Einstein segmentation, Agentforce agents, STO, engagement scoring, Flow optimization</td>
+              <td class="py-3 px-4">Phase 2, 3, 4</td>
+              <td class="py-3 px-4 text-center text-success font-bold">✓</td>
+            </tr>
+            <tr class="border-b border-border bg-surface/50">
+              <td class="py-3 px-4 font-semibold">6.0 Scale & Reliability</td>
+              <td class="py-3 px-4 text-muted">275B daily transactions, high availability, peak handling</td>
+              <td class="py-3 px-4">Wrap-Up</td>
+              <td class="py-3 px-4 text-center text-success font-bold">✓</td>
+            </tr>
+            <tr class="border-b border-border">
+              <td class="py-3 px-4 font-semibold">Tech 1.0 Infrastructure</td>
+              <td class="py-3 px-4 text-muted">Google partnership, connectors, identity resolution, sandboxes</td>
+              <td class="py-3 px-4">Phase 1 + Wrap-Up</td>
+              <td class="py-3 px-4 text-center text-success font-bold">✓</td>
+            </tr>
+            <tr class="border-b border-border bg-surface/50">
+              <td class="py-3 px-4 font-semibold">Loyalty Integration</td>
+              <td class="py-3 px-4 text-muted">Loyalty fields in segmentation, conversational email, rewards personalization</td>
+              <td class="py-3 px-4">Phase 2, 3, 5 (touchpoints)</td>
+              <td class="py-3 px-4 text-center text-success font-bold">✓</td>
+            </tr>
+            <tr class="bg-surface/50">
+              <td class="py-3 px-4 font-semibold">B2B / Commercial</td>
+              <td class="py-3 px-4 text-muted">AutoZonePro commercial campaign, same-platform B2B capability</td>
+              <td class="py-3 px-4">Phase 2 (brief)</td>
+              <td class="py-3 px-4 text-center text-success font-bold">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== DEMO PREPARATION CHECKLIST ===== -->
+    <section class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 uppercase tracking-wide">Pre-Demo Preparation</h2>
+      <div class="w-20 h-1 bg-primary mb-8"></div>
+
+      <!-- ===== SETUP: DEMO ORGANIZATION ===== -->
+      <section id="setup" class="mb-12">
+        <div class="phase-card bg-light rounded-xl border border-border shadow-sm overflow-hidden">
+          <div class="bg-success px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <span class="bg-white/20 text-light text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">SETUP</span>
+              <h3 class="text-light text-lg font-bold">Demo Organization</h3>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-white/70 text-sm">Chrome profiles &amp; tabs</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-muted mb-5 text-sm">Before the demo, decide which <strong class="text-dark">Chrome profile</strong> you will use for each segment below and which <strong class="text-dark">browser tab numbers</strong> map to each major moment (so you can jump without hunting).</p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm border-collapse border border-border rounded-lg overflow-hidden">
+                <thead>
+                  <tr class="bg-dark text-light">
+                    <th class="text-left py-3 px-4 font-semibold border-b border-border">Segment</th>
+                    <th class="text-left py-3 px-4 font-semibold border-b border-border w-[22%]">Chrome profile</th>
+                    <th class="text-left py-3 px-4 font-semibold border-b border-border">Tabs / parts (note tab # and what it is)</th>
+                  </tr>
+                </thead>
+                <tbody class="text-muted">
+                  <tr class="border-b border-border bg-light">
+                    <td class="py-3 px-4 font-semibold text-dark align-top">Opening</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                  </tr>
+                  <tr class="border-b border-border bg-surface/50">
+                    <td class="py-3 px-4 font-semibold text-dark align-top">1 · Data Streams</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                  </tr>
+                  <tr class="border-b border-border bg-light">
+                    <td class="py-3 px-4 font-semibold text-dark align-top">2 · Campaign Build</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                  </tr>
+                  <tr class="border-b border-border bg-surface/50">
+                    <td class="py-3 px-4 font-semibold text-dark align-top">3 · Segmentation</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                  </tr>
+                  <tr class="border-b border-border bg-light">
+                    <td class="py-3 px-4 font-semibold text-dark align-top">4 · Journey</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                  </tr>
+                  <tr class="border-b border-border bg-surface/50">
+                    <td class="py-3 px-4 font-semibold text-dark align-top">5 · Personalization (NTO)</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                  </tr>
+                  <tr class="border-b border-border bg-light">
+                    <td class="py-3 px-4 font-semibold text-dark align-top">6 · Analytics</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                  </tr>
+                  <tr class="bg-surface/50">
+                    <td class="py-3 px-4 font-semibold text-dark align-top">7 · Wrap-Up</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                    <td class="py-3 px-4 align-top min-h-[3rem] border-l border-border">&nbsp;</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-light rounded-lg border border-border p-6">
+          <h3 class="text-lg font-bold mb-4">🔧 Org Setup Requirements</h3>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Data Streams visible and active in Data Cloud app</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Data Model view shows Individual at center with connected DMOs</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Agentforce Campaign agent configured and tested with B2C brief</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>B2B/AutoZonePro campaign brief tested in agent</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>AutoZone-branded email templates in Content Builder</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>2-way conversational email demo ready (Agentforce reply agent)</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Engagement scoring CIOs populated and visible in segment builder</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Loyalty attributes on Individual DMO (tier, points, expiry)</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Campaign prioritization / waterfall segment set created</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Summer Battery Promo journey flow with AI optimization in Flow Builder</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>SF Personalization NTO site loaded in SF Personalization Chrome profile (incognito ready)</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Web Personalization Manager accessible (NTO URL + ?sf_personalization_wpm parameter)</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Marketing Intelligence dashboard with media performance data</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary" onclick="updateProgress()">
+              <span>Google Cloud activation target configured</span>
+            </label>
+          </div>
+          <div class="mt-4 bg-surface rounded-lg p-3">
+            <div class="flex justify-between text-xs text-muted mb-1">
+              <span>Preparation Progress</span>
+              <span id="progress-text">0 / 14</span>
+            </div>
+            <div class="h-2 bg-border rounded-full overflow-hidden">
+              <div id="progress-bar" class="h-full bg-primary rounded-full transition-all" style="width: 0%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-light rounded-lg border border-border p-6">
+          <h3 class="text-lg font-bold mb-4">📋 Day-of Checklist</h3>
+          <div class="space-y-2 text-sm">
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>All demo tabs pre-loaded: Data Cloud, Campaign Agent, Segment Builder, Content Builder, Flow Builder, MI Dashboard, Personalization</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>B2C campaign brief text ready to paste for Agentforce demo</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>B2B/AutoZonePro campaign brief text ready to paste</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>Natural language segment prompt pre-tested and copied</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>Agentforce agent tested — responds to loyalty inquiry via 2-way email</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>Personalization asset loaded and verified on test page</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>Marketing Intelligence dashboard verified with sample data</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>Backup screenshots of each phase (in case of live issues)</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>SAP EC counter-point talking points printed / accessible</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>Timer visible to presenter (phone or secondary screen)</span>
+            </label>
+            <label class="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" class="mt-1 accent-primary">
+              <span>Confirm room A/V setup and screen sharing</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="bg-dark text-light py-8">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div>
+        <div class="text-xl font-bold" style="color: #F26D0D;">AUTO<span style="color: #D52B1E;">ZONE</span></div>
+        <p class="text-gray-medium text-sm mt-1">Multi-Channel Marketing Hub — Demo Playbook v9</p>
+      </div>
+      <div class="text-right text-sm text-gray-medium">
+        <p>Prepared for AutoZone Onsite Presentation</p>
+        <p>45 Minutes · All Live Demo · No Slides · Marketer-Focused</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateProgress() {
+      const orgSection = document.querySelector('#progress-text').closest('.bg-light');
+      const orgCheckboxes = orgSection.querySelectorAll('input[type="checkbox"]');
+      const checked = Array.from(orgCheckboxes).filter(cb => cb.checked).length;
+      const total = orgCheckboxes.length;
+      document.getElementById('progress-text').textContent = `${checked} / ${total}`;
+      document.getElementById('progress-bar').style.width = `${(checked / total) * 100}%`;
+    }
+
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

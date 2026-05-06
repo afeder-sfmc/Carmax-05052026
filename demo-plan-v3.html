@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarMax × MCA Demo Plan — v3</title>
+  <script src="https://assets.meshmesh.io/system/tailwindcss-browser-4.js"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary:      #003087;
+      --color-primary-dark: #002060;
+      --color-blue:         #0057B8;
+      --color-light-blue:   #E6EEF8;
+      --color-surface:      #F5F5F5;
+      --color-muted:        #767676;
+      --color-dark:         #333333;
+      --color-light:        #FFFFFF;
+      --color-border:       #CCCCCC;
+      --color-green:        #2E7D32;
+      --color-red:          #C62828;
+      --color-yellow:       #FFC107;
+      --color-purple:       #6A1B9A;
+      --color-teal:         #00695C;
+      --color-orange:       #E65100;
+      --color-pink:         #AD1457;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+
+    .phase-nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: #FFFFFF;
+    }
+
+    .phase-card { transition: all 0.25s ease; }
+    .phase-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,32,96,0.15); }
+
+    .talking-point { transition: background 0.15s ease; }
+    .talking-point:hover { background-color: #E6EEF8; }
+
+    .nav-link { transition: all 0.15s ease; }
+    .nav-link:hover, .nav-link.active {
+      color: #003087;
+      border-bottom-color: #003087;
+    }
+
+    @media print {
+      .no-print { display: none !important; }
+      .phase-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body class="bg-surface text-dark font-sans">
+
+  <!-- ── TOP BAR ── -->
+  <div style="background:#002060;" class="text-white">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img src="images/CarMax-Logo-Blue.png" alt="CarMax" style="height:32px; filter:brightness(0) invert(1);">
+        <span style="color:#CCCCCC;" class="text-sm">×</span>
+        <span style="color:#CCCCCC;" class="text-sm">Marketing Cloud Advanced</span>
+      </div>
+      <div style="color:#CCCCCC;" class="text-sm">Demo Plan · v3</div>
+    </div>
+  </div>
+
+  <!-- ── HERO ── -->
+  <div style="background:#003087;" class="text-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 75% 50%, #FFC107 0%, transparent 60%);"></div>
+    <div class="max-w-7xl mx-auto px-6 py-16 relative z-10">
+      <div class="max-w-3xl">
+        <p style="color:#FFC107;" class="font-bold text-sm uppercase tracking-widest mb-3">Demonstration Playbook — v3</p>
+        <h1 class="text-5xl font-bold leading-tight mb-4">
+          CarMax × Salesforce<br>
+          <span style="color:#FFC107;">Marketing Cloud Advanced</span>
+        </h1>
+        <p class="text-xl leading-relaxed mb-3" style="color:rgba(255,255,255,0.8);">
+          A 90-minute, functionality-first live demo covering four pain points: email authoring, audience creation, dev environment, and the dynamic feedback loop — emails that write back to the customer profile in real time.
+        </p>
+        <p class="text-sm leading-relaxed mb-8 italic" style="color:rgba(255,255,255,0.6);">
+          v3 changes (from 4/29 sync): Added Phase 6 — Dynamic Feedback Loops (heart/favorite from email → Data Cloud profile writeback), the use case Sean specifically named. Expanded Phase 5 triggered sends with Sean's five exact scenarios from his email. Added dynamic content blocks step to Email Designer module. Trimmed Phase 3 to 20 min and Phase 4 to 10 min to hold 90-minute total. Upper Funnel SMS added as future-state callout in Q&amp;A.
+        </p>
+        <div class="flex gap-5 flex-wrap">
+          <div class="rounded-lg px-5 py-3 text-center" style="background:rgba(255,255,255,0.1);">
+            <div class="text-3xl font-bold" style="color:#FFC107;">90</div>
+            <div class="text-xs uppercase tracking-wider" style="color:rgba(255,255,255,0.6);">Minutes</div>
+          </div>
+          <div class="rounded-lg px-5 py-3 text-center" style="background:rgba(255,255,255,0.1);">
+            <div class="text-3xl font-bold" style="color:#FFC107;">4</div>
+            <div class="text-xs uppercase tracking-wider" style="color:rgba(255,255,255,0.6);">Pain Points</div>
+          </div>
+          <div class="rounded-lg px-5 py-3 text-center" style="background:rgba(255,255,255,0.1);">
+            <div class="text-3xl font-bold" style="color:#FFC107;">0</div>
+            <div class="text-xs uppercase tracking-wider" style="color:rgba(255,255,255,0.6);">Sizzle Slides</div>
+          </div>
+          <div class="rounded-lg px-5 py-3 text-center" style="background:rgba(255,255,255,0.1);">
+            <div class="text-3xl font-bold" style="color:#FFC107;">100%</div>
+            <div class="text-xs uppercase tracking-wider" style="color:rgba(255,255,255,0.6);">Live Demo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── STICKY NAV ── -->
+  <div class="phase-nav-wrap no-print">
+    <nav class="bg-white border-b shadow-sm" style="border-color:#CCCCCC;">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex gap-1 overflow-x-auto" id="phase-nav">
+          <a href="#strategy"  class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">Strategy</a>
+          <a href="#setup"     class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">Setup</a>
+          <a href="#phase0"    class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">Opening</a>
+          <a href="#phase1"    class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">1 · Context</a>
+          <a href="#phase2"    class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">2 · Email Designer</a>
+          <a href="#phase3"    class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">3 · Upper-Funnel Nurturing ⭐</a>
+          <a href="#phase4"    class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">4 · Dev Environment</a>
+          <a href="#phase5"    class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">5 · Triggered Sends</a>
+          <a href="#phase6"    class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">6 · Dynamic Feedback Loops ✨</a>
+          <a href="#phase7"    class="nav-link py-3 px-4 text-sm font-semibold border-b-2 border-transparent whitespace-nowrap" style="color:#767676;">7 · Q&amp;A</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-12">
+
+    <!-- ── STRATEGY ── -->
+    <section id="strategy" class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 uppercase tracking-wide" style="color:#002060;">Demo Strategy &amp; Audience</h2>
+      <div class="w-20 h-1 mb-8" style="background:#003087;"></div>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-10">
+
+        <!-- Audience -->
+        <div class="bg-white rounded-lg border p-6" style="border-color:#CCCCCC;">
+          <h3 class="text-lg font-bold mb-4 flex items-center gap-2" style="color:#333333;">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background:#003087;">👥</span>
+            Audience
+          </h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="font-bold mt-0.5" style="color:#003087;">▸</span>
+              <div><strong>Primary sponsor:</strong> Sean Goetz — Marketing Program Lead. Has seen every marketing slide. Wants to see what "actually comes to life."</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="font-bold mt-0.5" style="color:#003087;">▸</span>
+              <div><strong>Day-to-day users:</strong> Christine Antonsen + Lawrence Hill — in the trenches daily. Their buy-in is critical. Pre-brief via enablement session (Feyissa/Divia) recommended before main demo.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="font-bold mt-0.5" style="color:#003087;">▸</span>
+              <div><strong>Program leadership:</strong> Strategy, Product, Product Engineering, Design — including Kyle Brody (Ops). Likely include Blake or similar business/strategy leads.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="font-bold mt-0.5" style="color:#003087;">▸</span>
+              <div><strong>These are builders, not observers.</strong> They care about: "Can my strategist do this without a data ticket? Can my designer build emails without calling an engineer? Does my engineering team finally have real tools?"</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategic Positioning -->
+        <div class="bg-white rounded-lg border p-6" style="border-color:#CCCCCC;">
+          <h3 class="text-lg font-bold mb-4 flex items-center gap-2" style="color:#333333;">
+            <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white" style="background:#0057B8;">🎯</span>
+            Strategic Positioning
+          </h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="font-bold mt-0.5" style="color:#0057B8;">▸</span>
+              <div><strong>Capability over concept.</strong> Build things from scratch in front of them. No "imagine if" — show the actual thing.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="font-bold mt-0.5" style="color:#0057B8;">▸</span>
+              <div><strong>Use their use cases — all of them.</strong> Sean gave us five triggered scenarios and a dynamic feedback loop ask. Every module maps directly to something he said out loud.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="font-bold mt-0.5" style="color:#0057B8;">▸</span>
+              <div><strong>Snowflake stays.</strong> One sentence, one mention. "Snowflake doesn't go away — your strategists just stop having to open it." Then move on.</div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="font-bold mt-0.5" style="color:#0057B8;">▸</span>
+              <div><strong>Iterative, not final.</strong> This demo is a progress review. Invite coaching. "We'll show you the work in progress — we want your input before we take it to a broader group."</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pain Points Map -->
+      <div class="rounded-lg border-2 p-6 mb-10" style="background:#E6EEF8; border-color:#003087;">
+        <h3 class="text-lg font-bold mb-4" style="color:#003087;">Four Pain Points → Four Demo Modules</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+          <div class="bg-white rounded-lg p-4 border" style="border-color:#CCCCCC; border-left:4px solid #2E7D32;">
+            <div class="font-bold mb-1" style="color:#2E7D32;">✉️ Pain 1 — Email Authoring</div>
+            <p style="color:#767676;">Engineers required to build every email. Shared component blocks exist in theory but not practice.</p>
+            <div class="mt-2 font-semibold text-xs uppercase tracking-wide" style="color:#2E7D32;">→ Module 2: Email Designer</div>
+          </div>
+          <div class="bg-white rounded-lg p-4 border" style="border-color:#CCCCCC; border-left:4px solid #6A1B9A;">
+            <div class="font-bold mb-1" style="color:#6A1B9A;">🎯 Pain 2 — Segment Creation</div>
+            <p style="color:#767676;">Strategists → Snowflake → data team → ExactTarget. Days per segment. No self-service.</p>
+            <div class="mt-2 font-semibold text-xs uppercase tracking-wide" style="color:#6A1B9A;">→ Module 3: Upper-Funnel Nurturing ⭐</div>
+          </div>
+          <div class="bg-white rounded-lg p-4 border" style="border-color:#CCCCCC; border-left:4px solid #E65100;">
+            <div class="font-bold mb-1" style="color:#E65100;">⚙️ Pain 3 — Dev Environment</div>
+            <p style="color:#767676;">ExactTarget has no source control. No true dev/staging/prod. Every change is a production change.</p>
+            <div class="mt-2 font-semibold text-xs uppercase tracking-wide" style="color:#E65100;">→ Module 4: Engineering Environment</div>
+          </div>
+          <div class="bg-white rounded-lg p-4 border" style="border-color:#CCCCCC; border-left:4px solid #AD1457;">
+            <div class="font-bold mb-1" style="color:#AD1457;">🔄 Pain 4 — Dead-End Emails</div>
+            <p style="color:#767676;">Email clicks and favorites don't update the customer profile. Engagement signals are siloed and wasted.</p>
+            <div class="mt-2 font-semibold text-xs uppercase tracking-wide" style="color:#AD1457;">→ Module 6: Dynamic Feedback Loops ✨</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- What NOT to show -->
+      <div class="rounded-lg border-2 p-6" style="background:#FFF8E1; border-color:#FFC107;">
+        <h3 class="text-lg font-bold mb-3 flex items-center gap-2" style="color:#7A5000;">⚠️ What NOT to Show — Sean Was Explicit</h3>
+        <div class="grid md:grid-cols-2 gap-4 text-sm">
+          <div class="space-y-2">
+            <div class="flex items-start gap-2"><span>🚫</span><div><strong>Vehicle recommendations</strong> — come from an external service CarMax calls separately. Don't present as MCA capability.</div></div>
+            <div class="flex items-start gap-2"><span>🚫</span><div><strong>Migration of legacy content</strong> — Sean: "We have a decade of stuff in the old system. We don't even know what it is." Not in scope.</div></div>
+          </div>
+          <div class="space-y-2">
+            <div class="flex items-start gap-2"><span>🚫</span><div><strong>High-level sizzle reel</strong> — "Everyone has seen a lot of marketing content." Show the actual tool doing actual things.</div></div>
+            <div class="flex items-start gap-2"><span>🚫</span><div><strong>Journey Builder analogies</strong> — Sean knows Journey Builder. Skip the "in ExactTarget you'd do X" framing. Just build in MCA from scratch.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SETUP ── -->
+    <section id="setup" class="mb-16">
+      <h2 class="text-3xl font-bold mb-2 uppercase tracking-wide" style="color:#002060;">Pre-Demo Setup</h2>
+      <div class="w-20 h-1 mb-8" style="background:#003087;"></div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Demo Org Checklist -->
+        <div class="bg-white rounded-lg border overflow-hidden" style="border-color:#CCCCCC;">
+          <div class="px-6 py-3 font-bold text-sm uppercase tracking-wider text-white" style="background:#003087;">Demo Org Checklist</div>
+          <div class="p-6 space-y-2 text-sm">
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span>MCA + Data Cloud org provisioned</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span>Individual DMO populated with sample customer records</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span>Contact Point Email DMO records present + CSC OPT_IN for all test recipients</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span><strong>Activity event data loaded:</strong> car page views, app downloads, favorites, financing form submissions (and non-submissions), instant offer submissions, pre-qual submissions</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span>Flow Data Graph + Content Data Graph configured and validated</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span>CarMax CMS workspace with brand assets: logo, vehicle card tiles, hero banners</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span>Email template with dynamic content blocks pre-staged (journey completion logic: account created? favorited? pre-qual submitted?)</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span>Upper-funnel nurturing segment pre-built and count validated</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span>5 triggered send flows pre-staged (one per Sean's scenarios — show, don't build from scratch)</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span><strong>Feedback loop demo ready:</strong> email with tracked heart/favorite link, Data Cloud Streaming API endpoint configured, Unified Profile record showing vehicle favorites field</span></label>
+            <label class="flex items-start gap-3 cursor-pointer"><input type="checkbox" class="mt-0.5"><span>Datakit sandbox → prod deployment prepped</span></label>
+          </div>
+        </div>
+
+        <!-- Assets Needed from CarMax -->
+        <div class="bg-white rounded-lg border overflow-hidden" style="border-color:#CCCCCC;">
+          <div class="px-6 py-3 font-bold text-sm uppercase tracking-wider text-white" style="background:#6A1B9A;">Assets Needed from CarMax</div>
+          <div class="p-6 space-y-3 text-sm">
+            <div class="rounded-lg p-4 border" style="border-color:#CCCCCC; background:#F5F5F5;">
+              <div class="font-bold mb-1" style="color:#6A1B9A;">From Sean Goetz</div>
+              <ul class="space-y-1.5" style="color:#333333;">
+                <li class="flex items-start gap-2"><span style="color:#6A1B9A;">▸</span> Exact attribute list for upper-funnel nurturing segment (confirmed use case)</li>
+                <li class="flex items-start gap-2"><span style="color:#6A1B9A;">▸</span> Screenshot of current ExactTarget email designer showing component blocks</li>
+                <li class="flex items-start gap-2"><span style="color:#6A1B9A;">▸</span> Confirmation: does "heart/favorite from email" need to go to the CarMax profile app, or is Data Cloud writeback sufficient for the demo story?</li>
+              </ul>
+            </div>
+            <div class="rounded-lg p-4 border" style="border-color:#CCCCCC; background:#F5F5F5;">
+              <div class="font-bold mb-1" style="color:#0057B8;">From Burke Maxwell</div>
+              <ul class="space-y-1.5" style="color:#333333;">
+                <li class="flex items-start gap-2"><span style="color:#0057B8;">▸</span> Forward the personal CarMax email received — fidelity target for email designer module</li>
+              </ul>
+            </div>
+            <div class="rounded-lg p-4 border" style="border-color:#CCCCCC; background:#F5F5F5;">
+              <div class="font-bold mb-1" style="color:#E65100;">From Adam Feder</div>
+              <ul class="space-y-1.5" style="color:#333333;">
+                <li class="flex items-start gap-2"><span style="color:#E65100;">▸</span> Timeline estimate + travel schedule confirmation → Andrew Gordon</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Bar -->
+      <div class="bg-white rounded-lg border p-6 mt-8 overflow-x-auto" style="border-color:#CCCCCC;">
+        <div class="font-bold text-sm uppercase tracking-wider mb-4" style="color:#767676;">Session Timeline</div>
+        <div class="flex gap-0 min-w-[1000px]">
+          <div class="flex-none text-center" style="width:5.6%;">
+            <div class="h-3 rounded-l-full" style="background:#002060;"></div>
+            <div class="text-xs mt-2 font-semibold" style="color:#002060;">Opening</div>
+            <div class="text-xs" style="color:#767676;">5 min</div>
+          </div>
+          <div class="flex-none text-center" style="width:5.6%;">
+            <div class="h-3" style="background:#0057B8;"></div>
+            <div class="text-xs mt-2 font-semibold" style="color:#0057B8;">1 · Context</div>
+            <div class="text-xs" style="color:#767676;">5 min</div>
+          </div>
+          <div class="flex-none text-center" style="width:22.2%;">
+            <div class="h-3" style="background:#2E7D32;"></div>
+            <div class="text-xs mt-2 font-semibold" style="color:#2E7D32;">2 · Email Designer</div>
+            <div class="text-xs" style="color:#767676;">20 min</div>
+          </div>
+          <div class="flex-none text-center" style="width:22.2%;">
+            <div class="h-3" style="background:#6A1B9A;"></div>
+            <div class="text-xs mt-2 font-semibold" style="color:#6A1B9A;">3 · Upper-Funnel ⭐</div>
+            <div class="text-xs" style="color:#767676;">20 min</div>
+          </div>
+          <div class="flex-none text-center" style="width:11.1%;">
+            <div class="h-3" style="background:#E65100;"></div>
+            <div class="text-xs mt-2 font-semibold" style="color:#E65100;">4 · Dev Env</div>
+            <div class="text-xs" style="color:#767676;">10 min</div>
+          </div>
+          <div class="flex-none text-center" style="width:11.1%;">
+            <div class="h-3" style="background:#00695C;"></div>
+            <div class="text-xs mt-2 font-semibold" style="color:#00695C;">5 · Triggered</div>
+            <div class="text-xs" style="color:#767676;">10 min</div>
+          </div>
+          <div class="flex-none text-center" style="width:11.1%;">
+            <div class="h-3" style="background:#AD1457;"></div>
+            <div class="text-xs mt-2 font-semibold" style="color:#AD1457;">6 · Feedback ✨</div>
+            <div class="text-xs" style="color:#767676;">10 min</div>
+          </div>
+          <div class="flex-none text-center" style="width:11.1%;">
+            <div class="h-3 rounded-r-full" style="background:#546E7A;"></div>
+            <div class="text-xs mt-2 font-semibold" style="color:#546E7A;">7 · Q&amp;A</div>
+            <div class="text-xs" style="color:#767676;">10 min</div>
+          </div>
+        </div>
+        <div class="flex justify-between mt-4 text-xs min-w-[1000px]" style="color:#767676;">
+          <span>0:00</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90 min</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PHASE 0: OPENING ── -->
+    <section id="phase0" class="mb-12">
+      <div class="phase-card bg-white rounded-xl border shadow-sm overflow-hidden" style="border-color:#CCCCCC;">
+        <div class="px-6 py-4 flex items-center justify-between" style="background:#002060;">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-white" style="background:rgba(255,255,255,0.15);">Opening</span>
+            <h3 class="text-white text-lg font-bold">Welcome, Framing &amp; Agenda</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color:rgba(255,255,255,0.6);">⏱ 5 minutes</span>
+            <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.15); color:rgba(255,255,255,0.7);">0:00 – 0:05</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="mb-5 text-sm italic" style="color:#767676;">"No slides. We're going to build things in front of you, using your own use cases."</p>
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#003087;">1</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Introductions (2 min)</p>
+                  <p class="text-sm" style="color:#767676;">Quick round for any attendees new to Adam. Acknowledge Christine and Lawrence specifically — frame that this demo was designed around the feedback from the working team, not just leadership.</p>
+                  <p class="text-sm mt-2 font-medium" style="color:#333333;"><strong>Adam opening line:</strong> "I've been working with CarMax in some capacity for 12 years, and I bought my daughter's car from you — so this one's a little personal for me."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#003087;">2</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Agenda &amp; Contract (2 min)</p>
+                  <p class="text-sm" style="color:#767676;">Walk the four modules. Name the four pain points explicitly. Use Sean's words back to him — "dynamic feedback loops" is his phrase:</p>
+                  <div class="mt-3 rounded-lg p-3 text-sm" style="background:#E6EEF8;">
+                    <p style="color:#002060;">"Sean, when we talked you gave us a list — and we built this demo around that list. One: can a designer build an email without calling an engineer? Two: can your strategist build the upper-funnel nurturing segment in Salesforce instead of Snowflake? Three: does your engineering team get a real dev environment? And four — the one you called the dynamic feedback loop — what happens when a customer hearts a car inside the email? Today we show you all four. Let's go."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#003087;">3</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Set the Expectation — Iterative (1 min)</p>
+                  <p class="text-sm" style="color:#767676;">"This is a progress review, not a final presentation. We want your coaching. If you see something that doesn't match how your team works, tell us — that's what this session is for."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PHASE 1: CONTEXT ── -->
+    <section id="phase1" class="mb-12">
+      <div class="phase-card bg-white rounded-xl border shadow-sm overflow-hidden" style="border-color:#CCCCCC;">
+        <div class="px-6 py-4 flex items-center justify-between" style="background:#0057B8;">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-white" style="background:rgba(255,255,255,0.2);">Phase 1</span>
+            <h3 class="text-white text-lg font-bold">CarMax Today → Tomorrow (Brief Context)</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color:rgba(255,255,255,0.7);">⏱ 5 minutes</span>
+            <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.2); color:rgba(255,255,255,0.8);">0:05 – 0:10</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <p class="text-sm italic mb-5" style="color:#767676;">Goal: Orient the room in one minute. Where does MCA fit? Then move on — don't let this become an architecture discussion.</p>
+
+          <div class="rounded-lg border-2 p-5 mb-6" style="border-color:#C62828; background:#FFF5F5;">
+            <p class="font-bold text-sm mb-3" style="color:#C62828;">⚠️ Say This, Not That — Snowflake</p>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+              <div class="rounded p-3 border" style="background:#F1F8E9; border-color:#2E7D32;">
+                <p class="font-bold mb-2" style="color:#2E7D32;">✅ SAY (one sentence, move on):</p>
+                <p style="color:#333333;">"Snowflake stays. Your strategists just stop having to open it. That's the whole point."</p>
+              </div>
+              <div class="rounded p-3 border" style="background:#FFF5F5; border-color:#C62828;">
+                <p class="font-bold mb-2" style="color:#C62828;">❌ DON'T:</p>
+                <p style="color:#333333;">Walk through the Data Stream → DLO → DMO → Identity Resolution flow in detail. Save it for Christine/Lawrence's technical enablement session.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#0057B8;">1</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Where MCA Fits in the CarMax Architecture (2 min)</p>
+                  <p class="text-sm" style="color:#767676;">Salesforce CRM (Sales + Service) is already live. MCA sits natively on the same platform — no new vendor, no new login. It replaces the Marketing Cloud Engagement / ExactTarget layer and the MC Connector.</p>
+                  <p class="text-sm mt-2 font-medium" style="color:#333333;"><strong>Key line:</strong> "This isn't a rip-and-replace of your Salesforce investment. It's an upgrade to the marketing layer that was always the weakest link — and it runs natively on the platform your CRM already uses."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#0057B8;">2</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">The Snowflake Sentence (30 seconds — then done)</p>
+                  <p class="text-sm mt-2 font-medium" style="color:#333333;"><strong>Script:</strong> "Your data lives in Snowflake — that doesn't change. Data Cloud reads from it. Your strategists just never need to open Snowflake again. That's what we're going to show you."</p>
+                </div>
+              </div>
+            </div>
+            <div class="p-4 rounded-lg border-l-4 text-sm" style="background:#E6EEF8; border-color:#003087;">
+              <p class="font-semibold" style="color:#333333;">🔗 Transition to Phase 2 — Email Designer:</p>
+              <p style="color:#767676;">"Let's start with the most visible pain point — the email. I want to show you what it looks like when a designer, not an engineer, builds a CarMax email from scratch."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PHASE 2: EMAIL DESIGNER ── -->
+    <section id="phase2" class="mb-12">
+      <div class="phase-card bg-white rounded-xl border shadow-sm overflow-hidden" style="border-color:#CCCCCC;">
+        <div class="px-6 py-4 flex items-center justify-between" style="background:#2E7D32;">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-white" style="background:rgba(255,255,255,0.2);">Phase 2</span>
+            <h3 class="text-white text-lg font-bold">Email Designer — Build Without Engineers</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color:rgba(255,255,255,0.7);">⏱ 20 minutes</span>
+            <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.2); color:rgba(255,255,255,0.8);">0:10 – 0:30</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-xs font-bold px-2 py-0.5 rounded uppercase" style="background:#E8F5E9; color:#1B5E20;">Pain: Engineers required for every email</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded uppercase" style="background:#E8F5E9; color:#1B5E20;">Persona: Designer / Product Manager</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded uppercase" style="background:#E8F5E9; color:#1B5E20;">Target fidelity: Burke's personal CarMax email</span>
+          </div>
+          <p class="text-sm italic mb-5" style="color:#767676;"><strong>Goal:</strong> Demo persona is a PM or designer — no engineering access, no HTML required. By the end of this module, a test email should arrive in the room's inboxes.</p>
+
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border-2" style="border-color:#2E7D32; background:#F1F8E9;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#2E7D32;">1</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">⭐ Navigate to Email Studio — First Impression (3 min)</p>
+                  <p class="text-sm" style="color:#767676;">Open MCA from the Salesforce App Launcher. Show the CMS Workspace — vehicle images, logos, brand assets. Contrast with ExactTarget's Content Builder only to say: "this is the same asset library your web team uses."</p>
+                  <p class="text-sm mt-2 font-semibold" style="color:#333333;"><strong>Talking point:</strong> "Notice we're still inside Salesforce. No separate login, no separate platform. The same org your CRM lives in."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#2E7D32;">2</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Build the Email From Scratch (8 min)</p>
+                  <p class="text-sm mb-3" style="color:#767676;">Create a new email. Walk through the component-block approach using Burke's forwarded CarMax email as the visual reference the room already recognizes.</p>
+                  <div class="grid md:grid-cols-2 gap-4 text-sm">
+                    <div class="rounded p-3 border" style="background:#F5F5F5; border-color:#CCCCCC;">
+                      <p class="font-bold mb-1" style="color:#333333;">Blocks to demonstrate:</p>
+                      <ul class="space-y-1" style="color:#767676;">
+                        <li>▸ Header block (CarMax navy, logo from CMS)</li>
+                        <li>▸ Hero text block</li>
+                        <li>▸ Vehicle card tile (image + model + price + mileage)</li>
+                        <li>▸ CTA button ("Get pre-qualified")</li>
+                        <li>▸ Footer block (legal, unsubscribe)</li>
+                      </ul>
+                    </div>
+                    <div class="rounded p-3 border" style="background:#F5F5F5; border-color:#CCCCCC;">
+                      <p class="font-bold mb-1" style="color:#333333;">Key moments:</p>
+                      <ul class="space-y-1" style="color:#767676;">
+                        <li>▸ Show drag-and-drop — no code required</li>
+                        <li>▸ Swap a vehicle image from CMS in one click</li>
+                        <li>▸ Edit button copy inline</li>
+                        <li>▸ Show mobile preview toggle</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p class="text-sm mt-3 font-semibold" style="color:#333333;"><strong>Anchor talking point:</strong> "Sean, you described a frustration where engineers were required even though component blocks existed. Here's what that looks like in MCA — blocks are defined once by your brand team, and from that point on, a designer drops them in and changes the words. No engineer in the loop."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#2E7D32;">3</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Dynamic Content Blocks — Journey-State Logic (4 min)</p>
+                  <p class="text-sm mb-2" style="color:#767676;">This is new in v3. Show a content block that conditionally renders based on what the customer has or hasn't done. Sean's exact ask from 4/29: "we recommend creating an account or favoriting cars if you haven't done so already."</p>
+                  <div class="rounded-xl border-2 p-4" style="border-color:#FFC107; background:#FFF8E1;">
+                    <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#7A5000;">⭐ Three-state block to demo:</p>
+                    <div class="space-y-2 text-sm">
+                      <div class="flex items-start gap-2 rounded p-2" style="background:white;"><span style="color:#2E7D32;" class="font-bold">State A</span><span style="color:#767676;"> — No account yet → show "Create your CarMax account" CTA</span></div>
+                      <div class="flex items-start gap-2 rounded p-2" style="background:white;"><span style="color:#0057B8;" class="font-bold">State B</span><span style="color:#767676;"> — Account created, no favorites → show "Heart a car to save it" CTA</span></div>
+                      <div class="flex items-start gap-2 rounded p-2" style="background:white;"><span style="color:#6A1B9A;" class="font-bold">State C</span><span style="color:#767676;"> — Favorited a car → show the specific favorited vehicle card</span></div>
+                    </div>
+                  </div>
+                  <p class="text-sm mt-3 font-semibold" style="color:#333333;"><strong>Talking point:</strong> "One email template. Three different experiences. The strategist configures the logic once — the platform serves the right content to each customer based on where they are in their journey. No three separate email versions."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#2E7D32;">4</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Personalization — Handlebars, Not AMPScript (3 min)</p>
+                  <p class="text-sm mb-2" style="color:#767676;">Show a merge field using Handlebars. Keep it simple and grounded: name + known vehicle data.</p>
+                  <div class="rounded-lg p-3 border font-mono text-sm" style="background:#002060; color:#FFC107; border-color:#003087;">
+                    Hi &#123;&#123;root.$dataGraph.FirstName__c&#125;&#125;,<br>
+                    How are you enjoying your &#123;&#123;root.$dataGraph.VehicleYear__c&#125;&#125; &#123;&#123;root.$dataGraph.VehicleMake__c&#125;&#125; &#123;&#123;root.$dataGraph.VehicleModel__c&#125;&#125;?
+                  </div>
+                  <p class="text-sm mt-2 font-semibold" style="color:#333333;"><strong>Live example to say out loud:</strong> "How are you enjoying your 2019 Jeep Cherokee?" — referencing the car Adam's daughter bought. Grounds it in a real scenario the room understands.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#2E7D32;">5</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Preview, Test Send &amp; Arrival (2 min)</p>
+                  <p class="text-sm" style="color:#767676;">Preview with a live test record. Send a test email to attendees in the room. Let the email arrive — pause for a moment so people can look at their phones.</p>
+                  <p class="text-sm mt-2 font-semibold" style="color:#333333;"><strong>Closing line:</strong> "That email was built by a person playing the role of a product manager — no engineering ticket, no waiting. Done in about ten minutes."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg border-l-4 text-sm" style="background:#E6EEF8; border-color:#003087;">
+            <p class="font-semibold" style="color:#333333;">🔗 Transition to Phase 3 — Upper-Funnel Nurturing:</p>
+            <p style="color:#767676;">"Great. So we can build the email. Now the harder question: who receives it? Your strategists currently go to Snowflake to answer that. Let me show you what that looks like when it's done inside Salesforce."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PHASE 3: UPPER-FUNNEL NURTURING ── -->
+    <section id="phase3" class="mb-12">
+      <div class="phase-card bg-white rounded-xl border-2 shadow-md overflow-hidden" style="border-color:#6A1B9A;">
+        <div class="px-6 py-4 flex items-center justify-between" style="background:#6A1B9A;">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-white" style="background:rgba(255,255,255,0.2);">Phase 3 ⭐</span>
+            <h3 class="text-white text-lg font-bold">Upper-Funnel Nurturing — Audience &amp; Segment Creation</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color:rgba(255,255,255,0.7);">⏱ 20 minutes · CENTERPIECE</span>
+            <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.2); color:rgba(255,255,255,0.8);">0:30 – 0:50</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-xs font-bold px-2 py-0.5 rounded uppercase" style="background:#F3E5F5; color:#4A148C;">Pain: Strategists → Snowflake → data team → days</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded uppercase" style="background:#F3E5F5; color:#4A148C;">Goal: Done in Salesforce, in minutes</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded uppercase" style="background:#F3E5F5; color:#4A148C;">No SQL · No engineering ticket · No Snowflake login</span>
+          </div>
+
+          <!-- Use Case Definition -->
+          <div class="rounded-xl border-2 p-6 mb-6" style="border-color:#6A1B9A; background:#F3E5F5;">
+            <h4 class="font-bold text-lg mb-3" style="color:#4A148C;">📋 The Use Case — Sean's Own Words</h4>
+            <blockquote class="text-sm italic leading-relaxed border-l-4 pl-4 mb-4" style="color:#333333; border-color:#6A1B9A;">
+              "The big one we're working on now, which is a huge value driver, is upper-funnel nurturing. It's people that have done X, Y, and Z but haven't progressed. We could even do [things like] those things and they've clicked on the same car five days in a row — we would have that activity in Snowflake. Showing that capability would be a huge win."
+              <footer class="mt-2 text-xs not-italic" style="color:#767676;">— Sean Goetz, April 10, 2026</footer>
+            </blockquote>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <p class="font-bold mb-2" style="color:#4A148C;">Segment logic:</p>
+                <div class="space-y-1.5">
+                  <div class="flex items-start gap-2 rounded p-2" style="background:white;"><span style="color:#2E7D32;" class="font-bold">✓</span><span>Downloaded the CarMax mobile app</span></div>
+                  <div class="flex items-start gap-2 rounded p-2" style="background:white;"><span style="color:#2E7D32;" class="font-bold">✓</span><span>Favorited a car</span></div>
+                  <div class="flex items-start gap-2 rounded p-2" style="background:white;"><span style="color:#2E7D32;" class="font-bold">✓</span><span>Clicked on the <em>same</em> car 5+ days in a row</span></div>
+                  <div class="flex items-start gap-2 rounded p-2" style="background:white;"><span style="color:#C62828;" class="font-bold">✗</span><span>Has <em>not</em> submitted a financing application</span></div>
+                </div>
+              </div>
+              <div>
+                <p class="font-bold mb-2" style="color:#4A148C;">Why it matters:</p>
+                <div class="space-y-2 text-sm" style="color:#767676;">
+                  <p>▸ Repeated engagement with the same vehicle = <strong style="color:#333333;">high-intent signal</strong></p>
+                  <p>▸ No financing submission = <strong style="color:#333333;">friction point, not disinterest</strong></p>
+                  <p>▸ Currently requires Snowflake window function + data team handoff. <strong style="color:#333333;">In MCA: built by a strategist in under 10 minutes.</strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step-by-step demo -->
+          <div class="space-y-4">
+            <div class="talking-point rounded-lg p-4 border-2" style="border-color:#6A1B9A; background:#FAF5FF;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#6A1B9A;">1</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">⭐ Open Segment Builder — Set the Persona (2 min)</p>
+                  <p class="text-sm mb-2" style="color:#767676;">Navigate to Data Cloud → Segments → New Segment. Emphasize who is doing this: a marketing strategist, not a data engineer.</p>
+                  <p class="text-sm font-semibold" style="color:#333333;"><strong>Opening script:</strong> "I'm going to play the role of one of your strategists — someone who today has to go ask the data team to run queries in Snowflake. Watch how long this takes."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border-2" style="border-color:#6A1B9A; background:#FAF5FF;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#6A1B9A;">2</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">⭐ Build Filters 1–2 — App Download + Favorited (3 min)</p>
+                  <p class="text-sm" style="color:#767676;">Add filter: Mobile App Download Event exists. Add filter: Favorites Event exists (count ≥ 1). Pause and note the count updating in real time as each filter is applied.</p>
+                  <p class="text-sm mt-2 font-semibold" style="color:#333333;"><strong>Talking point:</strong> "Your strategist can see how many people match as they add filters. No waiting for a query to run."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border-2" style="border-color:#6A1B9A; background:#FAF5FF;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#6A1B9A;">3</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">⭐⭐ Build Filter 3 — Same Car, 5 Days in a Row (5 min)</p>
+                  <p class="text-sm mb-2" style="color:#767676;">This is the high-intent signal Sean specifically described. The most complex filter — show it carefully.</p>
+                  <div class="rounded-xl border-2 p-4 mb-3" style="border-color:#FFC107; background:#FFF8E1;">
+                    <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#7A5000;">⭐ The Money Moment — Linger Here</p>
+                    <p class="text-sm" style="color:#333333;">Car Detail Page View — same Vehicle ID — Count ≥ 5 — within last 14 days. In Snowflake: a window function. In MCA Segment Builder: a filter configuration.</p>
+                  </div>
+                  <p class="text-sm font-semibold" style="color:#333333;"><strong>Script:</strong> "This is the signal Sean described — someone who has looked at the same car five days in a row. In Snowflake, this is a window function. In here, it's a dropdown. Same result. Different world."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border-2" style="border-color:#6A1B9A; background:#FAF5FF;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#6A1B9A;">4</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">⭐ Build Filter 4 — Has NOT Submitted Financing (2 min)</p>
+                  <p class="text-sm mb-2" style="color:#767676;">Add exclusion: Financing Application Submitted does NOT exist. The "not yet converted" gate that makes this upper-funnel vs. active buyer.</p>
+                  <p class="text-sm font-semibold" style="color:#333333;"><strong>Talking point:</strong> "We're not emailing people who already applied — that's noise. We want the people who are clearly interested but haven't taken the step yet."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#6A1B9A;">5</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Save + The Before/After Moment (2 min)</p>
+                  <p class="text-sm" style="color:#767676;">Name it: <strong>SEG_UpperFunnelNurturing_HighIntent_v1</strong>. Save. Show the final member count. Pause.</p>
+                  <div class="mt-3 rounded-lg p-4 border-2 text-sm" style="border-color:#FFC107; background:#FFF8E1;">
+                    <p class="font-bold mb-1" style="color:#7A5000;">🎯 Say This:</p>
+                    <p style="color:#333333;">"That's the upper-funnel nurturing segment Sean described. Here's how long that just took. [check clock]. In Snowflake, your strategist spends hours on that query, then waits for the data team to pull it, clean it, and load it into ExactTarget. What you just watched took about eight minutes — and the person doing it never left Salesforce."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#6A1B9A;">6</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Activate — Connect Segment to a Flow (5 min)</p>
+                  <p class="text-sm mb-2" style="color:#767676;">Create or show a pre-built Segment-Triggered Flow: when a contact enters this segment → wait 30 minutes → send the email built in Module 2. Show the flow canvas. Show the decision branch: Opened? → clicked CTA / no engagement.</p>
+                  <p class="text-sm font-semibold" style="color:#333333;"><strong>Talking point:</strong> "This is what replaces Journey Builder for this use case. It's Salesforce Flow — the same tool your core platform uses for any automation. Once the segment is defined, wiring it to a send is a few clicks."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Objections -->
+          <div class="mt-6 rounded-lg border-2 p-5" style="border-color:#6A1B9A; background:#F3E5F5;">
+            <h4 class="font-bold mb-3" style="color:#4A148C;">🙋 Anticipated Questions — Have Answers Ready</h4>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3 bg-white rounded p-3 border" style="border-color:#CCCCCC;">
+                <span class="font-bold" style="color:#6A1B9A;">Q:</span>
+                <div>
+                  <p class="font-semibold" style="color:#333333;">"Our data isn't all in Salesforce — a lot is still in Snowflake."</p>
+                  <p class="mt-1" style="color:#767676;"><strong>A:</strong> "Data Cloud ingests your Snowflake activity data via a data stream. Once it's mapped, your strategists access it through this same interface. The data stays in Snowflake as the source of truth. Your strategists just never need to touch it."</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 bg-white rounded p-3 border" style="border-color:#CCCCCC;">
+                <span class="font-bold" style="color:#6A1B9A;">Q:</span>
+                <div>
+                  <p class="font-semibold" style="color:#333333;">"How does this handle the 'same car' logic — that feels like it needs SQL?"</p>
+                  <p class="mt-1" style="color:#767676;"><strong>A:</strong> "For standard aggregations, Segment Builder handles it via the data model — Vehicle ID is a field on the Page View event, so 'same vehicle' is just filtering on that field. For more complex aggregations, Calculated Insights let a data person define the metric once in SQL, and then it shows up as a simple filter for the strategist."</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3 bg-white rounded p-3 border" style="border-color:#CCCCCC;">
+                <span class="font-bold" style="color:#6A1B9A;">Q:</span>
+                <div>
+                  <p class="font-semibold" style="color:#333333;">"How often does the segment refresh?"</p>
+                  <p class="mt-1" style="color:#767676;"><strong>A:</strong> "Segment membership updates continuously as data changes. When a financing application is submitted, that person exits the segment. No manual re-pull required."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg border-l-4 text-sm" style="background:#E6EEF8; border-color:#003087;">
+            <p class="font-semibold" style="color:#333333;">🔗 Transition to Phase 4 — Engineering Environment:</p>
+            <p style="color:#767676;">"We've shown the email designer and the segment builder. Let me pivot to the third thing Sean mentioned — the one that's going to matter most to Christine, Lawrence, and your engineering team."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PHASE 4: DEV ENVIRONMENT ── -->
+    <section id="phase4" class="mb-12">
+      <div class="phase-card bg-white rounded-xl border shadow-sm overflow-hidden" style="border-color:#CCCCCC;">
+        <div class="px-6 py-4 flex items-center justify-between" style="background:#E65100;">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-white" style="background:rgba(255,255,255,0.2);">Phase 4</span>
+            <h3 class="text-white text-lg font-bold">Engineering Environment — Source Control &amp; DevOps</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color:rgba(255,255,255,0.7);">⏱ 10 minutes</span>
+            <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.2); color:rgba(255,255,255,0.8);">0:50 – 1:00</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="rounded-lg border p-4 mb-5 text-sm" style="background:#FBE9E7; border-color:#E65100;">
+            <strong style="color:#BF360C;">Timing note (v3):</strong> <span style="color:#333333;">Phase 4 is trimmed to 10 min to make room for the new Feedback Loops module. Lead with the business value, go technical only if Christine/Lawrence lean in. Cover source control and datakit — cut monitoring to a brief mention.</span>
+          </div>
+
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#E65100;">1</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Business Lead-In (1 min)</p>
+                  <p class="text-sm font-medium" style="color:#333333;"><strong>Script:</strong> "ExactTarget has no source control. That means your engineers can't review each other's work, can't roll back a bad deploy, and can't test changes before they hit production. Every campaign change is a production change. That ends here."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#E65100;">2</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Source Control &amp; Salesforce DX (4 min)</p>
+                  <p class="text-sm" style="color:#767676;">Show that MCA assets — email templates, flows, data graph configurations — are Salesforce metadata. Deployable via SFDX. Trackable in Git. PR-reviewable. Show a sample deployment command or the metadata structure.</p>
+                  <p class="text-sm mt-2 font-semibold" style="color:#333333;"><strong>Key line:</strong> "Everything your team builds in MCA is versionable, deployable, and reviewable in a pull request — the same workflow your engineers use for everything else on the Salesforce platform."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#E65100;">3</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Datakit Cross-Environment Deployments (3 min)</p>
+                  <p class="text-sm" style="color:#767676;">Show a datakit: packages up Data Cloud + MCA configuration — segments, flows, data graphs, email assets — and promotes it sandbox → production. Be transparent: some features require manual steps during deployment.</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#E65100;">4</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Monitoring — Brief Mention (2 min)</p>
+                  <p class="text-sm" style="color:#767676;">Mention that flow execution and email engagement are fully queryable via the Flow DMOs and Email Engagement DMO. "Your engineers can debug a flow mid-execution and query who received what, when, and what they did with it. No more black-box sends." Offer to go deeper in a follow-up if Christine/Lawrence want it.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg border-l-4 text-sm" style="background:#E6EEF8; border-color:#003087;">
+            <p class="font-semibold" style="color:#333333;">🔗 Transition to Phase 5 — Triggered Sends:</p>
+            <p style="color:#767676;">"You mentioned you're listening to the Enterprise Service Bus for triggered sends today. Let me show you five specific scenarios from your list — and what each one looks like natively in MCA."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PHASE 5: TRIGGERED SENDS ── -->
+    <section id="phase5" class="mb-12">
+      <div class="phase-card bg-white rounded-xl border shadow-sm overflow-hidden" style="border-color:#CCCCCC;">
+        <div class="px-6 py-4 flex items-center justify-between" style="background:#00695C;">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-white" style="background:rgba(255,255,255,0.2);">Phase 5</span>
+            <h3 class="text-white text-lg font-bold">Triggered &amp; Event-Based Sends — Sean's Five Scenarios</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color:rgba(255,255,255,0.7);">⏱ 10 minutes</span>
+            <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.2); color:rgba(255,255,255,0.8);">1:00 – 1:10</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="rounded-lg border p-4 mb-5 text-sm" style="background:#E0F2F1; border-color:#00695C;">
+            <strong style="color:#004D40;">Source (4/29 sync — Sean's email):</strong> <span style="color:#333333;">Sean sent a list of five specific triggered scenarios he wants to support. Show all five as pre-built flows — don't build from scratch here. This module is a "gallery walk," not a construction demo. Two minutes total per scenario max.</span>
+          </div>
+
+          <!-- Five Scenarios -->
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <div class="rounded-lg p-4 border-2 text-sm" style="border-color:#00695C; background:#E0F2F1;">
+              <div class="font-bold mb-1" style="color:#004D40;">1 · Car Page View</div>
+              <p style="color:#333333;">Trigger: customer views a vehicle detail page. Send: personalized email referencing that specific vehicle (make, model, price, mileage) plus other similar vehicles in their browsing history.</p>
+              <div class="mt-2 text-xs font-semibold uppercase tracking-wide" style="color:#00695C;">AETF → send within 1 hour</div>
+            </div>
+            <div class="rounded-lg p-4 border-2 text-sm" style="border-color:#00695C; background:#E0F2F1;">
+              <div class="font-bold mb-1" style="color:#004D40;">2 · Account Created, No Opt-In</div>
+              <p style="color:#333333;">Trigger: customer creates an account but does not sign up for email updates. Send: a gentle "here's what you're missing" message — not promotional, consent-aware.</p>
+              <div class="mt-2 text-xs font-semibold uppercase tracking-wide" style="color:#00695C;">Segment-Triggered → 24h delay</div>
+            </div>
+            <div class="rounded-lg p-4 border-2 text-sm" style="border-color:#00695C; background:#E0F2F1;">
+              <div class="font-bold mb-1" style="color:#004D40;">3 · Email Sign-Up</div>
+              <p style="color:#333333;">Trigger: customer signs up for email updates and indicates cars they're interested in. Send: welcome email personalized to the specific vehicles they signed up about.</p>
+              <div class="mt-2 text-xs font-semibold uppercase tracking-wide" style="color:#00695C;">AETF → immediate</div>
+            </div>
+            <div class="rounded-lg p-4 border-2 text-sm" style="border-color:#00695C; background:#E0F2F1;">
+              <div class="font-bold mb-1" style="color:#004D40;">4 · Instant Offer Submitted</div>
+              <p style="color:#333333;">Trigger: customer submits an instant offer for their trade-in vehicle. Send: personalized email with their offer value + a curated list of vehicles in the price range their trade-in unlocks.</p>
+              <div class="mt-2 text-xs font-semibold uppercase tracking-wide" style="color:#00695C;">AETF → immediate</div>
+            </div>
+            <div class="rounded-lg p-4 border-2 text-sm" style="border-color:#00695C; background:#E0F2F1;">
+              <div class="font-bold mb-1" style="color:#004D40;">5 · Pre-Qual Submitted</div>
+              <p style="color:#333333;">Trigger: customer submits a pre-qualification. Send: immediate results email with personalized vehicle recommendations based on their financing terms (price range, monthly payment targets).</p>
+              <div class="mt-2 text-xs font-semibold uppercase tracking-wide" style="color:#00695C;">AETF → immediate</div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#00695C;">→</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Gallery Walk Script (8 min total)</p>
+                  <p class="text-sm" style="color:#767676;">Show each pre-built AETF in the flow builder. Click into the trigger definition on 1–2 of them. Don't rebuild — the goal is "these are already here, your team can own them." Emphasize that all five are the same pattern: event in Data Cloud → flow fires → personalized email out.</p>
+                  <p class="text-sm mt-2 font-semibold" style="color:#333333;"><strong>Anchor line:</strong> "Sean, you sent us this list. Every one of these is a configured flow in this org. We built them from your list — your team takes over from here."</p>
+                </div>
+              </div>
+            </div>
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#00695C;">→</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">ESB Migration Path (2 min)</p>
+                  <p class="text-sm" style="color:#767676;">Reassure the room: CarMax doesn't have to rearchitect the ESB. The existing ESB can continue detecting and enriching events — it just POSTs to the Data Cloud Ingestion API instead of the MCE API.</p>
+                  <p class="text-sm mt-2 font-semibold" style="color:#333333;"><strong>Key line:</strong> "Your ESB keeps doing what it does. The only thing that changes is where it sends the event — Data Cloud instead of ExactTarget."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg border-l-4 text-sm" style="background:#E6EEF8; border-color:#003087;">
+            <p class="font-semibold" style="color:#333333;">🔗 Transition to Phase 6 — Dynamic Feedback Loops:</p>
+            <p style="color:#767676;">"Those are all one-directional — something happens, we send an email. Now let me show you the capability Sean mentioned that flips that around: what happens when the customer acts inside the email itself."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PHASE 6: DYNAMIC FEEDBACK LOOPS ── NEW ── -->
+    <section id="phase6" class="mb-12">
+      <div class="phase-card bg-white rounded-xl border-2 shadow-md overflow-hidden" style="border-color:#AD1457;">
+        <div class="px-6 py-4 flex items-center justify-between" style="background:#AD1457;">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-white" style="background:rgba(255,255,255,0.2);">Phase 6 ✨ NEW</span>
+            <h3 class="text-white text-lg font-bold">Dynamic Feedback Loops — Email That Writes Back</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color:rgba(255,255,255,0.8);">⏱ 10 minutes</span>
+            <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.2); color:rgba(255,255,255,0.8);">1:10 – 1:20</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex flex-wrap gap-2 mb-5">
+            <span class="text-xs font-bold px-2 py-0.5 rounded uppercase" style="background:#FCE4EC; color:#880E4F;">Pain: Email clicks don't update the customer profile</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded uppercase" style="background:#FCE4EC; color:#880E4F;">Sean's exact ask: "ability to heart cars directly within the body of the email"</span>
+          </div>
+
+          <!-- Use Case Definition -->
+          <div class="rounded-xl border-2 p-6 mb-6" style="border-color:#AD1457; background:#FCE4EC;">
+            <h4 class="font-bold text-lg mb-3" style="color:#880E4F;">📋 The Use Case — From the 4/29 Sync</h4>
+            <p class="text-sm italic mb-3 border-l-4 pl-4" style="color:#333333; border-color:#AD1457;">
+              "Dynamic feedback loops in email: ability to heart cars directly within the body of the email... thumbs up / thumbs down the email... Skye Integration: chat with Skye if the recs aren't resonating and Skye will update the recs accordingly."
+              <span class="block mt-2 text-xs not-italic" style="color:#767676;">— Sean Goetz, April 29, 2026</span>
+            </p>
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
+              <div class="bg-white rounded-lg p-3 border" style="border-color:#CCCCCC;">
+                <div class="font-bold mb-1" style="color:#AD1457;">❤️ Heart / Favorite from Email</div>
+                <p style="color:#767676;">Customer clicks a heart icon on a vehicle card inside the email. The favorite is written back to their Data Cloud Unified Profile — no website visit required.</p>
+                <div class="mt-2 text-xs font-semibold uppercase" style="color:#AD1457;">Demo this live</div>
+              </div>
+              <div class="bg-white rounded-lg p-3 border" style="border-color:#CCCCCC;">
+                <div class="font-bold mb-1" style="color:#767676;">👍 Thumbs Up / Thumbs Down</div>
+                <p style="color:#767676;">Customer signals whether the email content is relevant. Feedback writes back as an engagement signal that future segment and flow logic can branch on.</p>
+                <div class="mt-2 text-xs font-semibold uppercase" style="color:#767676;">Mention as follow-on</div>
+              </div>
+              <div class="bg-white rounded-lg p-3 border" style="border-color:#CCCCCC;">
+                <div class="font-bold mb-1" style="color:#767676;">🤖 Skye Integration</div>
+                <p style="color:#767676;">Customer chats with Skye AI if recs aren't resonating — Skye updates the vehicle recommendations accordingly. Future-state: requires Agentforce integration with the recommendation engine.</p>
+                <div class="mt-2 text-xs font-semibold uppercase" style="color:#767676;">Future-state — mention only</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step-by-step demo -->
+          <div class="space-y-4">
+            <div class="talking-point rounded-lg p-4 border-2" style="border-color:#AD1457; background:#FFF0F5;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#AD1457;">1</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">⭐ Frame the Problem (1 min)</p>
+                  <p class="text-sm font-medium" style="color:#333333;"><strong>Script:</strong> "Every email you've sent in ExactTarget is a dead end. The customer opens it, clicks a link, maybe visits the site — but that click doesn't update their profile, it doesn't update their favorite vehicles list, and it doesn't change what the next email looks like. MCA changes that."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border-2" style="border-color:#AD1457; background:#FFF0F5;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#AD1457;">2</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">⭐⭐ Show the Heart Link in the Email (2 min)</p>
+                  <p class="text-sm mb-2" style="color:#767676;">Open the email built in Module 2. Show the vehicle card — each car has a tracked heart icon link. The URL carries two parameters: subscriber key and vehicle ID. This is the standard MCA tracked link + a custom parameter.</p>
+                  <div class="rounded-lg p-3 border font-mono text-xs" style="background:#002060; color:#FFC107; border-color:#003087;">
+                    https://[dc-ingestion-endpoint]/v1/ingest/heart?<br>
+                    &nbsp;&nbsp;subscriberKey=&#123;&#123;root.$dataGraph.ContactKey__c&#125;&#125;<br>
+                    &nbsp;&nbsp;&amp;vehicleId=&#123;&#123;root.$dataGraph.VehicleId__c&#125;&#125;<br>
+                    &nbsp;&nbsp;&amp;action=favorite
+                  </div>
+                  <p class="text-sm mt-2 font-semibold" style="color:#333333;"><strong>Talking point:</strong> "That link hits a Data Cloud Streaming API endpoint. It's a real-time ingestion call. No CloudPage, no custom redirect, no identity stitching workaround — the subscriber key is already in the email context."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border-2" style="border-color:#AD1457; background:#FFF0F5;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#AD1457;">3</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">⭐⭐⭐ Click the Heart — Watch the Profile Update (4 min)</p>
+                  <p class="text-sm mb-2" style="color:#767676;">Click the heart link in the test email. Switch to the Data Cloud profile for that test customer. Show the Unified Profile — the favorited vehicle now appears in their Vehicle Favorites related records.</p>
+                  <div class="rounded-xl border-2 p-4" style="border-color:#FFC107; background:#FFF8E1;">
+                    <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#7A5000;">⭐ The "Aha" Moment — Let It Land</p>
+                    <p class="text-sm" style="color:#333333;">The customer clicked a heart inside an email. Their profile updated in real time. No website visit. No separate API call from the CarMax app. The email itself was a data input. The next email this person receives can now reference the vehicle they hearted — because it's in their profile.</p>
+                  </div>
+                  <p class="text-sm mt-3 font-semibold" style="color:#333333;"><strong>Script:</strong> "That click — from inside an email — just wrote to their Data Cloud profile. Their next segment evaluation, their next triggered flow, their next email: they'll all reflect that favorite. The email is no longer a dead end. It's a data source."</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#AD1457;">4</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">MCE vs MCA — The Differentiator (2 min)</p>
+                  <p class="text-sm mb-3" style="color:#767676;">This is where MCA's native Data Cloud integration is a clear win over ExactTarget. Show the contrast:</p>
+                  <div class="overflow-x-auto">
+                    <table class="w-full text-sm border-collapse">
+                      <thead>
+                        <tr style="background:#002060; color:white;">
+                          <th class="p-3 text-left">MCE (ExactTarget)</th>
+                          <th class="p-3 text-left">MCA</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style="background:#FFF5F5;">
+                          <td class="p-3 border" style="border-color:#CCCCCC;">Requires CloudPage + custom redirect URL</td>
+                          <td class="p-3 border" style="border-color:#CCCCCC; color:#2E7D32; font-weight:600;">Native Data Cloud Streaming API — one click</td>
+                        </tr>
+                        <tr>
+                          <td class="p-3 border" style="border-color:#CCCCCC;">Manual identity stitching required</td>
+                          <td class="p-3 border" style="border-color:#CCCCCC; color:#2E7D32; font-weight:600;">Built-in identity resolution — subscriber key in email context</td>
+                        </tr>
+                        <tr style="background:#FFF5F5;">
+                          <td class="p-3 border" style="border-color:#CCCCCC;">Siloed engagement data</td>
+                          <td class="p-3 border" style="border-color:#CCCCCC; color:#2E7D32; font-weight:600;">Unified profile enrichment — available to all downstream systems</td>
+                        </tr>
+                        <tr>
+                          <td class="p-3 border" style="border-color:#CCCCCC;">Custom dev needed</td>
+                          <td class="p-3 border" style="border-color:#CCCCCC; color:#2E7D32; font-weight:600;">Lower-code — configured in the email designer</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="talking-point rounded-lg p-4 border" style="border-color:#CCCCCC;">
+              <div class="flex items-start gap-3">
+                <span class="font-bold text-xl mt-0.5" style="color:#AD1457;">5</span>
+                <div>
+                  <p class="font-semibold mb-1" style="color:#333333;">Thumbs Up/Down + Skye — Future State Flag (1 min)</p>
+                  <p class="text-sm" style="color:#767676;">Briefly acknowledge: thumbs up/down follows the same pattern — a tracked link that writes a feedback signal to the profile. Skye integration is a more involved Agentforce architecture — flag it as a roadmap item worth exploring separately after the demo. Don't go deep here.</p>
+                  <p class="text-sm mt-2 font-semibold" style="color:#333333;"><strong>Line:</strong> "The Skye integration you mentioned — that's an Agentforce architecture conversation. It's feasible, but it's a separate workstream. We'll put it in the parking lot for a follow-up."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 rounded-lg border-l-4 text-sm" style="background:#E6EEF8; border-color:#003087;">
+            <p class="font-semibold" style="color:#333333;">🔗 Transition to Phase 7 — Q&amp;A:</p>
+            <p style="color:#767676;">"That's the four use cases we built this demo around — your four pain points, your own words. We have ten minutes. What questions do you have?"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PHASE 7: Q&A ── -->
+    <section id="phase7" class="mb-16">
+      <div class="phase-card bg-white rounded-xl border shadow-sm overflow-hidden" style="border-color:#CCCCCC;">
+        <div class="px-6 py-4 flex items-center justify-between" style="background:#546E7A;">
+          <div class="flex items-center gap-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider text-white" style="background:rgba(255,255,255,0.2);">Phase 7</span>
+            <h3 class="text-white text-lg font-bold">Q&amp;A &amp; Next Steps</h3>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-sm" style="color:rgba(255,255,255,0.7);">⏱ 10 minutes</span>
+            <span class="text-xs px-2 py-0.5 rounded" style="background:rgba(255,255,255,0.2); color:rgba(255,255,255,0.8);">1:20 – 1:30</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <p class="font-bold text-sm uppercase tracking-wider mb-3" style="color:#546E7A;">Q&amp;A (5 min)</p>
+              <div class="space-y-2 text-sm">
+                <div class="talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;">Invite open questions. Burke: capture any new use cases mentioned — they become future demo iterations.</div>
+                <div class="talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;">Christine and Lawrence: ask them directly — "Is there anything from your daily work that we didn't show that would be important to see?"</div>
+                <div class="talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;">
+                  <strong>Upper Funnel SMS parking lot:</strong> If Sean brings up the SMS scenarios from 4/29 (signup for SMS status updates, proactive nurture, Skye via SMS) — acknowledge it: "MCA supports SMS natively — same Flow architecture, same Data Cloud segment trigger, just an SMS send action instead of email. That's a natural follow-up workstream once the email foundation is in."
+                </div>
+                <div class="talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;">Closing line: "We built this demo from your list. If there's something you wanted to see that we missed, that's the input we're here for."</div>
+              </div>
+            </div>
+            <div>
+              <p class="font-bold text-sm uppercase tracking-wider mb-3" style="color:#546E7A;">Confirmed Next Steps</p>
+              <div class="space-y-2 text-sm">
+                <label class="flex items-start gap-3 cursor-pointer talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;"><input type="checkbox" class="mt-0.5"><span><strong>Sean</strong> → confirms: does heart/favorite writeback need to surface in CarMax profile app, or is DC profile update sufficient for v1?</span></label>
+                <label class="flex items-start gap-3 cursor-pointer talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;"><input type="checkbox" class="mt-0.5"><span><strong>Sean</strong> → sends upper-funnel nurturing segment exact attribute list + ExactTarget component block screenshot</span></label>
+                <label class="flex items-start gap-3 cursor-pointer talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;"><input type="checkbox" class="mt-0.5"><span><strong>Burke</strong> → forwards personal CarMax email to Adam</span></label>
+                <label class="flex items-start gap-3 cursor-pointer talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;"><input type="checkbox" class="mt-0.5"><span><strong>Adam</strong> → timeline estimate + travel schedule → Andrew Gordon</span></label>
+                <label class="flex items-start gap-3 cursor-pointer talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;"><input type="checkbox" class="mt-0.5"><span><strong>Sean</strong> → sets up follow-up: Christine + Lawrence walk-through of demo progress</span></label>
+                <label class="flex items-start gap-3 cursor-pointer talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;"><input type="checkbox" class="mt-0.5"><span><strong>Parking lot follow-up:</strong> Skye/Agentforce integration architecture + Upper Funnel SMS workstream</span></label>
+                <label class="flex items-start gap-3 cursor-pointer talking-point rounded-lg p-3 border" style="border-color:#CCCCCC;"><input type="checkbox" class="mt-0.5"><span><strong>Confirm</strong> → final demo audience = program leadership (strategy, product, product engineering, design + Kyle Brody ops)</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /max-w-7xl -->
+
+  <script>
+    const sections = ['strategy','setup','phase0','phase1','phase2','phase3','phase4','phase5','phase6','phase7'];
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < 80) current = id;
+      });
+      navLinks.forEach(a => {
+        const href = a.getAttribute('href');
+        const isActive = href === '#' + current;
+        a.style.color = isActive ? '#003087' : '#767676';
+        a.style.borderBottomColor = isActive ? '#003087' : 'transparent';
+        a.classList.toggle('active', isActive);
+      });
+    });
+  </script>
+
+</body>
+</html>

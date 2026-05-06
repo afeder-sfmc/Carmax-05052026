@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CarMax × MCA — 90-Minute Demo Plan</title>
+<style>
+  @font-face {
+    font-family: 'CarMaxSharpSansDisp-Bold';
+    font-weight: 700;
+    src: url('https://www.carmax.com/shared/fonts/CarMaxSharpSansDisp-Bold.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Lato';
+    font-weight: 400;
+    src: url('https://www.carmax.com/shared/fonts/lato-v16-latin-regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Lato';
+    font-weight: 700;
+    src: url('https://www.carmax.com/shared/fonts/lato-v16-latin-700.woff2') format('woff2');
+  }
+
+  :root {
+    --navy:       #003087;
+    --dark-navy:  #002060;
+    --blue:       #0057B8;
+    --light-blue: #E6EEF8;
+    --white:      #FFFFFF;
+    --gray-dark:  #333333;
+    --gray-mid:   #767676;
+    --gray-light: #F5F5F5;
+    --border:     #CCCCCC;
+    --green:      #2E7D32;
+    --red:        #C62828;
+    --yellow:     #FFC107;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    color: var(--gray-dark);
+    background: var(--gray-light);
+  }
+
+  /* ── TOP NAV ── */
+  header {
+    background: var(--navy);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+  .header-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 24px;
+    height: 64px;
+  }
+  .logo-text {
+    font-family: 'CarMaxSharpSansDisp-Bold', Arial, sans-serif;
+    font-size: 22px;
+    color: #fff;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .logo-text span { color: var(--yellow); }
+  .nav-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.25); }
+  .header-title {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    white-space: nowrap;
+  }
+  nav {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+  }
+  nav a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  nav a:hover, nav a.active {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--dark-navy);
+    color: #fff;
+    padding: 48px 24px;
+  }
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: start;
+  }
+  .hero h1 {
+    font-family: 'CarMaxSharpSansDisp-Bold', Arial, sans-serif;
+    font-size: 36px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--yellow); }
+  .hero p { font-size: 18px; color: rgba(255,255,255,0.8); max-width: 640px; line-height: 1.6; }
+  .hero-meta { display: flex; flex-direction: column; gap: 8px; margin-top: 24px; }
+  .hero-meta-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; color: rgba(255,255,255,0.7);
+  }
+  .hero-meta-item strong { color: #fff; }
+  .hero-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 20px 24px;
+    min-width: 220px;
+  }
+  .hero-badge-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--yellow);
+    margin-bottom: 8px;
+  }
+  .hero-badge-value {
+    font-family: 'CarMaxSharpSansDisp-Bold', Arial, sans-serif;
+    font-size: 48px;
+    color: #fff;
+    line-height: 1;
+  }
+  .hero-badge-sub { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+  /* ── TIMELINE ── */
+  .timeline-wrap {
+    background: var(--navy);
+    padding: 0 24px 20px;
+  }
+  .timeline-inner { max-width: 1280px; margin: 0 auto; }
+  .timeline-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.5);
+    padding-top: 4px;
+    margin-bottom: 10px;
+  }
+  .timeline-bar {
+    display: flex;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 36px;
+  }
+  .tl-seg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: filter 0.15s;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 6px;
+  }
+  .tl-seg:hover { filter: brightness(1.15); }
+  .tl-seg.seg-intro   { background: #1a4a8a; }
+  .tl-seg.seg-context { background: #0057B8; }
+  .tl-seg.seg-email   { background: #2E7D32; }
+  .tl-seg.seg-segment { background: #7B1FA2; }
+  .tl-seg.seg-dev     { background: #E65100; }
+  .tl-seg.seg-triggered { background: #00838F; }
+  .tl-seg.seg-qa      { background: #546E7A; }
+  .timeline-ticks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    padding: 0 2px;
+  }
+  .timeline-ticks span { font-size: 10px; color: rgba(255,255,255,0.45); }
+
+  /* ── MAIN LAYOUT ── */
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .content { flex: 1; min-width: 0; }
+  .sidebar { width: 300px; flex-shrink: 0; }
+
+  /* ── SECTION CARDS ── */
+  .section-card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .section-header:hover { background: var(--gray-light); }
+  .section-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .section-title-wrap { flex: 1; }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-mid);
+    margin-bottom: 2px;
+  }
+  .section-title {
+    font-family: 'CarMaxSharpSansDisp-Bold', Arial, sans-serif;
+    font-size: 20px;
+    color: var(--dark-navy);
+  }
+  .section-duration {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gray-mid);
+    background: var(--gray-light);
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .chevron {
+    width: 20px;
+    height: 20px;
+    color: var(--gray-mid);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .section-card.open .chevron { transform: rotate(180deg); }
+  .section-body {
+    display: none;
+    padding: 0 24px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .section-card.open .section-body { display: block; }
+
+  /* ── BEAT CARDS ── */
+  .beat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .beat {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    background: var(--gray-light);
+  }
+  .beat-time {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-mid);
+    margin-bottom: 6px;
+  }
+  .beat h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark-navy);
+    margin-bottom: 6px;
+  }
+  .beat p { font-size: 14px; color: var(--gray-dark); line-height: 1.5; }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--light-blue);
+    border-left: 4px solid var(--navy);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .callout strong { color: var(--navy); }
+  .callout.warn {
+    background: #FFF8E1;
+    border-left-color: var(--yellow);
+  }
+  .callout.warn strong { color: #7A5000; }
+  .callout.success {
+    background: #F1F8E9;
+    border-left-color: var(--green);
+  }
+  .callout.success strong { color: var(--green); }
+
+  /* ── TALKING POINTS ── */
+  .talking-points { margin-top: 16px; }
+  .talking-points h5 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gray-mid);
+    margin-bottom: 10px;
+  }
+  .talking-points ul { list-style: none; padding: 0; }
+  .talking-points li {
+    padding: 8px 12px 8px 36px;
+    position: relative;
+    font-size: 14px;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--border);
+    color: var(--gray-dark);
+  }
+  .talking-points li:last-child { border-bottom: none; }
+  .talking-points li::before {
+    content: '›';
+    position: absolute;
+    left: 12px;
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  /* ── PAIN POINT BADGES ── */
+  .pain-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .pain-tag {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .pain-tag.pain-email   { background: #E8F5E9; color: #1B5E20; }
+  .pain-tag.pain-segment { background: #F3E5F5; color: #4A148C; }
+  .pain-tag.pain-dev     { background: #FBE9E7; color: #BF360C; }
+  .pain-tag.pain-data    { background: #E3F2FD; color: #0D47A1; }
+
+  /* ── SIDEBAR ── */
+  .sidebar-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .sidebar-card-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .sidebar-card-body { padding: 16px; }
+  .attendee {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .attendee:last-child { border-bottom: none; }
+  .attendee-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 12px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .attendee-name { font-weight: 700; color: var(--dark-navy); }
+  .attendee-role { color: var(--gray-mid); font-size: 12px; }
+  .objective-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .objective-item:last-child { border-bottom: none; }
+  .objective-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .prereq-item {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    line-height: 1.5;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .prereq-item:last-child { border-bottom: none; }
+  .prereq-status { font-size: 16px; flex-shrink: 0; }
+
+  /* ── COLOR DOTS ── */
+  .color-intro   { background: #1a4a8a; }
+  .color-context { background: var(--blue); }
+  .color-email   { background: var(--green); }
+  .color-segment { background: #7B1FA2; }
+  .color-dev     { background: #E65100; }
+  .color-triggered { background: #00838F; }
+  .color-qa      { background: #546E7A; }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: background 0.15s;
+  }
+  .print-btn:hover { background: rgba(255,255,255,0.15); }
+
+  @media print {
+    header, .timeline-wrap { position: static; }
+    .section-body { display: block !important; }
+    .section-header { cursor: default; }
+    .chevron { display: none; }
+    .print-btn { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <div class="logo-text">CAR<span>MAX</span></div>
+    <div class="nav-divider"></div>
+    <div class="header-title">MC Advanced Demo Plan</div>
+    <nav>
+      <a href="#intro">Intro</a>
+      <a href="#context">Context</a>
+      <a href="#email">Email</a>
+      <a href="#segments">Segments</a>
+      <a href="#dev">Dev Env</a>
+      <a href="#triggered">Triggered</a>
+      <a href="#qa">Q&amp;A</a>
+    </nav>
+    <button class="print-btn" onclick="window.print()">⎙ Print</button>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>CarMax × Salesforce<br><span>Marketing Cloud Advanced</span><br>Demo Plan</h1>
+      <p>A functionality-first, hands-on demonstration addressing CarMax's three core pain points: email authoring without engineers, self-serve audience creation, and a modern development environment.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">📅 <strong>Audience:</strong> Sean Goetz + Christine, Lawrence, and program leadership (strategy, product, product engineering, design)</div>
+        <div class="hero-meta-item">🎯 <strong>Goal:</strong> Show what will "actually come to life" — capability over sizzle reel</div>
+        <div class="hero-meta-item">👤 <strong>Presenter:</strong> Adam Feder (demo lead) + Andrew Gordon, Burke Maxwell, Feyissa Dalu</div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-label">Total Runtime</div>
+      <div class="hero-badge-value">90</div>
+      <div class="hero-badge-sub">minutes · 7 segments</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TIMELINE ── -->
+<div class="timeline-wrap">
+  <div class="timeline-inner">
+    <div class="timeline-label">Session Timeline</div>
+    <div class="timeline-bar">
+      <div class="tl-seg seg-intro"   style="width:5.6%" onclick="jumpTo('intro')" title="Intro · 5 min">5m</div>
+      <div class="tl-seg seg-context" style="width:5.6%" onclick="jumpTo('context')" title="Context · 5 min">5m</div>
+      <div class="tl-seg seg-email"   style="width:22.2%" onclick="jumpTo('email')" title="Email Designer · 20 min">Email Designer · 20m</div>
+      <div class="tl-seg seg-segment" style="width:27.8%" onclick="jumpTo('segments')" title="Segments · 25 min">Audience & Segments · 25m</div>
+      <div class="tl-seg seg-dev"     style="width:16.7%" onclick="jumpTo('dev')" title="Dev Env · 15 min">Dev Env · 15m</div>
+      <div class="tl-seg seg-triggered" style="width:11.1%" onclick="jumpTo('triggered')" title="Triggered Sends · 10 min">Triggered · 10m</div>
+      <div class="tl-seg seg-qa"      style="width:11.1%" onclick="jumpTo('qa')" title="Q&A · 10 min">Q&amp;A · 10m</div>
+    </div>
+    <div class="timeline-ticks">
+      <span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90 min</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<main>
+  <div class="content">
+
+    <!-- 1. INTRO -->
+    <div class="section-card open" id="intro">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num color-intro">1</div>
+        <div class="section-title-wrap">
+          <div class="section-eyebrow">0:00 – 0:05</div>
+          <div class="section-title">Welcome &amp; Framing</div>
+        </div>
+        <div class="section-duration">5 min</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="callout">
+          <strong>Opening premise:</strong> "You told us you've seen plenty of marketing slides. Today we're showing you what actually comes to life — built from scratch, using your own use cases."
+        </div>
+        <div class="beat-grid">
+          <div class="beat">
+            <div class="beat-time">0:00 – 0:02</div>
+            <h4>Introductions</h4>
+            <p>Brief round of introductions for any attendees who haven't met Adam. Acknowledge Christine and Lawrence by name.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">0:02 – 0:05</div>
+            <h4>Agenda Overview</h4>
+            <p>Walk the timeline. Confirm the three focus areas with Sean: Email Designer → Audience/Segments → Engineering Environment. Flag the bonus triggered-sends segment.</p>
+          </div>
+        </div>
+        <div class="talking-points">
+          <h5>Talking Points</h5>
+          <ul>
+            <li>Adam has 12 years at Salesforce, started 10 months post-ExactTarget acquisition — deep MCA + automotive background</li>
+            <li>CarMax is a long-term customer; Adam bought his daughter's Jeep Cherokee at CarMax — this is personal as well as professional</li>
+            <li>"We're not here to show a sizzle reel — we're going to build things in front of you"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. CONTEXT -->
+    <div class="section-card" id="context">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num color-context">2</div>
+        <div class="section-title-wrap">
+          <div class="section-eyebrow">0:05 – 0:10</div>
+          <div class="section-title">CarMax Today vs. Tomorrow</div>
+        </div>
+        <div class="section-duration">5 min</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="callout">
+          <strong>Goal:</strong> Anchor the audience in their own architecture so they see MCA as a natural evolution, not a rip-and-replace.
+        </div>
+        <div class="beat-grid">
+          <div class="beat">
+            <div class="beat-time">0:05 – 0:08</div>
+            <h4>Current State (Their Words)</h4>
+            <p>Reference the architecture: data lives in Snowflake/EDL → strategists query → data team handoff → ExactTarget send. Engineering bottleneck at every layer.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">0:08 – 0:10</div>
+            <h4>MCA in the Architecture</h4>
+            <p>Show where Data Cloud + MCA slots into their Salesforce org. Snowflake remains the source of truth — Data Cloud ingests it via a data stream. Salesforce becomes the activation layer.</p>
+          </div>
+        </div>
+        <div class="callout warn">
+          <strong>Key message:</strong> Snowflake doesn't go away. Strategists just stop having to touch it. The data source is transparent — they describe <em>who</em> they want, not <em>how to query</em> for them.
+        </div>
+        <div class="talking-points">
+          <h5>Architecture Call-outs</h5>
+          <ul>
+            <li>CarMax's Retail Org: Salesforce CRM (Sales + Service) already live — MCA sits natively on the same platform</li>
+            <li>Current Marketing: Journey Mgmt + Preferences handled via MC Connector → ExactTarget. MCA replaces the MCE layer, not the Salesforce CRM</li>
+            <li>Snowflake/EDL + Enterprise Data Warehouse → Data Cloud via Data Streams (no data duplication required with BYOL federation option)</li>
+            <li>Progression Capability Service, favorites/saved searches DBs: can be connected via Ingestion API or Data Federation — no full copy required</li>
+            <li>No migration of legacy content required — start fresh, run in parallel</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. EMAIL DESIGNER -->
+    <div class="section-card" id="email">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num color-email">3</div>
+        <div class="section-title-wrap">
+          <div class="section-eyebrow">0:10 – 0:30</div>
+          <div class="section-title">Module 1 — Email Designer</div>
+        </div>
+        <div class="section-duration">20 min</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="pain-tags">
+          <span class="pain-tag pain-email">Pain: Engineers required for email builds</span>
+          <span class="pain-tag pain-email">Goal: Designer/PM can build independently</span>
+        </div>
+        <div class="callout success">
+          <strong>Demo persona:</strong> A product manager or designer — no engineering access. They should be able to drag, drop, and publish. Reference Burke's personal CarMax email as the target fidelity.
+        </div>
+        <div class="beat-grid">
+          <div class="beat">
+            <div class="beat-time">0:10 – 0:13</div>
+            <h4>Navigate to Email Assets</h4>
+            <p>Open MCA from the Salesforce App Launcher. Navigate to Email Studio → show CMS Workspace where assets (vehicle images, logos, hero banners) are stored. Contrast: no Content Builder.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">0:13 – 0:20</div>
+            <h4>Build an Email From Scratch</h4>
+            <p>Create a new HTML-coded email using the visual editor. Drop in: header block (CarMax navy, logo), hero text, vehicle card tile (matching the component block Sean showed), CTA button. Show component blocks — designers can drop and edit, no HTML required.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">0:20 – 0:25</div>
+            <h4>Personalization with Handlebars</h4>
+            <p>Show a simple merge field: <code>Hi {{root.$dataGraph.FirstName__c}}</code>. Add vehicle owned: "How's your 2019 Jeep Cherokee?" (using data from Data Graph). No AMPScript needed.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">0:25 – 0:30</div>
+            <h4>Preview &amp; Send Test</h4>
+            <p>Preview email with live data (render with a test record from the Individual DMO). Show mobile preview. Send a test to attendees in the room — they see a real email arrive.</p>
+          </div>
+        </div>
+        <div class="talking-points">
+          <h5>Talking Points</h5>
+          <ul>
+            <li>Component blocks are reusable — brand team defines the blocks once; PMs and designers assemble them. Engineers are no longer in the critical path for every campaign</li>
+            <li>Images live in Salesforce CMS — same content repository as web/app; one source of truth for brand assets</li>
+            <li>Handlebars JS replaces AMPScript: <code>{{root.$dataGraph.field}}</code> — accessible to anyone who can write basic HTML</li>
+            <li>Personalization = using data already in the platform (name, vehicle owned, last browsed). Vehicle recommendations from external service still callable via Apex Class data source provider</li>
+            <li>WYSIWYG + code view available — designers use drag-drop, engineers can still access HTML directly</li>
+          </ul>
+        </div>
+        <div class="callout warn">
+          <strong>Prep needed:</strong> Confirm a sample email template is pre-built with CarMax component blocks (vehicle card tile, header, CTA). Burke to forward his personal CarMax email for reference fidelity. Sean to send screenshot of current Exact Target component blocks.
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. SEGMENTS -->
+    <div class="section-card" id="segments">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num color-segment">4</div>
+        <div class="section-title-wrap">
+          <div class="section-eyebrow">0:30 – 0:55</div>
+          <div class="section-title">Module 2 — Audience &amp; Segment Creation</div>
+        </div>
+        <div class="section-duration">25 min</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="pain-tags">
+          <span class="pain-tag pain-segment">Pain: Snowflake queries + data team handoff = days</span>
+          <span class="pain-tag pain-segment">Goal: Strategist builds segment in minutes, in Salesforce</span>
+          <span class="pain-tag pain-data">Use case: Upper-Funnel Nurturing</span>
+        </div>
+        <div class="callout">
+          <strong>Primary use case (from Sean):</strong> Upper-funnel nurturing — people who downloaded the mobile app AND favorited a car AND clicked the same car 5 days in a row, but have NOT progressed to financing submission. This segment currently requires strategists to go into Snowflake, write queries, partner with data teams, and wait "a long long long minutes."
+        </div>
+        <div class="beat-grid">
+          <div class="beat">
+            <div class="beat-time">0:30 – 0:35</div>
+            <h4>Data Model Overview (2 min)</h4>
+            <p>Quick orientation: Snowflake activity data → Data Stream → Data Lake Object → DMO (Individual, Contact Point Email, Engagement events). Identity Resolution creates Unified Individual. This is the profile strategists will query against.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">0:35 – 0:42</div>
+            <h4>Build the Upper-Funnel Nurturing Segment</h4>
+            <p>Open Segment Builder. Select Unified Individual as base. Add filters: Mobile App Download = true, Favorited Car = true, Car Detail Page views ≥ 5 (same vehicle, last 7 days), Financing Submitted = false. Show record count updating live.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">0:42 – 0:47</div>
+            <h4>Segment Complexity — No Engineering</h4>
+            <p>Add a second condition group: also include contacts who abandoned a financing form in the last 30 days. Show AND/OR logic builder. Demonstrate how a strategist can do this without writing a single line of SQL.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">0:47 – 0:52</div>
+            <h4>Activate the Segment → Flow</h4>
+            <p>Save the segment. Activate it: show a Segment-Triggered Flow that fires when a contact enters the segment. Flow sends the email built in Module 1. Show the flow canvas — not Journey Builder, but comparable logic in Salesforce Flow.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">0:52 – 0:55</div>
+            <h4>Data Transparency Discussion</h4>
+            <p>Address the Snowflake question directly: "Snowflake is still the source. What changed is your strategists never have to see it." Show the Data Stream config that ingests from Snowflake — one setup, ongoing refresh, transparent to the business user.</p>
+          </div>
+        </div>
+        <div class="talking-points">
+          <h5>Talking Points</h5>
+          <ul>
+            <li>Segment Builder requires zero SQL — strategists describe the audience in business terms and Data Cloud translates it</li>
+            <li>Segments run against Unified Individual profiles — resolves identity across Snowflake, web, app, and CRM data sources</li>
+            <li>Real-time refresh: segment membership updates as data changes — no manual re-pull</li>
+            <li>Snowflake doesn't move. Data Cloud reads it (via Data Stream or Zero Copy/BYOL federation). The strategic insight stays in Snowflake; the activation happens in Salesforce</li>
+            <li>Favorites/saved searches DB and preferences DB: can be added as additional data streams when CarMax's architects have them ready — incremental adoption, not big bang</li>
+            <li>Calculated Insights (SQL-based CIs) available for power users who want to define engagement scores or complex aggregates — still no engineering ticket required</li>
+          </ul>
+        </div>
+        <div class="callout warn">
+          <strong>Prep needed:</strong> Sean to share 1–2 real segment examples (the lady who builds these is out — follow up Monday). Need sample activity data in the demo org that mirrors CarMax's Snowflake schema: mobile app events, car detail page views, financing form events.
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. DEV ENVIRONMENT -->
+    <div class="section-card" id="dev">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num color-dev">5</div>
+        <div class="section-title-wrap">
+          <div class="section-eyebrow">0:55 – 1:10</div>
+          <div class="section-title">Module 3 — Engineering Environment</div>
+        </div>
+        <div class="section-duration">15 min</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="pain-tags">
+          <span class="pain-tag pain-dev">Pain: ExactTarget has no source control</span>
+          <span class="pain-tag pain-dev">Goal: True dev environment for engineers</span>
+          <span class="pain-tag pain-dev">Audience: Christine, Lawrence, and engineering leadership</span>
+        </div>
+        <div class="callout">
+          <strong>Note from Sean:</strong> This is lowest priority for business partners but highest excitement for engineering team. Lead with the business value angle (faster releases, fewer production incidents) before going technical.
+        </div>
+        <div class="beat-grid">
+          <div class="beat">
+            <div class="beat-time">0:55 – 1:00</div>
+            <h4>Source Control &amp; Sandboxes</h4>
+            <p>Show Salesforce DX integration: MCA assets (flows, email templates, data graphs) are Salesforce metadata — deployable via SFDX, tracked in Git. Scratch orgs / sandboxes for dev/staging/prod promotion. ExactTarget has none of this.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">1:00 – 1:05</div>
+            <h4>Datakit Deployments</h4>
+            <p>Show datakits: package and deploy Data Cloud + MCA configuration across environments. One command to promote a campaign from sandbox to production. Flag: some manual steps still required for certain features — be transparent.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">1:05 – 1:10</div>
+            <h4>Monitoring &amp; Observability</h4>
+            <p>Show Flow execution tracking: Flow Version Occurrence, Flow Element Run DMOs — every send is logged and queryable. Show email engagement reporting: opens, clicks, bounces in real-time via Email Engagement DMO. Built-in dashboards.</p>
+          </div>
+        </div>
+        <div class="talking-points">
+          <h5>Talking Points</h5>
+          <ul>
+            <li>MCA is metadata-first — everything is versionable, deployable, reviewable in a PR workflow</li>
+            <li>CI/CD with GitHub Actions or any standard Salesforce DevOps pipeline (Copado, Gearset, etc.) — fits existing enterprise DevOps practices</li>
+            <li>Debug flows mid-execution: Flow debug logs available in the platform — no more black-box sends</li>
+            <li>Monitoring: Data Cloud flow execution DMOs create an audit trail for every send event — critical for compliance and incident investigation</li>
+            <li>AI capabilities available for engineers: LowCode tools, Agentforce integration, agentic automation — speak to the "AI" capability icon on their architecture diagram</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. TRIGGERED SENDS -->
+    <div class="section-card" id="triggered">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num color-triggered">6</div>
+        <div class="section-title-wrap">
+          <div class="section-eyebrow">1:10 – 1:20</div>
+          <div class="section-title">Bonus — Triggered &amp; Event-Based Sends</div>
+        </div>
+        <div class="section-duration">10 min</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="pain-tags">
+          <span class="pain-tag pain-data">Current: External ESB listener enriches events → MCE</span>
+          <span class="pain-tag pain-data">Goal: Native "sensing" in Salesforce platform</span>
+        </div>
+        <div class="callout">
+          <strong>Sean confirmed:</strong> Triggered sends (abandoned experience, event-based) are currently handled by an external system listening to the Enterprise Service Bus, enriching the event, and kicking it to Marketing Cloud. He wants a more native "sensing" capability.
+        </div>
+        <div class="beat-grid">
+          <div class="beat">
+            <div class="beat-time">1:10 – 1:15</div>
+            <h4>Automation Event Triggered Flow (AETF)</h4>
+            <p>Show an AETF configured on a data event: when a new record appears in the Engagement DMO matching "abandoned financing form," the flow triggers immediately. No external ESB listener required. Show the trigger config and the flow canvas.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">1:15 – 1:20</div>
+            <h4>Ingestion API for Real-Time Events</h4>
+            <p>Briefly show: CarMax's Progression Capability Service or ESB can POST events directly to Data Cloud via the Ingestion API. The event lands in a DLO → triggers a flow. The external enrichment logic stays external; only the activation moves into Salesforce.</p>
+          </div>
+        </div>
+        <div class="talking-points">
+          <h5>Talking Points</h5>
+          <ul>
+            <li>AETFs fire in near-real-time as data events occur in Data Cloud — this is the "sensing" Sean described</li>
+            <li>CarMax's existing ESB can continue to own event detection and enrichment; just change the final destination from MCE API to DC Ingestion API — minimal rearchitecture</li>
+            <li>Progression Capability Service is individual-level, not queryable at segment scale today — Ingestion API integration would unlock both real-time triggers AND segment-level queries over time</li>
+            <li>This approach avoids duplicating real-time business logic that already lives in CarMax's systems</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Q&A -->
+    <div class="section-card" id="qa">
+      <div class="section-header" onclick="toggle(this)">
+        <div class="section-num color-qa">7</div>
+        <div class="section-title-wrap">
+          <div class="section-eyebrow">1:20 – 1:30</div>
+          <div class="section-title">Q&amp;A &amp; Next Steps</div>
+        </div>
+        <div class="section-duration">10 min</div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="section-body">
+        <div class="beat-grid">
+          <div class="beat">
+            <div class="beat-time">1:20 – 1:25</div>
+            <h4>Open Q&amp;A</h4>
+            <p>Invite questions from Christine, Lawrence, and program leadership. Burke: take notes on any new use cases mentioned — these become future demo iterations.</p>
+          </div>
+          <div class="beat">
+            <div class="beat-time">1:25 – 1:30</div>
+            <h4>Next Steps</h4>
+            <p>Confirm: iterative reviews before any broader presentation. Agree on feedback format. Set date for next check-in. Address Feyissa's enablement pre-work option with Christine/Lawrence.</p>
+          </div>
+        </div>
+        <div class="talking-points">
+          <h5>Proposed Next Steps to Confirm</h5>
+          <ul>
+            <li>Sean sends upper-funnel nurturing segment examples + current ExactTarget component block screenshot</li>
+            <li>Burke forwards personal CarMax email to Adam for email fidelity reference</li>
+            <li>Adam provides timeline estimate to Andrew for demo build effort</li>
+            <li>Sean schedules follow-up call with Christine + Lawrence to walk through demo progress (iterative review)</li>
+            <li>Feyissa / Divia: optional pre-work enablement session with Christine + Lawrence on MCA UI/functionality ahead of main demo</li>
+            <li>Confirm: main demo audience = program leadership (strategy, product, product engineering, design — including Kyle Brody from ops)</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <strong>Closing line:</strong> "We'll show you the work in progress — we want your coaching on it before we take it to a broader group."
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+
+  <!-- ── SIDEBAR ── -->
+  <div class="sidebar">
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">Demo Objectives</div>
+      <div class="sidebar-card-body">
+        <div class="objective-item">
+          <div class="objective-icon">✉️</div>
+          <div>Can a <strong>non-engineer</strong> build and send a production-quality email?</div>
+        </div>
+        <div class="objective-item">
+          <div class="objective-icon">🎯</div>
+          <div>Can a <strong>strategist</strong> build the upper-funnel nurturing segment in minutes — without Snowflake access?</div>
+        </div>
+        <div class="objective-item">
+          <div class="objective-icon">⚙️</div>
+          <div>Does MCA give <strong>engineers</strong> a true dev environment with source control?</div>
+        </div>
+        <div class="objective-item">
+          <div class="objective-icon">⚡</div>
+          <div>Can <strong>event-based sends</strong> be triggered natively without the ESB-to-MCE pipeline?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">Expected Attendees</div>
+      <div class="sidebar-card-body">
+        <div class="attendee">
+          <div class="attendee-avatar" style="background:#7B1FA2">SG</div>
+          <div>
+            <div class="attendee-name">Sean Goetz</div>
+            <div class="attendee-role">CarMax — Program Lead (Marketing)</div>
+          </div>
+        </div>
+        <div class="attendee">
+          <div class="attendee-avatar" style="background:#455A64">CA</div>
+          <div>
+            <div class="attendee-name">Christine Antonsen</div>
+            <div class="attendee-role">CarMax — Day-to-day, daily feedback</div>
+          </div>
+        </div>
+        <div class="attendee">
+          <div class="attendee-avatar" style="background:#455A64">LH</div>
+          <div>
+            <div class="attendee-name">Lawrence Hill</div>
+            <div class="attendee-role">CarMax — Day-to-day, daily feedback</div>
+          </div>
+        </div>
+        <div class="attendee">
+          <div class="attendee-avatar" style="background:#546E7A">KB</div>
+          <div>
+            <div class="attendee-name">Kyle Brody</div>
+            <div class="attendee-role">CarMax — Ops</div>
+          </div>
+        </div>
+        <div class="attendee">
+          <div class="attendee-avatar" style="background:#003087">AF</div>
+          <div>
+            <div class="attendee-name">Adam Feder</div>
+            <div class="attendee-role">Salesforce — Demo Lead</div>
+          </div>
+        </div>
+        <div class="attendee">
+          <div class="attendee-avatar" style="background:#0057B8">AG</div>
+          <div>
+            <div class="attendee-name">Andrew Gordon</div>
+            <div class="attendee-role">Salesforce — Account Lead</div>
+          </div>
+        </div>
+        <div class="attendee">
+          <div class="attendee-avatar" style="background:#0057B8">BM</div>
+          <div>
+            <div class="attendee-name">Burke Maxwell</div>
+            <div class="attendee-role">Salesforce — SE</div>
+          </div>
+        </div>
+        <div class="attendee">
+          <div class="attendee-avatar" style="background:#0057B8">FD</div>
+          <div>
+            <div class="attendee-name">Feyissa Dalu</div>
+            <div class="attendee-role">Salesforce — Success</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">Pre-Demo Checklist</div>
+      <div class="sidebar-card-body">
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>Demo org provisioned with MCA + Data Cloud</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>Sample data loaded: Individual DMO, Contact Point Email, activity events (app download, car favorites, page views, financing events)</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>Flow Data Graph + Content Data Graph configured</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>CarMax component blocks built in CMS (vehicle card tile, header, CTA)</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>Handlebars merge fields mapped to Content Data Graph fields</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>CSC (consent) records created for demo recipients so test emails deliver</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>Upper-funnel nurturing segment pre-built and validated (use Sean's data as input)</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>AETF configured for abandoned-browse trigger demo</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>Datakit deployment demo prepared (sandbox → prod)</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>Segment examples received from Sean (follow up Monday)</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">⬜</div>
+          <div>Burke's CarMax email forwarded to Adam for fidelity reference</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-card-header">What NOT to Show</div>
+      <div class="sidebar-card-body" style="font-size:13px;line-height:1.6;">
+        <div class="prereq-item">
+          <div class="prereq-status">🚫</div>
+          <div><strong>Vehicle recommendations</strong> — those come from an external service CarMax calls separately. Don't demo this as MCA capability.</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">🚫</div>
+          <div><strong>Migration tooling</strong> — Sean explicitly does not want to see how to migrate legacy ExactTarget content.</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">🚫</div>
+          <div><strong>High-level sizzle reel</strong> — "everyone has seen a lot of marketing content." Show the actual tool.</div>
+        </div>
+        <div class="prereq-item">
+          <div class="prereq-status">🚫</div>
+          <div><strong>Journey Builder analogies</strong> — Sean knows Journey Builder. Skip the comparison; show MCA Flow from scratch.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /sidebar -->
+</main>
+
+<script>
+  function toggle(header) {
+    const card = header.parentElement;
+    card.classList.toggle('open');
+  }
+  function jumpTo(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.add('open');
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  // Highlight active nav on scroll
+  const sections = ['intro','context','email','segments','dev','triggered','qa'];
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 120) current = id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
