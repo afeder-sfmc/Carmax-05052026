@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Cloud Lifecycle Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <script src="https://assets.meshmesh.io/system/tailwindcss-browser-4.js"></script>
+  <style type="text/tailwindcss">
+    @font-face {
+      font-family: 'CarMaxSharpSansDisp-Bold';
+      src: url('https://www.carmax.com/shared/fonts/CarMaxSharpSansDisp-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @theme {
+      --color-primary: #001333;
+      --color-secondary: #005DFF;
+      --color-accent: #FFD100;
+      --color-accent-dark: #FEC000;
+      --color-surface: #E6F4FF;
+      --color-surface-light: #F5F6F7;
+      --color-muted: #646E82;
+      --color-border: #CCD0D6;
+      --color-success: #00875A;
+      --color-warning: #FEC000;
+      --color-error: #D32F2F;
+      --color-background: #FFFFFF;
+      --color-foreground: #001333;
+    }
+    body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #001333;
+    }
+    .font-display {
+      font-family: 'CarMaxSharpSansDisp-Bold', 'Lato', Helvetica, Arial, sans-serif;
+    }
+    .slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      display: none;
+      overflow-y: auto;
+    }
+    .slide.active {
+      display: flex;
+    }
+    .btn-nav {
+      background: linear-gradient(#FEC000, #FFE000);
+      color: #001333;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      padding: 6px 18px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Lato', sans-serif;
+    }
+    .btn-nav:hover { background: linear-gradient(#FFD100, #FFE800); }
+    .btn-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+    .section-btn {
+      background: transparent;
+      color: #E6F4FF;
+      border: 1px solid rgba(230,244,255,0.25);
+      border-radius: 10px;
+      padding: 5px 14px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .section-btn:hover { background: rgba(0,93,255,0.3); }
+    .section-btn.active-section { background: #005DFF; color: #fff; border-color: #005DFF; }
+    .card-promote {
+      background: rgba(0,135,90,0.08);
+      border: 1px solid rgba(0,135,90,0.25);
+    }
+    .card-nopromote {
+      background: rgba(211,47,47,0.06);
+      border: 1px solid rgba(211,47,47,0.2);
+    }
+    @media print {
+      body { overflow: visible; background: white; }
+      .slide { position: relative; display: flex !important; page-break-after: always; height: 8.5in; width: 11in; }
+      .bottom-nav { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="slides-container relative" style="height: calc(100vh - 56px);">
+
+  <!-- ============ SLIDE 1: Title ============ -->
+  <div class="slide active flex-col justify-center items-center text-center bg-primary px-16" data-slide="0">
+    <div class="max-w-4xl mx-auto">
+      <img src="https://image.s4.sfmc-content.com/lib/fe8e1573716d017e7d/m/1/9efb82fe-b8b5-4d89-bbb7-a8b0da971038.png" alt="CarMax" class="h-10 mx-auto mb-10 opacity-80" />
+      <p class="text-accent font-bold text-sm tracking-[0.2em] uppercase mb-4">Sandbox &amp; Multi-Environment Guide</p>
+      <h1 class="font-display text-white text-5xl lg:text-7xl leading-tight mb-6">Marketing Cloud<br>Lifecycle Development</h1>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10">A simplified overview of how Marketing Cloud Next leverages Salesforce Core sandboxes to deliver true dev→test→stage→production lifecycle management.</p>
+      <div class="flex items-center justify-center gap-3">
+        <span class="inline-block w-12 h-1 bg-accent rounded-full"></span>
+        <span class="inline-block w-3 h-1 bg-accent/40 rounded-full"></span>
+        <span class="inline-block w-3 h-1 bg-accent/40 rounded-full"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 2: Why This Matters ============ -->
+  <div class="slide flex-col justify-center bg-white px-12 lg:px-20" data-slide="1">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Introduction</p>
+      <h2 class="font-display text-primary text-4xl lg:text-5xl mb-8">Why This Matters</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div>
+          <div class="bg-error/8 border border-error/20 rounded-2xl p-6 mb-6">
+            <h3 class="font-bold text-error text-lg mb-3">Legacy MCE: "Production All the Way Down"</h3>
+            <p class="text-primary/80 text-[15px] leading-relaxed">Every Business Unit was a fully capable, live, sending-capable environment. Teams designated BUs as "Dev" or "UAT" by convention — but the platform itself had no knowledge of the distinction. There was no off switch for sending.</p>
+          </div>
+          <div class="bg-surface rounded-2xl p-6">
+            <p class="text-primary/70 text-sm italic leading-relaxed">"MCE's lower environments were production environments that teams had agreed, by convention, not to use for production purposes."</p>
+          </div>
+        </div>
+        <div>
+          <div class="bg-success/8 border border-success/20 rounded-2xl p-6 mb-6">
+            <h3 class="font-bold text-success text-lg mb-3">MCN on Core: Real Lifecycle Management</h3>
+            <p class="text-primary/80 text-[15px] leading-relaxed">Marketing Cloud Next runs on Salesforce Core, giving marketers platform-enforced isolated environments with real architectural boundaries, intentional limitations, and defined promotion gates — for the first time.</p>
+          </div>
+          <div class="bg-accent/15 rounded-2xl p-6">
+            <p class="font-display text-primary text-lg">"The blueprint travels; the data stays."</p>
+            <p class="text-muted text-sm mt-2">Flow logic, segment rules, and template structures move between environments. Audience data, send history, and engagement records stay in each environment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 3: Sandbox Types ============ -->
+  <div class="slide flex-col justify-center bg-surface-light px-12 lg:px-20" data-slide="2">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Sandbox Landscape</p>
+      <h2 class="font-display text-primary text-4xl mb-8">Sandbox Types at a Glance</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- Dev -->
+        <div class="bg-white rounded-2xl border border-border overflow-hidden">
+          <div class="bg-secondary/10 p-4 text-center">
+            <span class="text-3xl">📝</span>
+            <h3 class="font-display text-primary text-lg mt-2">Developer</h3>
+          </div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">What It Copies</p>
+            <p class="text-sm text-primary/80 mb-4">Metadata (config) only — lower storage limits</p>
+            <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Best For</p>
+            <p class="text-sm text-primary/80">Initial flow/segment build & testing with synthetic data</p>
+            <div class="mt-4 pt-3 border-t border-border">
+              <p class="text-xs text-muted italic">"My drafting table"</p>
+            </div>
+          </div>
+        </div>
+        <!-- Dev Pro -->
+        <div class="bg-white rounded-2xl border border-border overflow-hidden">
+          <div class="bg-secondary/10 p-4 text-center">
+            <span class="text-3xl">🔧</span>
+            <h3 class="font-display text-primary text-lg mt-2">Developer Pro</h3>
+          </div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">What It Copies</p>
+            <p class="text-sm text-primary/80 mb-4">Metadata only — larger storage than Dev</p>
+            <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Best For</p>
+            <p class="text-sm text-primary/80">Integration testing, segmentation logic, UAT with moderate data</p>
+            <div class="mt-4 pt-3 border-t border-border">
+              <p class="text-xs text-muted italic">"My integration workbench"</p>
+            </div>
+          </div>
+        </div>
+        <!-- Partial Copy -->
+        <div class="bg-white rounded-2xl border border-border overflow-hidden">
+          <div class="bg-accent/15 p-4 text-center">
+            <span class="text-3xl">📋</span>
+            <h3 class="font-display text-primary text-lg mt-2">Partial Copy</h3>
+          </div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">What It Copies</p>
+            <p class="text-sm text-primary/80 mb-4">Full metadata + sample of production data (via template)</p>
+            <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Best For</p>
+            <p class="text-sm text-primary/80">UAT, segment testing against representative audience data</p>
+            <div class="mt-4 pt-3 border-t border-border">
+              <p class="text-xs text-muted italic">"My UAT environment"</p>
+            </div>
+          </div>
+        </div>
+        <!-- Full Copy -->
+        <div class="bg-white rounded-2xl border border-border overflow-hidden">
+          <div class="bg-success/10 p-4 text-center">
+            <span class="text-3xl">🎭</span>
+            <h3 class="font-display text-primary text-lg mt-2">Full Copy</h3>
+          </div>
+          <div class="p-5">
+            <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">What It Copies</p>
+            <p class="text-sm text-primary/80 mb-4">Entire production org — all metadata + all data</p>
+            <p class="text-xs font-bold text-secondary uppercase tracking-wider mb-2">Best For</p>
+            <p class="text-sm text-primary/80">Stress testing, complex multi-channel flows, agent testing</p>
+            <div class="mt-4 pt-3 border-t border-border">
+              <p class="text-xs text-muted italic">"My dress rehearsal"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 4: What a Marketing Sandbox Gives You ============ -->
+  <div class="slide flex-col justify-center bg-white px-12 lg:px-20" data-slide="3">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Sandbox Landscape</p>
+      <h2 class="font-display text-primary text-4xl mb-8">What a Marketing Sandbox Gives You</h2>
+      <p class="text-muted text-base mb-8 max-w-3xl">In a Core sandbox with Marketing Cloud Next provisioned, you get full access to build, test, and validate — without any production risk.</p>
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-surface rounded-2xl p-5 flex items-start gap-4">
+          <span class="text-success text-xl mt-0.5">✅</span>
+          <div>
+            <h4 class="font-bold text-primary text-[15px]">Campaign Flows</h4>
+            <p class="text-muted text-sm mt-1">Full flow builder with wait steps, branching, and send actions</p>
+          </div>
+        </div>
+        <div class="bg-surface rounded-2xl p-5 flex items-start gap-4">
+          <span class="text-success text-xl mt-0.5">✅</span>
+          <div>
+            <h4 class="font-bold text-primary text-[15px]">Segments</h4>
+            <p class="text-muted text-sm mt-1">Build and publish segment definitions against sandbox data</p>
+          </div>
+        </div>
+        <div class="bg-surface rounded-2xl p-5 flex items-start gap-4">
+          <span class="text-success text-xl mt-0.5">✅</span>
+          <div>
+            <h4 class="font-bold text-primary text-[15px]">Content Builder</h4>
+            <p class="text-muted text-sm mt-1">Email templates, dynamic content blocks, personalization</p>
+          </div>
+        </div>
+        <div class="bg-surface rounded-2xl p-5 flex items-start gap-4">
+          <span class="text-success text-xl mt-0.5">✅</span>
+          <div>
+            <h4 class="font-bold text-primary text-[15px]">Data Cloud (Metadata)</h4>
+            <p class="text-muted text-sm mt-1">DMOs, streams, transforms, calculated insights — all replicated</p>
+          </div>
+        </div>
+        <div class="bg-surface rounded-2xl p-5 flex items-start gap-4">
+          <span class="text-success text-xl mt-0.5">✅</span>
+          <div>
+            <h4 class="font-bold text-primary text-[15px]">IR Rules</h4>
+            <p class="text-muted text-sm mt-1">Identity Resolution rulesets for testing audience matching</p>
+          </div>
+        </div>
+        <div class="bg-surface rounded-2xl p-5 flex items-start gap-4">
+          <span class="text-success text-xl mt-0.5">✅</span>
+          <div>
+            <h4 class="font-bold text-primary text-[15px]">Email Blackhole</h4>
+            <p class="text-muted text-sm mt-1">Suppress real sends — test at volume without risk</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 5: Data Cloud in Sandbox ============ -->
+  <div class="slide flex-col justify-center bg-surface-light px-12 lg:px-20" data-slide="4">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Sandbox Landscape</p>
+      <h2 class="font-display text-primary text-4xl mb-8">Data Cloud in Sandbox</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <div class="bg-white rounded-2xl border border-success/30 p-6">
+            <h3 class="font-display text-success text-xl mb-5 flex items-center gap-2">✅ What a Data Cloud Sandbox IS</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <span class="text-success font-bold mt-0.5">✓</span>
+                <p class="text-primary/80 text-[15px]"><span class="font-bold">All configuration/metadata replicated</span> — Data Streams, DMOs, Calculated Insights, Segments, Transformations, IR rulesets</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success font-bold mt-0.5">✓</span>
+                <p class="text-primary/80 text-[15px]"><span class="font-bold">Full feature access</span> — Segmentation, Activation, Calculated Insights, Data Graphs, Vector DB, Zero Copy</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success font-bold mt-0.5">✓</span>
+                <p class="text-primary/80 text-[15px]"><span class="font-bold">Mergeback support</span> — via Change Sets, Metadata API, and DevOps Center</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="bg-white rounded-2xl border border-error/30 p-6">
+            <h3 class="font-display text-error text-xl mb-5 flex items-center gap-2">❌ What a Data Cloud Sandbox IS NOT</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <span class="text-error font-bold mt-0.5">✗</span>
+                <p class="text-primary/80 text-[15px]"><span class="font-bold">Data is NOT copied</span> — You must re-authenticate connectors and re-ingest data in each sandbox</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-error font-bold mt-0.5">✗</span>
+                <p class="text-primary/80 text-[15px]"><span class="font-bold">Connections are NOT replicated</span> — External connectors (Snowflake, S3, MCE) require new authentication credentials</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-error font-bold mt-0.5">✗</span>
+                <p class="text-primary/80 text-[15px]"><span class="font-bold">Not a mirror</span> — It's an isolated tenant provisioned from the same production org</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-accent/15 rounded-2xl p-5 mt-6 text-center">
+        <p class="text-primary font-bold text-[15px]">After sandbox refresh → click <span class="bg-accent/40 px-2 py-0.5 rounded">Get Started</span> in Data Cloud Setup → re-authenticate or add connections → hydrate with data.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 6: Email Blackhole ============ -->
+  <div class="slide flex-col justify-center bg-white px-12 lg:px-20" data-slide="5">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Sandbox Landscape</p>
+      <h2 class="font-display text-primary text-4xl mb-3">Email Blackhole</h2>
+      <p class="text-muted text-base mb-8">A guardrail feature for sandboxes that prevents accidental sends to real customers during testing, training, or UAT. <span class="font-bold text-primary">Spring '26 GA.</span></p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <div class="bg-primary rounded-2xl p-8 text-white">
+            <h3 class="font-display text-accent text-2xl mb-6">How It Works</h3>
+            <div class="space-y-5">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center shrink-0">
+                  <span class="text-primary font-bold text-sm">1</span>
+                </div>
+                <p class="text-white/85 text-[15px]">Admin configures up to <span class="font-bold text-accent">5 allow-listed domains</span></p>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center shrink-0">
+                  <span class="text-primary font-bold text-sm">2</span>
+                </div>
+                <p class="text-white/85 text-[15px]">Only messages to those domains are <span class="font-bold text-accent">actually delivered</span></p>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center shrink-0">
+                  <span class="text-primary font-bold text-sm">3</span>
+                </div>
+                <p class="text-white/85 text-[15px]">All other messages are <span class="font-bold text-accent">suppressed and logged</span> with "not sent" status</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-5">
+          <div class="bg-success/8 border border-success/20 rounded-2xl p-5">
+            <h4 class="font-bold text-success text-base mb-2">Perfect For</h4>
+            <p class="text-primary/80 text-sm">Volume stress testing, flow execution testing, complex multi-channel campaign builds, and agent handoff validation — all without sending to real customers.</p>
+          </div>
+          <div class="bg-surface rounded-2xl p-5">
+            <h4 class="font-bold text-primary text-base mb-2">What Still Runs</h4>
+            <p class="text-muted text-sm">Flow execution logic, branching, timing, IR rule evaluation all run normally. Only the actual send is suppressed.</p>
+          </div>
+          <div class="bg-accent/10 rounded-2xl p-5">
+            <h4 class="font-bold text-primary text-base mb-2">Key Benefit</h4>
+            <p class="text-muted text-sm">Test the <span class="font-bold text-primary">full message-sending architecture</span> — including multi-channel — without risking customer messaging or sender reputation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 7: What CAN Be Promoted ============ -->
+  <div class="slide flex-col justify-center bg-surface-light px-12 lg:px-20" data-slide="6">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Promotion &amp; Deployment</p>
+      <h2 class="font-display text-primary text-4xl mb-3">What CAN Be Promoted</h2>
+      <p class="text-muted text-base mb-6">These are <span class="font-bold text-primary">structural components (metadata)</span> — they define <em>how</em> a campaign runs, not the data it runs against.</p>
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
+        <div class="card-promote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-success">✅</span>
+            <h4 class="font-bold text-primary text-sm">Campaign Flows</h4>
+          </div>
+          <p class="text-muted text-xs">Change Set / DevOps Center</p>
+        </div>
+        <div class="card-promote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-success">✅</span>
+            <h4 class="font-bold text-primary text-sm">Segments</h4>
+          </div>
+          <p class="text-muted text-xs">Data Kit (Change Set)</p>
+        </div>
+        <div class="card-promote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-success">✅</span>
+            <h4 class="font-bold text-primary text-sm">Email Content / Templates</h4>
+          </div>
+          <p class="text-muted text-xs">Change Set / DevOps Center</p>
+        </div>
+        <div class="card-promote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-success">✅</span>
+            <h4 class="font-bold text-primary text-sm">DMOs / Data Model</h4>
+          </div>
+          <p class="text-muted text-xs">Data Kit (Change Set)</p>
+        </div>
+        <div class="card-promote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-success">✅</span>
+            <h4 class="font-bold text-primary text-sm">IR Rulesets</h4>
+          </div>
+          <p class="text-muted text-xs">Data Kit (Change Set)</p>
+        </div>
+        <div class="card-promote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-success">✅</span>
+            <h4 class="font-bold text-primary text-sm">Calculated Insights</h4>
+          </div>
+          <p class="text-muted text-xs">Data Kit (Change Set)</p>
+        </div>
+        <div class="card-promote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-success">✅</span>
+            <h4 class="font-bold text-primary text-sm">Agentforce Agents</h4>
+          </div>
+          <p class="text-muted text-xs">Change Set / DevOps Center</p>
+        </div>
+        <div class="card-promote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-success">✅</span>
+            <h4 class="font-bold text-primary text-sm">Permission Sets</h4>
+          </div>
+          <p class="text-muted text-xs">Change Set / DevOps Center</p>
+        </div>
+        <div class="card-promote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-success">✅</span>
+            <h4 class="font-bold text-primary text-sm">Data Streams / Graphs</h4>
+          </div>
+          <p class="text-muted text-xs">Data Kit (Change Set)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 8: What CANNOT Be Promoted ============ -->
+  <div class="slide flex-col justify-center bg-white px-12 lg:px-20" data-slide="7">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Promotion &amp; Deployment</p>
+      <h2 class="font-display text-primary text-4xl mb-3">What CANNOT Be Promoted</h2>
+      <p class="text-muted text-base mb-6">These are <span class="font-bold text-primary">data records</span> — they exist as specific instances tied to a given environment and cannot be moved between orgs.</p>
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
+        <div class="card-nopromote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-error">❌</span>
+            <h4 class="font-bold text-primary text-sm">Audience Lists</h4>
+          </div>
+          <p class="text-muted text-xs">Must re-run the segment in the target org</p>
+        </div>
+        <div class="card-nopromote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-error">❌</span>
+            <h4 class="font-bold text-primary text-sm">Ingested Data</h4>
+          </div>
+          <p class="text-muted text-xs">Records live in the tenant — must re-ingest per environment</p>
+        </div>
+        <div class="card-nopromote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-error">❌</span>
+            <h4 class="font-bold text-primary text-sm">Engagement History</h4>
+          </div>
+          <p class="text-muted text-xs">Engagement records are data, not metadata</p>
+        </div>
+        <div class="card-nopromote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-error">❌</span>
+            <h4 class="font-bold text-primary text-sm">Send Logs / Reporting</h4>
+          </div>
+          <p class="text-muted text-xs">Reporting metrics are environment-specific</p>
+        </div>
+        <div class="card-nopromote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-error">❌</span>
+            <h4 class="font-bold text-primary text-sm">Unified Profiles (IR Output)</h4>
+          </div>
+          <p class="text-muted text-xs">Computed data — re-runs in each environment</p>
+        </div>
+        <div class="card-nopromote rounded-xl p-4">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="text-error">❌</span>
+            <h4 class="font-bold text-primary text-sm">Email Send Records</h4>
+          </div>
+          <p class="text-muted text-xs">Transactional data — environment-specific</p>
+        </div>
+      </div>
+      <div class="bg-accent/15 rounded-2xl p-5 mt-5 text-center">
+        <p class="font-display text-primary text-base">The <span class="text-success">blueprint</span> (flow logic, segment rules, template structure) moves. The <span class="text-error">results of running that blueprint</span> (who's in the segment, what was sent) stay.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 9: Deploy in the Right Order ============ -->
+  <div class="slide flex-col justify-center bg-primary px-12 lg:px-20" data-slide="8">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-accent font-bold text-sm tracking-wider uppercase mb-3">Promotion &amp; Deployment</p>
+      <h2 class="font-display text-white text-4xl mb-3">Deploy in the Right Order</h2>
+      <p class="text-white/60 text-base mb-8">Think of it like setting a dinner table. Tablecloth → plates → glasses. Each layer depends on what came before it.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10 relative">
+          <div class="absolute -top-4 left-6 bg-accent text-primary font-bold text-sm px-4 py-1 rounded-full">Step 1</div>
+          <div class="mt-4">
+            <h3 class="font-display text-accent text-xl mb-3">Data Cloud Objects</h3>
+            <p class="text-white/50 text-xs uppercase tracking-wider mb-3">The Foundation</p>
+            <p class="text-white/75 text-sm leading-relaxed">DMOs, Data Streams, Calculated Insights, IR Rulesets, Data Graphs — everything else references these. They must exist first.</p>
+          </div>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10 relative">
+          <div class="absolute -top-4 left-6 bg-accent text-primary font-bold text-sm px-4 py-1 rounded-full">Step 2</div>
+          <div class="mt-4">
+            <h3 class="font-display text-accent text-xl mb-3">Content</h3>
+            <p class="text-white/50 text-xs uppercase tracking-wider mb-3">The Materials</p>
+            <p class="text-white/75 text-sm leading-relaxed">Email templates, dynamic content blocks, and DigitalExperience components. Flows call on these to send messages — if content isn't there, Flows have nothing to point to.</p>
+          </div>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10 relative">
+          <div class="absolute -top-4 left-6 bg-accent text-primary font-bold text-sm px-4 py-1 rounded-full">Step 3</div>
+          <div class="mt-4">
+            <h3 class="font-display text-accent text-xl mb-3">Flows</h3>
+            <p class="text-white/50 text-xs uppercase tracking-wider mb-3">The Wiring</p>
+            <p class="text-white/75 text-sm leading-relaxed">Campaign Flows, subflows, suppression flows, advanced action flows. By the time the Flow lands, all its dependencies are already in place.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white/10 rounded-xl p-4 text-center">
+        <p class="text-white/80 text-sm">⚠️ MCN validates dependencies at deployment time. If a Flow references something that doesn't exist yet, the deployment fails immediately. <span class="text-accent font-bold">Deploy in dependency order, and it goes smoothly every time.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 10: Environment Architecture ============ -->
+  <div class="slide flex-col justify-center bg-white px-12 lg:px-20" data-slide="9">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">The Lifecycle Journey</p>
+      <h2 class="font-display text-primary text-4xl mb-8">Environment Architecture</h2>
+      <!-- Pipeline Visual -->
+      <div class="flex items-stretch gap-0 mb-8">
+        <!-- DEV -->
+        <div class="flex-1 bg-secondary/8 rounded-l-2xl p-5 border border-secondary/20 relative">
+          <div class="text-center">
+            <span class="text-2xl">🔨</span>
+            <h3 class="font-display text-primary text-base mt-2 mb-2">DEV Sandbox</h3>
+            <p class="text-xs text-secondary font-bold uppercase tracking-wider mb-2">Build</p>
+            <p class="text-xs text-muted leading-relaxed">Create flows, segments, templates, IR rules. Use synthetic test data. Minimal data ingestion.</p>
+          </div>
+        </div>
+        <div class="flex items-center text-secondary text-2xl font-bold px-1">→</div>
+        <!-- QA/UAT -->
+        <div class="flex-1 bg-accent/10 p-5 border-y border-accent/20 relative">
+          <div class="text-center">
+            <span class="text-2xl">🧪</span>
+            <h3 class="font-display text-primary text-base mt-2 mb-2">QA / UAT</h3>
+            <p class="text-xs text-secondary font-bold uppercase tracking-wider mb-2">Test</p>
+            <p class="text-xs text-muted leading-relaxed">Promote metadata. Re-auth connections. Seed representative data. Test IR rules and branching.</p>
+          </div>
+        </div>
+        <div class="flex items-center text-secondary text-2xl font-bold px-1">→</div>
+        <!-- Staging -->
+        <div class="flex-1 bg-success/8 p-5 border-y border-success/20 relative">
+          <div class="text-center">
+            <span class="text-2xl">🎭</span>
+            <h3 class="font-display text-primary text-base mt-2 mb-2">Staging (Full Copy)</h3>
+            <p class="text-xs text-secondary font-bold uppercase tracking-wider mb-2">Validate</p>
+            <p class="text-xs text-muted leading-relaxed">Stress test at volume. Multi-channel execution. Agent handoff validation. Email Blackhole enabled.</p>
+          </div>
+        </div>
+        <div class="flex items-center text-secondary text-2xl font-bold px-1">→</div>
+        <!-- Production -->
+        <div class="flex-1 bg-primary rounded-r-2xl p-5 relative">
+          <div class="text-center">
+            <span class="text-2xl">🚀</span>
+            <h3 class="font-display text-white text-base mt-2 mb-2">Production</h3>
+            <p class="text-xs text-accent font-bold uppercase tracking-wider mb-2">Go Live</p>
+            <p class="text-xs text-white/60 leading-relaxed">Activate campaigns. Publish segments against live audiences. Real send execution begins.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Legend -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-surface-light rounded-xl p-4">
+          <h4 class="font-bold text-primary text-sm mb-2">What Gets Promoted Between Stages</h4>
+          <p class="text-muted text-xs">Flows, segment definitions, email templates, IR configs, agent metadata — all via Change Sets, Data Kits, or DevOps Center.</p>
+        </div>
+        <div class="bg-surface-light rounded-xl p-4">
+          <h4 class="font-bold text-primary text-sm mb-2">What Gets Rebuilt in Each Stage</h4>
+          <p class="text-muted text-xs">Data connections (re-authenticate), test data (re-ingest), segment populations (re-publish), campaign records (re-create).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 11: What You Build vs Promote ============ -->
+  <div class="slide flex-col justify-center bg-surface-light px-12 lg:px-20" data-slide="10">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">The Lifecycle Journey</p>
+      <h2 class="font-display text-primary text-4xl mb-8">Build, Promote, Rebuild</h2>
+      <div class="overflow-hidden rounded-2xl border border-border">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-primary text-white">
+              <th class="text-left py-3 px-5 font-bold">Stage</th>
+              <th class="text-left py-3 px-5 font-bold">What You Build Here</th>
+              <th class="text-left py-3 px-5 font-bold">What You Promote To Get Here</th>
+              <th class="text-left py-3 px-5 font-bold">What You Rebuild</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b border-border">
+              <td class="py-3 px-5 font-bold text-primary">DEV</td>
+              <td class="py-3 px-5 text-muted">Flows, segments, templates, IR rules, test data connections</td>
+              <td class="py-3 px-5 text-muted italic">— (starting point)</td>
+              <td class="py-3 px-5 text-muted italic">—</td>
+            </tr>
+            <tr class="bg-surface-light border-b border-border">
+              <td class="py-3 px-5 font-bold text-primary">QA / UAT</td>
+              <td class="py-3 px-5 text-muted">Representative test data, connector re-auth</td>
+              <td class="py-3 px-5 text-muted">Flows, segment defs, email templates, IR rules</td>
+              <td class="py-3 px-5 text-muted">Data connections, seeded test data, segment populations</td>
+            </tr>
+            <tr class="bg-white border-b border-border">
+              <td class="py-3 px-5 font-bold text-primary">Staging</td>
+              <td class="py-3 px-5 text-muted">Production-scale test data, all connectors</td>
+              <td class="py-3 px-5 text-muted">Validated flow, templates, segment defs, agent config</td>
+              <td class="py-3 px-5 text-muted">All data connections, full re-ingestion, segment re-publish</td>
+            </tr>
+            <tr class="bg-surface-light">
+              <td class="py-3 px-5 font-bold text-primary">Production</td>
+              <td class="py-3 px-5 text-muted">Campaign activation, live audience publish</td>
+              <td class="py-3 px-5 text-muted">Final flow, templates, segment defs, IR config, agent setup</td>
+              <td class="py-3 px-5 text-muted">Campaign records, live segment populations</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="mt-5 bg-accent/15 rounded-xl p-4 text-center">
+        <p class="text-primary text-sm font-bold">Each stage has a purpose. Don't skip ahead — validate at each tier before promoting to the next.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 12: Governance Models ============ -->
+  <div class="slide flex-col justify-center bg-white px-12 lg:px-20" data-slide="11">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">The Lifecycle Journey</p>
+      <h2 class="font-display text-primary text-4xl mb-8">Choose Your Governance Model</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Lean -->
+        <div class="rounded-2xl border-2 border-secondary/30 overflow-hidden">
+          <div class="bg-secondary/10 p-6">
+            <h3 class="font-display text-secondary text-2xl mb-1">Lean Model</h3>
+            <p class="text-muted text-sm">Low governance / high immediacy teams</p>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="bg-secondary/10 rounded-xl px-4 py-2 text-center">
+                <p class="font-bold text-primary text-sm">Dev/UAT</p>
+              </div>
+              <span class="text-secondary font-bold">→</span>
+              <div class="bg-primary rounded-xl px-4 py-2 text-center">
+                <p class="font-bold text-white text-sm">Production</p>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <p class="text-sm text-primary/80">A single Dev/UAT sandbox + Production</p>
+              <p class="text-sm text-primary/80">Email Blackhole as the primary send guardrail</p>
+              <p class="text-sm text-primary/80">Streamlined Change Set deployments for well-understood campaign patterns</p>
+              <p class="text-sm text-primary/80">Best for: recurring promotions, smaller teams, fast iteration</p>
+            </div>
+          </div>
+        </div>
+        <!-- Full -->
+        <div class="rounded-2xl border-2 border-success/30 overflow-hidden">
+          <div class="bg-success/10 p-6">
+            <h3 class="font-display text-success text-2xl mb-1">Full Model</h3>
+            <p class="text-muted text-sm">High governance / compliance-driven teams</p>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-6 flex-wrap">
+              <div class="bg-secondary/10 rounded-xl px-3 py-2 text-center">
+                <p class="font-bold text-primary text-xs">Dev</p>
+              </div>
+              <span class="text-secondary font-bold text-sm">→</span>
+              <div class="bg-secondary/10 rounded-xl px-3 py-2 text-center">
+                <p class="font-bold text-primary text-xs">Dev Pro</p>
+              </div>
+              <span class="text-secondary font-bold text-sm">→</span>
+              <div class="bg-accent/20 rounded-xl px-3 py-2 text-center">
+                <p class="font-bold text-primary text-xs">Partial Copy</p>
+              </div>
+              <span class="text-secondary font-bold text-sm">→</span>
+              <div class="bg-success/10 rounded-xl px-3 py-2 text-center">
+                <p class="font-bold text-primary text-xs">Full Copy</p>
+              </div>
+              <span class="text-secondary font-bold text-sm">→</span>
+              <div class="bg-primary rounded-xl px-3 py-2 text-center">
+                <p class="font-bold text-white text-xs">Prod</p>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <p class="text-sm text-primary/80">Formal promotion gates at each tier with documented approval</p>
+              <p class="text-sm text-primary/80">Compliance & legal review in Partial Copy before production</p>
+              <p class="text-sm text-primary/80">Full Copy for stress testing and final validation</p>
+              <p class="text-sm text-primary/80">Best for: regulated industries, enterprise, data-sensitive verticals</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-surface rounded-xl p-4 mt-6 text-center">
+        <p class="text-primary text-sm">In MCE, governance was imposed by your <em>team</em>. In MCN on Core, governance is enforced by the <em>platform</em>. The sandbox tiers, promotion gates, and isolation boundaries are infrastructure — not overhead.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 13: Key Principles ============ -->
+  <div class="slide flex-col justify-center bg-surface-light px-12 lg:px-20" data-slide="12">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Key Takeaways</p>
+      <h2 class="font-display text-primary text-4xl mb-8">Principles to Remember</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">1</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Sandboxes Are Real Now</h4>
+          <p class="text-muted text-sm">MCN on Core means true lifecycle management exists for the first time in Marketing Cloud.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">2</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Email Blackhole Is a Game-Changer</h4>
+          <p class="text-muted text-sm">Run full flow execution at volume — including multi-channel and agent handoffs — without sending to real customers.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">3</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Metadata Travels, Data Stays</h4>
+          <p class="text-muted text-sm">Flow logic, segment rules, content templates, IR configs move between environments. Audience data, engagement history, and send records stay.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">4</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Data Cloud Needs Re-Hydration</h4>
+          <p class="text-muted text-sm">Metadata copies automatically; connections and data do not. Budget time for re-authentication and re-ingestion.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">5</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Deploy in Dependency Order</h4>
+          <p class="text-muted text-sm">Data Cloud objects first, then content, then flows. MCN validates dependencies — deploy in order and it works every time.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">6</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Full Copy for Complex Testing</h4>
+          <p class="text-muted text-sm">Full Copy sandbox is the right tier for Agentforce + marketing flow testing. You need production-like data volumes to validate behavior.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 14: Closing ============ -->
+  <div class="slide flex-col justify-center items-center text-center bg-primary px-16" data-slide="13">
+    <div class="max-w-3xl mx-auto">
+      <img src="https://image.s4.sfmc-content.com/lib/fe8e1573716d017e7d/m/1/9efb82fe-b8b5-4d89-bbb7-a8b0da971038.png" alt="CarMax" class="h-10 mx-auto mb-10 opacity-80" />
+      <h2 class="font-display text-accent text-5xl lg:text-6xl mb-6">Build with Confidence.<br>Deploy with Control.</h2>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10">Marketing Cloud on Salesforce Core gives you real sandboxes, real isolation, and real promotion gates. The blueprint moves between environments. The data stays where it belongs.</p>
+      <div class="flex items-center justify-center gap-6 flex-wrap">
+        <div class="bg-white/10 backdrop-blur rounded-xl px-6 py-4 border border-white/10">
+          <p class="text-accent font-bold text-lg">Blueprints Move</p>
+          <p class="text-white/50 text-sm">Flows, segments, templates</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl px-6 py-4 border border-white/10">
+          <p class="text-accent font-bold text-lg">Data Stays</p>
+          <p class="text-white/50 text-sm">Audiences, history, records</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl px-6 py-4 border border-white/10">
+          <p class="text-accent font-bold text-lg">Test with Safety</p>
+          <p class="text-white/50 text-sm">Email Blackhole, isolation</p>
+        </div>
+      </div>
+      <div class="mt-12 flex items-center justify-center gap-3">
+        <span class="inline-block w-3 h-1 bg-accent/40 rounded-full"></span>
+        <span class="inline-block w-3 h-1 bg-accent/40 rounded-full"></span>
+        <span class="inline-block w-12 h-1 bg-accent rounded-full"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ BOTTOM NAVIGATION ============ -->
+<nav class="bottom-nav fixed bottom-0 left-0 right-0 h-14 bg-primary/95 backdrop-blur border-t border-white/10 flex items-center justify-between px-4 z-50">
+  <button class="btn-nav" id="prevBtn" onclick="changeSlide(-1)">◀ Prev</button>
+  <div class="flex items-center gap-2 overflow-x-auto px-2" id="sectionBtns">
+    <button class="section-btn active-section" onclick="goToSection(0)">Intro</button>
+    <button class="section-btn" onclick="goToSection(1)">Sandboxes</button>
+    <button class="section-btn" onclick="goToSection(2)">Promotion</button>
+    <button class="section-btn" onclick="goToSection(3)">Lifecycle</button>
+    <button class="section-btn" onclick="goToSection(4)">Takeaways</button>
+  </div>
+  <span class="text-white/50 text-xs whitespace-nowrap mx-3" id="slideCounter">Slide 1 of 14</span>
+  <button class="btn-nav" id="nextBtn" onclick="changeSlide(1)">Next ▶</button>
+</nav>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  let currentSlide = 0;
+
+  const sections = [
+    { name: 'Intro', start: 0, end: 1 },
+    { name: 'Sandboxes', start: 2, end: 5 },
+    { name: 'Promotion', start: 6, end: 8 },
+    { name: 'Lifecycle', start: 9, end: 11 },
+    { name: 'Takeaways', start: 12, end: 13 }
+  ];
+
+  function updateSlide() {
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === currentSlide);
+    });
+    document.getElementById('slideCounter').textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+    document.getElementById('prevBtn').disabled = currentSlide === 0;
+    document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+
+    const btns = document.querySelectorAll('.section-btn');
+    btns.forEach((btn, i) => {
+      const sec = sections[i];
+      btn.classList.toggle('active-section', currentSlide >= sec.start && currentSlide <= sec.end);
+    });
+  }
+
+  function changeSlide(dir) {
+    const next = currentSlide + dir;
+    if (next >= 0 && next < totalSlides) {
+      currentSlide = next;
+      updateSlide();
+    }
+  }
+
+  function goToSection(idx) {
+    currentSlide = sections[idx].start;
+    updateSlide();
+  }
+
+  function goToSlide(idx) {
+    if (idx >= 0 && idx < totalSlides) {
+      currentSlide = idx;
+      updateSlide();
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+  });
+
+  updateSlide();
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f9e14b45c4cb2e1',t:'MTc3ODQ2OTk3Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
