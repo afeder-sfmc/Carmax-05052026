@@ -723,8 +723,269 @@
     </div>
   </div>
 
-  <!-- ============ SLIDE 13: Key Principles ============ -->
+  <!-- ============ SLIDE 13: Lean Model — Build in Sandbox ============ -->
   <div class="slide flex-col justify-center bg-surface-light px-12 lg:px-20" data-slide="12">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Lean Model Walkthrough</p>
+      <h2 class="font-display text-primary text-4xl mb-3">Step 1: Build in Your Dev/UAT Sandbox</h2>
+      <p class="text-muted text-base mb-6">Using the Lean Model (2-environment), here's how a marketer builds a promotional email campaign from scratch in the sandbox.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div>
+          <div class="bg-white rounded-2xl border border-border p-6 mb-5">
+            <h3 class="font-display text-secondary text-lg mb-4">🔨 What You Build</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="w-7 h-7 bg-secondary/10 rounded-lg flex items-center justify-center shrink-0"><span class="text-secondary font-bold text-xs">A</span></div>
+                <div>
+                  <p class="font-bold text-primary text-sm">Segment Definition</p>
+                  <p class="text-muted text-xs">Define your audience rules based on behavioral/engagement DMOs. Use synthetic or small-sample data to validate the logic.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-7 h-7 bg-secondary/10 rounded-lg flex items-center justify-center shrink-0"><span class="text-secondary font-bold text-xs">B</span></div>
+                <div>
+                  <p class="font-bold text-primary text-sm">Email Content Templates</p>
+                  <p class="text-muted text-xs">Create email layouts in Content Builder with personalization tokens, dynamic content blocks, and placeholder images.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-7 h-7 bg-secondary/10 rounded-lg flex items-center justify-center shrink-0"><span class="text-secondary font-bold text-xs">C</span></div>
+                <div>
+                  <p class="font-bold text-primary text-sm">Campaign Flow</p>
+                  <p class="text-muted text-xs">Build the flow with send email actions, wait steps, branching logic, and exit rules. Wire it to your segment and content.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-7 h-7 bg-secondary/10 rounded-lg flex items-center justify-center shrink-0"><span class="text-secondary font-bold text-xs">D</span></div>
+                <div>
+                  <p class="font-bold text-primary text-sm">Data Connections</p>
+                  <p class="text-muted text-xs">Re-authenticate Data Cloud connectors in the sandbox. Ingest a small representative dataset for testing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="bg-white rounded-2xl border border-border p-6 mb-5">
+            <h3 class="font-display text-success text-lg mb-4">🧪 What You Test (with Email Blackhole ON)</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-2">
+                <span class="text-success mt-0.5">✓</span>
+                <p class="text-primary/80 text-sm">Does the segment filter produce the expected audience?</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-success mt-0.5">✓</span>
+                <p class="text-primary/80 text-sm">Do branch conditions route contacts correctly?</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-success mt-0.5">✓</span>
+                <p class="text-primary/80 text-sm">Do wait steps and exit rules behave as designed?</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-success mt-0.5">✓</span>
+                <p class="text-primary/80 text-sm">Do personalization tokens resolve correctly?</p>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="text-success mt-0.5">✓</span>
+                <p class="text-primary/80 text-sm">Does the full flow execute end-to-end without errors?</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-accent/15 rounded-2xl p-5">
+            <h4 class="font-bold text-primary text-sm mb-2">⚡ Email Blackhole Tip</h4>
+            <p class="text-muted text-sm">With Blackhole enabled, you can activate the flow and run it at volume. All sends are suppressed — the flow logic, branching, and timing all execute normally so you can validate everything safely.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 14: Lean Model — Prepare Your Change Set ============ -->
+  <div class="slide flex-col justify-center bg-white px-12 lg:px-20" data-slide="13">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Lean Model Walkthrough</p>
+      <h2 class="font-display text-primary text-4xl mb-3">Step 2: Prepare Your Promotion Package</h2>
+      <p class="text-muted text-base mb-6">Once you've validated everything in sandbox, assemble what needs to move to production — in the right order.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-6">
+        <div class="bg-secondary/5 rounded-2xl p-5 border border-secondary/15 relative">
+          <div class="absolute -top-3 left-5 bg-secondary text-white font-bold text-xs px-3 py-1 rounded-full">Deploy First</div>
+          <div class="mt-3">
+            <h4 class="font-display text-primary text-base mb-3">Data Cloud Objects</h4>
+            <div class="space-y-2">
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">DMOs / Data Model <span class="text-muted">→ Data Kit</span></div>
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">Segment Definitions <span class="text-muted">→ Data Kit</span></div>
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">Calculated Insights <span class="text-muted">→ Data Kit</span></div>
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">IR Rulesets <span class="text-muted">→ Data Kit</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-accent/8 rounded-2xl p-5 border border-accent/15 relative">
+          <div class="absolute -top-3 left-5 bg-accent-dark text-primary font-bold text-xs px-3 py-1 rounded-full">Deploy Second</div>
+          <div class="mt-3">
+            <h4 class="font-display text-primary text-base mb-3">Content</h4>
+            <div class="space-y-2">
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">Email Templates <span class="text-muted">→ Change Set</span></div>
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">Dynamic Content <span class="text-muted">→ Change Set</span></div>
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">Permission Sets <span class="text-muted">→ Change Set</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-success/5 rounded-2xl p-5 border border-success/15 relative">
+          <div class="absolute -top-3 left-5 bg-success text-white font-bold text-xs px-3 py-1 rounded-full">Deploy Last</div>
+          <div class="mt-3">
+            <h4 class="font-display text-primary text-base mb-3">Flows</h4>
+            <div class="space-y-2">
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">Campaign Flow <span class="text-muted">→ Change Set</span></div>
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">Subflows <span class="text-muted">→ Change Set</span></div>
+              <div class="bg-white rounded-lg px-3 py-2 text-xs text-primary/80 border border-border">Suppression Flows <span class="text-muted">→ Change Set</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="bg-error/5 border border-error/15 rounded-xl p-4">
+          <h4 class="font-bold text-error text-sm mb-2">⚠️ Remember: Data Does NOT Promote</h4>
+          <p class="text-muted text-xs">Audience populations, ingested data, engagement history, and campaign records do not travel. You'll need to re-publish segments and re-create the campaign record in production.</p>
+        </div>
+        <div class="bg-surface rounded-xl p-4">
+          <h4 class="font-bold text-primary text-sm mb-2">💡 Pro Tip: Use Empty Send Actions</h4>
+          <p class="text-muted text-xs">Build and test with empty (template) Send to MCE Email actions in sandbox. After deploying the flow to production, open it in Flow Builder and attach the real Data Extension before activating.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 15: Lean Model — Go Live in Production ============ -->
+  <div class="slide flex-col justify-center bg-primary px-12 lg:px-20" data-slide="14">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-accent font-bold text-sm tracking-wider uppercase mb-3">Lean Model Walkthrough</p>
+      <h2 class="font-display text-white text-4xl mb-3">Step 3: Go Live in Production</h2>
+      <p class="text-white/60 text-base mb-8">Your validated metadata has landed in production. Now complete the environment-specific steps to launch your campaign.</p>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10">
+          <h3 class="font-display text-accent text-xl mb-5">Production Setup Checklist</h3>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <div class="w-7 h-7 bg-accent rounded-lg flex items-center justify-center shrink-0"><span class="text-primary font-bold text-xs">1</span></div>
+              <div>
+                <p class="font-bold text-white text-sm">Re-publish Segment</p>
+                <p class="text-white/55 text-xs">The segment definition arrived via Data Kit. Publish it against your live production audience to generate the real population.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-7 h-7 bg-accent rounded-lg flex items-center justify-center shrink-0"><span class="text-primary font-bold text-xs">2</span></div>
+              <div>
+                <p class="font-bold text-white text-sm">Create Campaign Record</p>
+                <p class="text-white/55 text-xs">Campaign records are data, not metadata — they can't be promoted. Create the campaign record fresh in production.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-7 h-7 bg-accent rounded-lg flex items-center justify-center shrink-0"><span class="text-primary font-bold text-xs">3</span></div>
+              <div>
+                <p class="font-bold text-white text-sm">Verify Flow Configuration</p>
+                <p class="text-white/55 text-xs">Open the deployed flow in Flow Builder. If using Send to MCE Email with a Data Extension, attach the production DE now.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-7 h-7 bg-accent rounded-lg flex items-center justify-center shrink-0"><span class="text-primary font-bold text-xs">4</span></div>
+              <div>
+                <p class="font-bold text-white text-sm">Activate Campaign</p>
+                <p class="text-white/55 text-xs">Turn on the campaign flow. Real sends begin to real audiences. You're live.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-5">
+          <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10">
+            <h3 class="font-display text-accent text-lg mb-3">What Arrived via Promotion</h3>
+            <div class="space-y-2">
+              <p class="text-white/75 text-sm flex items-center gap-2"><span class="text-success">✅</span> Campaign Flow (validated in sandbox)</p>
+              <p class="text-white/75 text-sm flex items-center gap-2"><span class="text-success">✅</span> Email templates & content</p>
+              <p class="text-white/75 text-sm flex items-center gap-2"><span class="text-success">✅</span> Segment definition (rules)</p>
+              <p class="text-white/75 text-sm flex items-center gap-2"><span class="text-success">✅</span> IR rule configuration</p>
+              <p class="text-white/75 text-sm flex items-center gap-2"><span class="text-success">✅</span> Data Cloud objects (DMOs, streams)</p>
+            </div>
+          </div>
+          <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10">
+            <h3 class="font-display text-accent text-lg mb-3">What You Built Fresh in Prod</h3>
+            <div class="space-y-2">
+              <p class="text-white/75 text-sm flex items-center gap-2"><span class="text-accent">🔨</span> Campaign record</p>
+              <p class="text-white/75 text-sm flex items-center gap-2"><span class="text-accent">🔨</span> Live segment population</p>
+              <p class="text-white/75 text-sm flex items-center gap-2"><span class="text-accent">🔨</span> DE attachment (if applicable)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 16: Lean Model — Visual Summary ============ -->
+  <div class="slide flex-col justify-center bg-white px-12 lg:px-20" data-slide="15">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Lean Model Walkthrough</p>
+      <h2 class="font-display text-primary text-4xl mb-8">The Lean Model at a Glance</h2>
+      <!-- Visual flow -->
+      <div class="flex items-stretch gap-0 mb-8">
+        <div class="flex-1 bg-secondary/8 rounded-l-2xl p-6 border border-secondary/20">
+          <div class="text-center">
+            <div class="bg-secondary text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 font-bold">1</div>
+            <h3 class="font-display text-primary text-lg mb-2">Dev/UAT Sandbox</h3>
+            <p class="text-xs text-secondary font-bold uppercase tracking-wider mb-3">Build &amp; Test</p>
+            <div class="text-left space-y-1.5">
+              <p class="text-xs text-muted">→ Build flows, segments, templates</p>
+              <p class="text-xs text-muted">→ Re-auth Data Cloud connectors</p>
+              <p class="text-xs text-muted">→ Ingest synthetic test data</p>
+              <p class="text-xs text-muted">→ Enable Email Blackhole</p>
+              <p class="text-xs text-muted">→ Run full flow at volume</p>
+              <p class="text-xs text-muted">→ Validate branching, timing, personalization</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center justify-center px-4">
+          <p class="text-secondary font-bold text-2xl">→</p>
+          <div class="bg-secondary/10 rounded-lg px-3 py-1.5 mt-1">
+            <p class="text-secondary font-bold text-[10px] uppercase tracking-wider text-center">Change Set<br>+ Data Kit</p>
+          </div>
+        </div>
+        <div class="flex-1 bg-primary rounded-r-2xl p-6">
+          <div class="text-center">
+            <div class="bg-accent text-primary w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 font-bold">2</div>
+            <h3 class="font-display text-white text-lg mb-2">Production</h3>
+            <p class="text-xs text-accent font-bold uppercase tracking-wider mb-3">Launch</p>
+            <div class="text-left space-y-1.5">
+              <p class="text-xs text-white/55">→ Metadata arrives (flows, segments, content)</p>
+              <p class="text-xs text-white/55">→ Re-publish segment for live audience</p>
+              <p class="text-xs text-white/55">→ Create campaign record</p>
+              <p class="text-xs text-white/55">→ Attach production DE if needed</p>
+              <p class="text-xs text-white/55">→ Activate campaign</p>
+              <p class="text-xs text-white/55">→ Go live with real sends</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Key benefits -->
+      <div class="grid grid-cols-3 gap-4">
+        <div class="bg-surface rounded-xl p-4 text-center">
+          <p class="text-3xl mb-2">🛡️</p>
+          <h4 class="font-bold text-primary text-sm mb-1">Safe Testing</h4>
+          <p class="text-muted text-xs">Email Blackhole ensures no accidental sends to real customers during development</p>
+        </div>
+        <div class="bg-surface rounded-xl p-4 text-center">
+          <p class="text-3xl mb-2">⚡</p>
+          <h4 class="font-bold text-primary text-sm mb-1">Fast Iteration</h4>
+          <p class="text-muted text-xs">2-environment model minimizes overhead for recurring promotional campaigns</p>
+        </div>
+        <div class="bg-surface rounded-xl p-4 text-center">
+          <p class="text-3xl mb-2">🔒</p>
+          <h4 class="font-bold text-primary text-sm mb-1">Platform-Enforced</h4>
+          <p class="text-muted text-xs">Sandbox isolation, promotion gates, and dependency validation are built into the platform</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 17: Key Principles ============ -->
+  <div class="slide flex-col justify-center bg-surface-light px-12 lg:px-20" data-slide="16">
     <div class="max-w-5xl mx-auto w-full">
       <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Key Takeaways</p>
       <h2 class="font-display text-primary text-4xl mb-8">Principles to Remember</h2>
@@ -775,8 +1036,8 @@
     </div>
   </div>
 
-  <!-- ============ SLIDE 14: Closing ============ -->
-  <div class="slide flex-col justify-center items-center text-center bg-primary px-16" data-slide="13">
+  <!-- ============ SLIDE 18: Closing ============ -->
+  <div class="slide flex-col justify-center items-center text-center bg-primary px-16" data-slide="17">
     <div class="max-w-3xl mx-auto">
       <img src="https://image.s4.sfmc-content.com/lib/fe8e1573716d017e7d/m/1/9efb82fe-b8b5-4d89-bbb7-a8b0da971038.png" alt="CarMax" class="h-10 mx-auto mb-10 opacity-80" />
       <h2 class="font-display text-accent text-5xl lg:text-6xl mb-6">Build with Confidence.<br>Deploy with Control.</h2>
@@ -813,9 +1074,10 @@
     <button class="section-btn" onclick="goToSection(1)">Sandboxes</button>
     <button class="section-btn" onclick="goToSection(2)">Promotion</button>
     <button class="section-btn" onclick="goToSection(3)">Lifecycle</button>
-    <button class="section-btn" onclick="goToSection(4)">Takeaways</button>
+    <button class="section-btn" onclick="goToSection(4)">Lean Model</button>
+    <button class="section-btn" onclick="goToSection(5)">Takeaways</button>
   </div>
-  <span class="text-white/50 text-xs whitespace-nowrap mx-3" id="slideCounter">Slide 1 of 14</span>
+  <span class="text-white/50 text-xs whitespace-nowrap mx-3" id="slideCounter">Slide 1 of 18</span>
   <button class="btn-nav" id="nextBtn" onclick="changeSlide(1)">Next ▶</button>
 </nav>
 
@@ -829,7 +1091,8 @@
     { name: 'Sandboxes', start: 2, end: 5 },
     { name: 'Promotion', start: 6, end: 8 },
     { name: 'Lifecycle', start: 9, end: 11 },
-    { name: 'Takeaways', start: 12, end: 13 }
+    { name: 'Lean Model', start: 12, end: 15 },
+    { name: 'Takeaways', start: 16, end: 17 }
   ];
 
   function updateSlide() {
@@ -875,5 +1138,5 @@
   updateSlide();
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f9e14b45c4cb2e1',t:'MTc3ODQ2OTk3Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f9e28ef6812b2e1',t:'MTc3ODQ3MDgwMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
