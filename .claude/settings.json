@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__plugin_slack_slack__slack_read_canvas",
+      "Bash(launchctl list *)",
+      "Bash(sf org display *)",
+      "Bash(curl -s http://127.0.0.1:29051/*)"
+    ]
+  }
+}

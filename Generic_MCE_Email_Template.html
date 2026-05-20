@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        body {
+            background-color: #F2F3F5;
+            color: #222222;
+            font-family: Overpass, Arial, sans-serif;
+            margin: 0;
+            padding: 0
+        }
+
+        .block-bg {
+            background-color: #FFFFFF
+        }
+
+        .brand-bg {
+            background-color: #F2F3F5
+        }
+
+        .header-bg {
+            background-color: #11365F
+        }
+
+        .footer-bg {
+            background-color: #11365F
+        }
+
+        img {
+            max-width: 100%
+        }
+
+        .border-top {
+            border-top: 1px solid #CACBCA
+        }
+
+        .border-right {
+            border-right: 1px solid #CACBCA
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid #CACBCA
+        }
+
+        .border-left {
+            border-left: 1px solid #CACBCA
+        }
+
+        .float-right {
+            float: right
+        }
+
+        .p0 {
+            padding: 0
+        }
+
+        .p5 {
+            padding: 5px
+        }
+
+        .p5top {
+            padding-top: 5px
+        }
+
+        .p5right {
+            padding-right: 5px
+        }
+
+        .p5bottom {
+            padding-bottom: 5px
+        }
+
+        .p5left {
+            padding-left: 5px
+        }
+
+        .p10 {
+            padding: 10px
+        }
+
+        .p10top {
+            padding-top: 10px
+        }
+
+        .p10right {
+            padding-right: 10px
+        }
+
+        .p10bottom {
+            padding-bottom: 10px
+        }
+
+        .p10left {
+            padding-left: 10px
+        }
+
+        .p15 {
+            padding: 15px
+        }
+
+        .p15top {
+            padding-top: 15px
+        }
+
+        .p15right {
+            padding-right: 15px
+        }
+
+        .p15bottom {
+            padding-bottom: 15px
+        }
+
+        .p15left {
+            padding-left: 15px
+        }
+
+        .p20 {
+            padding: 20px
+        }
+
+        .p20top {
+            padding-top: 20px
+        }
+
+        .p20right {
+            padding-right: 20px
+        }
+
+        .p20bottom {
+            padding-bottom: 20px
+        }
+
+        .p20left {
+            padding-left: 20px
+        }
+
+        .p25 {
+            padding: 25px
+        }
+
+        .p25top {
+            padding-top: 25px
+        }
+
+        .p25right {
+            padding-right: 25px
+        }
+
+        .p25bottom {
+            padding-bottom: 25px
+        }
+
+        .p25left {
+            padding-left: 25px
+        }
+
+        .p30 {
+            padding: 30px
+        }
+
+        .p30top {
+            padding-top: 30px
+        }
+
+        .p30right {
+            padding-right: 30px
+        }
+
+        .p30bottom {
+            padding-bottom: 30px
+        }
+
+        .p30left {
+            padding-left: 30px
+        }
+
+        .p40 {
+            padding: 40px
+        }
+
+        .p40top {
+            padding-top: 40px
+        }
+
+        .p40right {
+            padding-right: 40px
+        }
+
+        .p40bottom {
+            padding-bottom: 40px
+        }
+
+        .p40left {
+            padding-left: 40px
+        }
+
+        .p50 {
+            padding: 50px
+        }
+
+        .p50top {
+            padding-top: 50px
+        }
+
+        .p50right {
+            padding-right: 50px
+        }
+
+        .p50bottom {
+            padding-bottom: 50px
+        }
+
+        .p50left {
+            padding-left: 50px
+        }
+
+        .p60top {
+            padding-top: 60px
+        }
+
+        .p60right {
+            padding-right: 60px
+        }
+
+        .p60bottom {
+            padding-bottom: 60px
+        }
+
+        .p60left {
+            padding-left: 60px
+        }
+
+        .p75 {
+            padding: 75px
+        }
+
+        .p75top {
+            padding-top: 75px
+        }
+
+        .p75right {
+            padding-right: 75px
+        }
+
+        .p75bottom {
+            padding-bottom: 75px
+        }
+
+        .p75left {
+            padding-left: 75px
+        }
+
+        .p100 {
+            padding: 100px
+        }
+
+        .p100top {
+            padding-top: 100px
+        }
+
+        .p100right {
+            padding-right: 100px
+        }
+
+        .p100bottom {
+            padding-bottom: 100px
+        }
+
+        .p100left {
+            padding-left: 100px
+        }
+
+        .m5 {
+            margin: 5px
+        }
+
+        .m5top {
+            margin-top: 5px
+        }
+
+        .m5right {
+            margin-right: 5px
+        }
+
+        .m5bottom {
+            margin-bottom: 5px
+        }
+
+        .m5left {
+            margin-left: 5px
+        }
+
+        .m10 {
+            margin: 10px
+        }
+
+        .m10top {
+            margin-top: 10px
+        }
+
+        .m10right {
+            margin-right: 10px
+        }
+
+        .m10bottom {
+            margin-bottom: 10px
+        }
+
+        .m10left {
+            margin-left: 10px
+        }
+
+        .m20 {
+            margin: 20px
+        }
+
+        .m20top {
+            margin-top: 20px
+        }
+
+        .m20right {
+            margin-right: 20px
+        }
+
+        .m20bottom {
+            margin-bottom: 20px
+        }
+
+        .m20left {
+            margin-left: 20px
+        }
+
+        .m30 {
+            margin: 30px
+        }
+
+        .m30top {
+            margin-top: 30px
+        }
+
+        .m30right {
+            margin-right: 30px
+        }
+
+        .m30bottom {
+            margin-bottom: 30px
+        }
+
+        .m30left {
+            margin-left: 30px
+        }
+
+        .m40 {
+            margin: 40px
+        }
+
+        .m40top {
+            margin-top: 40px
+        }
+
+        .m40right {
+            margin-right: 40px
+        }
+
+        .m40bottom {
+            margin-bottom: 40px
+        }
+
+        .m40left {
+            margin-left: 40px
+        }
+
+        .m50 {
+            margin: 50px
+        }
+
+        .m50top {
+            margin-top: 50px
+        }
+
+        .m50right {
+            margin-right: 50px
+        }
+
+        .m50bottom {
+            margin-bottom: 50px
+        }
+
+        .m50left {
+            margin-left: 50px
+        }
+
+        .m75 {
+            margin: 75px
+        }
+
+        .m75top {
+            margin-top: 75px
+        }
+
+        .m75right {
+            margin-right: 75px
+        }
+
+        .m75bottom {
+            margin-bottom: 75px
+        }
+
+        .m75left {
+            margin-left: 75px
+        }
+
+        .m100 {
+            margin: 100px
+        }
+
+        .m100top {
+            margin-top: 100px
+        }
+
+        .m100right {
+            margin-right: 100px
+        }
+
+        .m100bottom {
+            margin-bottom: 100px
+        }
+
+        a,
+        div,
+        li,
+        p,
+        td {
+            -webkit-text-size-adjust: none
+        }
+
+        .text-brand-color {
+            color: #222222
+        }
+
+        .text-header-color {
+            color: #FFFFFF
+        }
+
+        .text-footer-color {
+            color: #FFFFFF
+        }
+
+        .text-uppercase {
+            text-transform: uppercase
+        }
+
+        .text-align-center {
+            text-align: center
+        }
+
+        .text-align-right {
+            text-align: right
+        }
+
+        .text-align-left {
+            text-align: left
+        }
+
+        .font10 {
+            font-size: 10px
+        }
+
+        .font12 {
+            font-size: 12px
+        }
+
+        .font13 {
+            font-size: 13px
+        }
+
+        .font14 {
+            font-size: 14px
+        }
+
+        .font16 {
+            font-size: 16px
+        }
+
+        .font18 {
+            font-size: 18px
+        }
+
+        .font20 {
+            font-size: 20px
+        }
+
+        .font24 {
+            font-size: 24px
+        }
+
+        .font28 {
+            font-size: 28px
+        }
+
+        .font30 {
+            font-size: 30px
+        }
+
+        .font48 {
+            font-size: 48px
+        }
+
+        a.no-decoration {
+            text-decoration: none
+        }
+
+        a.inherit-color {
+            color: inherit
+        }
+
+        .text-link {
+            color: #00478C;
+            font-weight: 700;
+            text-decoration: none
+        }
+
+        .preheader-text {
+            font-size: 11px
+        }
+
+        .text-headline-primary {
+            display: block;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 34px;
+            padding-bottom: 20px
+        }
+
+        .text-headline-secondary {
+            font-size: 22px;
+            line-height: 28px;
+            padding: 20px 0 10px;
+            text-align: center;
+            vertical-align: top
+        }
+
+        .text-headline-secondary,
+        .text-headline-tertiary {
+            display: inline-block;
+            font-style: normal;
+            font-weight: 700
+        }
+
+        .text-headline-tertiary {
+            font-size: 18px;
+            font-style: bold;
+            line-height: 22px;
+            padding-bottom: 5px
+        }
+
+        .text-body {
+            font-size: 16px
+        }
+
+        .text-body,
+        .text-body-sm {
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px
+        }
+
+        .text-body-sm {
+            font-size: 11px
+        }
+
+        .button {
+            background-color: #00478C;
+            border-radius: 45px;
+            color: #FFFFFF;
+            display: inline-block;
+            padding: 8px 40px
+        }
+
+        .button a {
+            color: #FFFFFF;
+            text-decoration: none
+        }
+
+        .button.buttondark {
+            background-color: #0F1929
+        }
+
+        .button-link {
+            background-color: #00478C;
+            border-color: #00478C;
+            border-radius: 45px;
+            border-style: solid;
+            border-width: 12px 18px;
+            color: #FFFFFF;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 800;
+            line-height: 16px;
+            text-align: center;
+            text-decoration: none;
+            text-transform: uppercase
+        }
+
+        .button-link.button-link_button-color {
+            background-color: #00478C;
+            border-color: #00478C;
+            color: #FFFFFF
+        }
+
+        .social-button {
+            border: 10px solid #F2F3F5;
+            border-radius: 50%
+        }
+
+        .social-button,
+        .social-button-large {
+            background-color: #F2F3F5;
+            display: inline-block;
+            margin: 20px 10px
+        }
+
+        .social-button-large {
+            border: 15px solid #F2F3F5;
+            border-radius: 50%
+        }
+
+        .icon-container {
+            border-radius: 50%;
+            display: inline-block;
+            background-color: #F2F3F5;
+            border-top: 10px solid #F2F3F5;
+            border-bottom: 10px solid #F2F3F5;
+            border-right: 10px solid #F2F3F5;
+            border-left: 10px solid #F2F3F5;
+        }
+
+        .coupon-border {
+            border: 2px dashed #F2F3F5
+        }
+
+        .banner-border {
+            border-top: 8px solid #38E8FF
+        }
+
+        .buttonblock {
+            border-radius: 45px !important
+        }
+
+        .buttonblock,
+        .buttonstyles {
+            background-color: #00478C !important
+        }
+
+        .buttonstyles {
+            border: 3px solid #00478C !important;
+            border-radius: 45px !important;
+            color: #FFFFFF !important;
+            display: inline-block !important;
+            font-family: Overpass, Arial, sans-serif !important;
+            font-size: 14px !important;
+            padding: 14px 36px !important;
+            text-align: center !important;
+            text-decoration: none !important;
+            text-transform: uppercase !important;
+            font-weight: 800 !important
+        }
+
+        @media screen and (max-width:480px) {
+            .db-container {
+                width: 360px !important
+            }
+
+            .db-container-padding {
+                padding: 20px 20px 20px 40px !important;
+                width: 360px !important
+            }
+
+            .db-full-width {
+                float: left !important;
+                padding: 0 !important;
+                width: 100% !important
+            }
+
+            .db-full-width-padding-bottom {
+                float: left !important;
+                padding: 0 0 25px !important;
+                width: 100% !important
+            }
+
+            .db-full-width-center {
+                float: left !important;
+                padding: 10px 0 !important;
+                text-align: center !important;
+                width: 100% !important
+            }
+
+            .db-wrapper-padding {
+                padding: 20px !important
+            }
+
+            .db-photo {
+                height: auto !important;
+                width: 100% !important
+            }
+
+            .db-photo-sm {
+                height: auto !important;
+                width: 50% !important
+            }
+
+            .db-text {
+                font-size: 16px !important
+            }
+
+            .db-hide {
+                display: none !important
+            }
+        }
+    </style>
+</head>
+<body>
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" class="text-align-center" bgcolor="#F2F3F5">
+        <tr>
+            <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" class="db-container">
+                    <tr>
+                        <td>
+                            <div data-type="slot" data-key="xkht3hu1zf9"></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" class="db-container">
+                    <tr>
+                        <td>
+                            <div data-type="slot" data-key="header"></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" class="db-container" width="600px">
+                    <tr>
+                        <td>
+                            <div data-type="slot" data-key="body"></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table align="center" border="0" cellpadding="0" cellspacing="0" width="600px" class="db-container">
+                    <tr>
+                        <td>
+                            <div data-type="slot" data-key="footer"></div>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <div id="tracking_pixel">
+            <custom name="opencounter" type="tracking"/>
+        </div>
+        <div id="campaign_pixel"></div>
+    </table>
+</body>
+</html>

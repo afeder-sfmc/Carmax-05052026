@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Ready to go electric? | CarMax</title>
+  <style>
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    body { margin: 0; padding: 0; background: #F5F5F5; font-family: "Helvetica Neue", Arial, sans-serif; }
+    table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; display: block; outline: none; }
+    a { text-decoration: none; }
+
+    .email-wrapper { background: #F5F5F5; padding: 0; }
+    .email-body { max-width: 600px; margin: 0 auto; background: #FFFFFF; }
+
+    /* Top accent bar */
+    .accent-bar { background: #003087; height: 4px; font-size: 0; line-height: 0; }
+
+    /* Header */
+    .header { background: #FFFFFF; padding: 20px 24px 16px; text-align: center; border-bottom: 1px solid #CCCCCC; }
+    .header img { height: 32px; width: auto; margin: 0 auto; }
+
+    /* Hero image */
+    .hero-image { width: 100%; display: block; }
+
+    /* Content sections */
+    .section { padding: 32px 40px; text-align: center; }
+    .section-left { padding: 24px 40px; text-align: left; }
+
+    /* Typography */
+    .headline { font-size: 32px; font-weight: 700; color: #003087; line-height: 1.2; margin: 0 0 12px; }
+    .subhead { font-size: 16px; font-weight: 400; color: #333333; line-height: 1.5; margin: 0 0 24px; }
+    .section-title { font-size: 20px; font-weight: 700; color: #003087; margin: 0 0 4px; text-align: center; }
+    .section-body { font-size: 15px; color: #333333; line-height: 1.5; text-align: center; margin: 0 0 24px; }
+
+    /* Vehicle card */
+    .vehicle-card { border: 1px solid #CCCCCC; border-radius: 8px; overflow: hidden; margin: 0 0 20px; }
+    .vehicle-card img { width: 100%; display: block; }
+    .vehicle-card-body { padding: 16px 20px 20px; }
+    .vehicle-label { font-size: 11px; font-weight: 600; color: #767676; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 4px; }
+    .vehicle-name { font-size: 17px; font-weight: 700; color: #0057B8; margin: 0 0 8px; line-height: 1.3; }
+    .vehicle-meta { font-size: 15px; color: #333333; font-weight: 400; margin: 0 0 4px; }
+    .vehicle-meta strong { font-weight: 700; }
+    .vehicle-availability { font-size: 13px; color: #767676; margin: 0; }
+    .vehicle-availability a { color: #0057B8; }
+
+    /* Price drop badge */
+    .price-badge { display: inline-block; background: #FFC107; color: #333333; font-size: 13px; font-weight: 700; padding: 3px 10px; border-radius: 3px; margin-bottom: 8px; }
+
+    /* Buttons */
+    .btn-primary { display: inline-block; background: #003087; color: #FFFFFF; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 14px 32px; border-radius: 4px; text-align: center; }
+    .btn-primary:hover { background: #002060; }
+    .btn-secondary { display: inline-block; background: transparent; color: #003087; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; padding: 12px 28px; border-radius: 4px; border: 2px solid #003087; text-align: center; }
+
+    /* Divider */
+    .divider { border: 0; border-top: 1px solid #CCCCCC; margin: 0; }
+
+    /* Light blue info section */
+    .info-section { background: #E6EEF8; padding: 28px 32px; }
+    .info-section-title { font-size: 18px; font-weight: 700; color: #003087; margin: 0 0 20px; text-align: left; }
+
+    /* Benefit rows */
+    .benefit-row { display: table; width: 100%; margin-bottom: 16px; }
+    .benefit-icon-cell { display: table-cell; width: 44px; vertical-align: top; padding-top: 2px; }
+    .benefit-icon { width: 36px; height: 36px; background: #003087; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .benefit-text-cell { display: table-cell; vertical-align: top; padding-left: 14px; }
+    .benefit-title { font-size: 15px; font-weight: 700; color: #333333; margin: 0 0 3px; }
+    .benefit-desc { font-size: 14px; color: #767676; margin: 0; line-height: 1.4; }
+
+    /* Gray article section */
+    .article-section { background: #F5F5F5; padding: 28px 32px; }
+    .article-row { display: table; width: 100%; border-bottom: 1px solid #CCCCCC; padding: 12px 0; }
+    .article-row:last-child { border-bottom: 0; }
+    .article-img-cell { display: table-cell; width: 80px; vertical-align: top; }
+    .article-img-cell img { width: 72px; height: 52px; object-fit: cover; border-radius: 4px; }
+    .article-text-cell { display: table-cell; vertical-align: top; padding-left: 14px; }
+    .article-title { font-size: 14px; font-weight: 700; color: #0057B8; margin: 0 0 4px; line-height: 1.3; }
+    .article-desc { font-size: 13px; color: #767676; margin: 0; line-height: 1.4; }
+
+    /* Checklist */
+    .checklist-item { padding: 6px 0; border-bottom: 1px solid #E0E0E0; }
+    .checklist-item:last-child { border-bottom: 0; }
+    .check { color: #0057B8; font-weight: 700; margin-right: 8px; }
+
+    /* Footer */
+    .footer-logo-bar { background: #FFFFFF; padding: 20px 40px 16px; border-top: 1px solid #CCCCCC; text-align: center; }
+    .footer-social { text-align: center; padding: 0 0 16px; }
+    .footer-social a { display: inline-block; margin: 0 6px; }
+    .footer-links { text-align: center; padding: 8px 24px; }
+    .footer-links a { font-size: 13px; color: #0057B8; margin: 0 8px; }
+    .footer-legal { background: #F5F5F5; padding: 16px 32px 24px; text-align: center; }
+    .footer-legal p { font-size: 12px; color: #767676; line-height: 1.5; margin: 0 0 8px; }
+    .footer-legal a { color: #767676; text-decoration: underline; }
+    .footer-copyright { font-size: 12px; color: #767676; margin: 0 0 8px; }
+    .footer-copyright a { color: #0057B8; font-weight: 700; }
+
+    /* SVG icon inline fallbacks */
+    .icon-svg { width: 28px; height: 28px; }
+
+    @media only screen and (max-width: 620px) {
+      .section, .section-left { padding: 24px 20px !important; }
+      .info-section, .article-section { padding: 20px 20px !important; }
+      .headline { font-size: 26px !important; }
+      .btn-primary, .btn-secondary { display: block !important; width: 100% !important; box-sizing: border-box !important; margin: 0 0 12px !important; }
+      .footer-logo-bar { padding: 16px 20px !important; }
+    }
+  </style>
+</head>
+<body>
+<div class="email-wrapper">
+<table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+<tr><td align="center">
+
+<!-- Email body container -->
+<table class="email-body" width="600" cellpadding="0" cellspacing="0" role="presentation">
+
+  <!-- Top accent bar -->
+  <tr><td class="accent-bar">&nbsp;</td></tr>
+
+  <!-- Header: Logo -->
+  <tr>
+    <td class="header">
+      <img src="images/CarMax-Logo-Blue.png" alt="CarMax" height="32" style="height:32px;width:auto;margin:0 auto;">
+    </td>
+  </tr>
+
+  <!-- Hero image -->
+  <tr>
+    <td style="padding:0;">
+      <img src="images/26-34-38-Shop_EV_Inventory-AdobeStock_615082299_HiRes.png"
+           alt="Family charging their electric vehicle at home"
+           width="600" class="hero-image"
+           style="width:100%;display:block;">
+    </td>
+  </tr>
+
+  <!-- Hero headline -->
+  <tr>
+    <td class="section" style="padding:36px 48px 28px;">
+      <h1 class="headline" style="font-size:32px;font-weight:700;color:#003087;line-height:1.2;margin:0 0 14px;">Ready to go electric?</h1>
+      <p class="subhead" style="font-size:16px;color:#333333;line-height:1.6;margin:0 0 28px;">
+        Explore hundreds of certified used EVs — no haggling, no surprises.<br>
+        Just an easier way to find the right car for your life.
+      </p>
+      <a href="#" class="btn-primary" style="display:inline-block;background:#003087;color:#FFFFFF;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:14px 36px;border-radius:4px;text-decoration:none;">Shop EV Inventory</a>
+    </td>
+  </tr>
+
+  <tr><td><hr class="divider" style="border:0;border-top:1px solid #CCCCCC;margin:0;"></td></tr>
+
+  <!-- Featured vehicle card -->
+  <tr>
+    <td style="padding:28px 40px 8px;">
+      <p style="font-size:11px;font-weight:600;color:#767676;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 12px;">Featured EV</p>
+
+      <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border:1px solid #CCCCCC;border-radius:8px;overflow:hidden;">
+        <tr>
+          <td style="padding:0;">
+            <!-- Vehicle image placeholder — grey background with EV silhouette feel -->
+            <div style="background:linear-gradient(135deg,#E6EEF8 0%,#F5F5F5 100%);padding:32px 24px;text-align:center;">
+              <p style="font-size:13px;color:#767676;margin:0 0 6px;">📷 Vehicle photo</p>
+              <p style="font-size:24px;font-weight:700;color:#003087;margin:0;">2023 Tesla Model 3</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:16px 20px 20px;background:#FFFFFF;">
+            <p style="font-size:11px;font-weight:600;color:#767676;text-transform:uppercase;letter-spacing:0.5px;margin:0 0 4px;">Your Saved Search Match</p>
+            <p style="font-size:17px;font-weight:700;color:#0057B8;margin:0 0 10px;">2023 Tesla Model 3 Long Range</p>
+
+            <!-- Price with savings callout -->
+            <table cellpadding="0" cellspacing="0" role="presentation">
+              <tr>
+                <td style="vertical-align:middle;">
+                  <span style="display:inline-block;background:#FFC107;color:#333333;font-size:12px;font-weight:700;padding:3px 10px;border-radius:3px;margin-right:10px;">$800 price drop</span>
+                </td>
+                <td style="vertical-align:middle;">
+                  <span style="font-size:20px;font-weight:700;color:#333333;">now $34,998<sup style="font-size:12px;">*</sup></span>
+                </td>
+              </tr>
+            </table>
+
+            <p style="font-size:15px;color:#333333;margin:8px 0 4px;"><strong>28K mi</strong>&nbsp;&nbsp;·&nbsp;&nbsp;All-Wheel Drive</p>
+            <p style="font-size:13px;color:#767676;margin:0 0 18px;">Available at <a href="#" style="color:#0057B8;font-weight:700;">CarMax</a> Tysons Corner, VA</p>
+
+            <table cellpadding="0" cellspacing="0" role="presentation">
+              <tr>
+                <td style="padding-right:10px;">
+                  <a href="#" style="display:inline-block;background:#003087;color:#FFFFFF;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:12px 22px;border-radius:4px;text-decoration:none;">Reserve It Now</a>
+                </td>
+                <td>
+                  <a href="#" style="display:inline-block;background:transparent;color:#003087;font-size:14px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:10px 18px;border-radius:4px;border:2px solid #003087;text-decoration:none;">Explore the Features</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Browse all link -->
+  <tr>
+    <td style="padding:12px 40px 28px;text-align:center;">
+      <a href="#" style="font-size:14px;color:#0057B8;font-weight:700;text-decoration:underline;">Browse all electric vehicles →</a>
+    </td>
+  </tr>
+
+  <tr><td><hr style="border:0;border-top:1px solid #CCCCCC;margin:0;"></td></tr>
+
+  <!-- "Can an EV fit your lifestyle?" section -->
+  <tr>
+    <td style="padding:0;">
+      <img src="images/28-34-41-Can_an_EV_fit_my_lifestyle-AdobeStock_578633819_HiRes.png"
+           alt="Electric vehicle charging at home"
+           width="600"
+           style="width:100%;display:block;">
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:32px 48px;text-align:center;">
+      <h2 style="font-size:24px;font-weight:700;color:#003087;margin:0 0 12px;line-height:1.3;">Can an EV fit your lifestyle?</h2>
+      <p style="font-size:15px;color:#333333;line-height:1.6;margin:0 0 24px;">From daily commutes to road trips, we'll help you figure out<br>if going electric makes sense for you.</p>
+      <a href="#" style="display:inline-block;background:transparent;color:#003087;font-size:15px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:12px 28px;border-radius:4px;border:2px solid #003087;text-decoration:none;">Take the EV Quiz</a>
+    </td>
+  </tr>
+
+  <tr><td><hr style="border:0;border-top:1px solid #CCCCCC;margin:0;"></td></tr>
+
+  <!-- Why EV? — 3 benefit tiles -->
+  <tr>
+    <td class="info-section" style="background:#E6EEF8;padding:28px 32px;">
+      <p style="font-size:18px;font-weight:700;color:#003087;margin:0 0 20px;text-align:left;">Why electric? Here's what drivers love.</p>
+
+      <!-- Benefit 1 -->
+      <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin-bottom:18px;">
+        <tr>
+          <td width="44" valign="top">
+            <div style="width:36px;height:36px;background:#003087;border-radius:50%;text-align:center;line-height:36px;">
+              <span style="color:#FFFFFF;font-size:16px;">⚡</span>
+            </div>
+          </td>
+          <td valign="top" style="padding-left:14px;">
+            <p style="font-size:15px;font-weight:700;color:#333333;margin:0 0 3px;">Charge at home overnight</p>
+            <p style="font-size:14px;color:#767676;margin:0;line-height:1.4;">Wake up every morning with a full "tank." Most EVs charge fully on a standard 240V outlet.</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Benefit 2 -->
+      <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin-bottom:18px;">
+        <tr>
+          <td width="44" valign="top">
+            <div style="width:36px;height:36px;background:#003087;border-radius:50%;text-align:center;line-height:36px;">
+              <span style="color:#FFFFFF;font-size:16px;">💰</span>
+            </div>
+          </td>
+          <td valign="top" style="padding-left:14px;">
+            <p style="font-size:15px;font-weight:700;color:#333333;margin:0 0 3px;">Save on fuel &amp; maintenance</p>
+            <p style="font-size:14px;color:#767676;margin:0;line-height:1.4;">EVs have fewer moving parts and no oil changes. Owners save an average of $800–$1,000/year.</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Benefit 3 -->
+      <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+          <td width="44" valign="top">
+            <div style="width:36px;height:36px;background:#003087;border-radius:50%;text-align:center;line-height:36px;">
+              <span style="color:#FFFFFF;font-size:16px;">✓</span>
+            </div>
+          </td>
+          <td valign="top" style="padding-left:14px;">
+            <p style="font-size:15px;font-weight:700;color:#333333;margin:0 0 3px;">CarMax 30-day money-back guarantee</p>
+            <p style="font-size:14px;color:#767676;margin:0;line-height:1.4;">Not sure about the switch? Drive it for 30 days. If it's not right, we'll take it back — no questions asked.</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Learn more articles -->
+  <tr>
+    <td style="background:#F5F5F5;padding:24px 32px;">
+      <p style="font-size:16px;font-weight:700;color:#003087;margin:0 0 16px;text-align:left;">Learn more about going electric</p>
+
+      <!-- Article 1 -->
+      <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-bottom:1px solid #CCCCCC;padding-bottom:14px;margin-bottom:14px;">
+        <tr>
+          <td width="80" valign="top">
+            <div style="width:72px;height:52px;background:#E6EEF8;border-radius:4px;overflow:hidden;">
+              <img src="images/26-34-38-Shop_EV_Inventory-AdobeStock_615082299_HiRes.png" width="72" height="52" alt="" style="object-fit:cover;width:72px;height:52px;border-radius:4px;">
+            </div>
+          </td>
+          <td valign="top" style="padding-left:14px;">
+            <p style="font-size:14px;font-weight:700;color:#0057B8;margin:0 0 4px;line-height:1.3;">How much does it cost to charge an EV?</p>
+            <p style="font-size:13px;color:#767676;margin:0;line-height:1.4;">We break down home charging costs vs. public stations so you know exactly what to expect.</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Article 2 -->
+      <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="border-bottom:1px solid #CCCCCC;padding-bottom:14px;margin-bottom:14px;">
+        <tr>
+          <td width="80" valign="top">
+            <div style="width:72px;height:52px;background:#E6EEF8;border-radius:4px;overflow:hidden;">
+              <img src="images/28-34-41-Can_an_EV_fit_my_lifestyle-AdobeStock_578633819_HiRes.png" width="72" height="52" alt="" style="object-fit:cover;width:72px;height:52px;border-radius:4px;">
+            </div>
+          </td>
+          <td valign="top" style="padding-left:14px;">
+            <p style="font-size:14px;font-weight:700;color:#0057B8;margin:0 0 4px;line-height:1.3;">What's the real range of a used EV?</p>
+            <p style="font-size:13px;color:#767676;margin:0;line-height:1.4;">Range estimates can be confusing. Here's how to evaluate real-world range for your commute.</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Article 3 -->
+      <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+          <td width="80" valign="top">
+            <div style="width:72px;height:52px;background:#E6EEF8;border-radius:4px;border-radius:4px;">
+            </div>
+          </td>
+          <td valign="top" style="padding-left:14px;">
+            <p style="font-size:14px;font-weight:700;color:#0057B8;margin:0 0 4px;line-height:1.3;">EV tax credits explained</p>
+            <p style="font-size:13px;color:#767676;margin:0;line-height:1.4;">Eligible buyers may save up to $4,000 on a used EV under the federal clean vehicle credit.</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr><td><hr style="border:0;border-top:1px solid #CCCCCC;margin:0;"></td></tr>
+
+  <!-- App download strip -->
+  <tr>
+    <td style="padding:24px 40px;background:#FFFFFF;">
+      <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+          <td valign="middle" style="padding-right:20px;">
+            <p style="font-size:16px;font-weight:700;color:#333333;margin:0 0 4px;">Shop EVs in our app</p>
+            <p style="font-size:14px;color:#767676;margin:0;line-height:1.4;">Whether you're on the go or on the lot.</p>
+          </td>
+          <td valign="middle" align="right" style="white-space:nowrap;">
+            <a href="#" style="display:inline-block;margin-right:8px;"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on the App Store" height="32" style="height:32px;"></a>
+            <a href="#" style="display:inline-block;"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play" height="32" style="height:32px;"></a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr><td><hr style="border:0;border-top:1px solid #CCCCCC;margin:0;"></td></tr>
+
+  <!-- Footer: Logo + Social -->
+  <tr>
+    <td style="background:#FFFFFF;padding:20px 40px 12px;text-align:center;">
+      <img src="images/CarMax-Logo-Blue.png" alt="CarMax" height="28" style="height:28px;width:auto;margin:0 auto 16px;">
+
+      <!-- Social icons (text fallbacks) -->
+      <table cellpadding="0" cellspacing="0" role="presentation" align="center" style="margin:0 auto 4px;">
+        <tr>
+          <td style="padding:0 6px;">
+            <a href="#" style="display:inline-block;width:32px;height:32px;background:#003087;border-radius:50%;text-align:center;line-height:32px;color:#FFFFFF;font-size:14px;font-weight:700;text-decoration:none;">▶</a>
+          </td>
+          <td style="padding:0 6px;">
+            <a href="#" style="display:inline-block;width:32px;height:32px;background:#003087;border-radius:50%;text-align:center;line-height:32px;color:#FFFFFF;font-size:14px;font-weight:700;text-decoration:none;">◎</a>
+          </td>
+          <td style="padding:0 6px;">
+            <a href="#" style="display:inline-block;width:32px;height:32px;background:#003087;border-radius:50%;text-align:center;line-height:32px;color:#FFFFFF;font-size:14px;font-weight:700;text-decoration:none;">♪</a>
+          </td>
+          <td style="padding:0 6px;">
+            <a href="#" style="display:inline-block;width:32px;height:32px;background:#003087;border-radius:50%;text-align:center;line-height:32px;color:#FFFFFF;font-size:14px;font-weight:700;text-decoration:none;">f</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Footer links -->
+  <tr>
+    <td style="background:#FFFFFF;padding:4px 24px 16px;text-align:center;">
+      <a href="#" style="font-size:13px;color:#0057B8;margin:0 8px;text-decoration:none;">carmax.com</a>
+      <a href="#" style="font-size:13px;color:#767676;margin:0 8px;text-decoration:none;">Privacy Policy</a>
+      <a href="#" style="font-size:13px;color:#767676;margin:0 8px;text-decoration:none;">Contact</a>
+      <a href="#" style="font-size:13px;color:#767676;margin:0 8px;text-decoration:none;">View Web Version</a>
+      <a href="#" style="font-size:13px;color:#767676;margin:0 8px;text-decoration:none;">Unsubscribe</a>
+    </td>
+  </tr>
+
+  <!-- Legal footer -->
+  <tr>
+    <td style="background:#F5F5F5;padding:16px 32px 28px;text-align:center;">
+      <p style="font-size:12px;color:#767676;line-height:1.5;margin:0 0 6px;">© 2025 All Rights Reserved - <a href="#" style="color:#0057B8;font-weight:700;text-decoration:none;">CarMax</a></p>
+      <p style="font-size:12px;color:#767676;line-height:1.5;margin:0 0 6px;">This is a promotional email sent by <a href="#" style="color:#0057B8;font-weight:700;text-decoration:none;">CarMax</a><br>12800 Tuckahoe Creek Parkway, Richmond, VA 23238</p>
+      <p style="font-size:11px;color:#767676;line-height:1.5;margin:0;">*Price excludes tax, title and tags. Price assumes that final purchase will be made in the State of VA, unless vehicle is non-transferable. Vehicle subject to prior sale. Applicable transfer fees are due in advance of vehicle delivery and are separate from sales transactions. Limited warranty is 30 days. See store for details. We make every effort to provide accurate information, but please verify before purchasing.</p>
+    </td>
+  </tr>
+
+</table>
+<!-- /Email body -->
+
+</td></tr>
+</table>
+</div>
+</body>
+</html>

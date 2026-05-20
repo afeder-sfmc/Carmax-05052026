@@ -1,0 +1,145 @@
+TestDriveId,TestDriveDate,VehicleId,IndividualId,CarMaxStore,EventDateTime,VIN,ConvertedToPurchase,Notes,Outcome
+TD-0051,2026-03-24,VEH-0203,003ak00001QQTVmAAP,CarMax Tampa,2026-03-24 12:30:00.000 UTC,KMXFO202602032292,false,Customer had questions about warranty coverage,Financing Review Needed
+TD-0012,2026-02-15,VEH-0060,003ak00001QQTVmAAP,CarMax Raleigh,2026-02-15 12:00:00.000 UTC,KMXKI202400598077,false,Appreciated the low mileage and well-maintained condition,Interested - Following Up
+TD-0006,2026-05-19,VEH-0062,003ak00001QQTVrAAP,CarMax Nashville,2026-05-19 14:00:00.000 UTC,KMXSU202300615560,false,"Smooth test drive, customer wants to return with spouse",Loved It - Comparing Options
+TD-0077,2026-02-12,VEH-0080,003ak00001QQTVAAA5,CarMax Richmond,2026-02-12 13:00:00.000 UTC,KMXJE202400793901,false,Wants to test drive a second vehicle before deciding,Considering Trade-In First
+TD-0060,2026-02-12,VEH-0247,003ak00001QQTVQAA5,CarMax Houston,2026-02-12 16:45:00.000 UTC,KMXLE202302473066,false,Customer enjoyed the ride quality and interior features,Considering Trade-In First
+TD-0050,2026-02-12,VEH-0275,003ak00001QQTVKAA5,CarMax Tampa,2026-02-12 18:30:00.000 UTC,KMXLE202402752488,false,Loved the panoramic sunroof and premium audio system,Considering Trade-In First
+TD-0013,2026-01-04,VEH-0035,003ak00001QQTV9AAP,CarMax Charlotte,2026-01-04 10:30:00.000 UTC,KMXHO202500345068,false,Liked the fuel efficiency but concerned about cargo space,Needs More Time
+TD-0124,2026-01-04,VEH-0248,003ak00001QQTVqAAP,CarMax Richmond,2026-01-04 15:30:00.000 UTC,KMXDO202302483906,false,"Very impressed with safety features, considering purchase",Financing Review Needed
+TD-0131,2026-04-24,VEH-0276,003ak00001QQTVJAA5,CarMax Virginia Beach,2026-04-24 11:00:00.000 UTC,KMXNI202402764100,false,"Enjoyed the EV driving experience, asked about charging",Needs More Time
+TD-0017,2026-02-21,VEH-0050,003ak00001QQTVDAA5,CarMax Orlando,2026-02-21 13:45:00.000 UTC,KMXCH202300498276,false,"Very impressed with safety features, considering purchase",Not Interested
+TD-0087,2026-05-05,VEH-0001,003ak00001QQTVvAAP,CarMax Austin,2026-05-05 09:45:00.000 UTC,KMXNI202000004604,false,"Enjoyed the EV driving experience, asked about charging",Wants Different Color
+TD-0105,2026-05-05,VEH-0142,003ak00001QQTVtAAP,CarMax Jacksonville,2026-05-05 12:15:00.000 UTC,KMXHO202601428397,false,"Smooth test drive, customer wants to return with spouse",Loved It - Comparing Options
+TD-0064,2026-01-12,VEH-0106,003ak00001QQTVNAA5,CarMax Richmond,2026-01-12 12:30:00.000 UTC,KMXBM202401068824,false,Customer comparing with online listings from other dealers,Loved It - Comparing Options
+TD-0023,2026-02-09,VEH-0026,003ak00001QQTVKAA5,CarMax Orlando,2026-02-09 12:00:00.000 UTC,KMXTO202000252953,false,Liked the fuel efficiency but concerned about cargo space,Interested - Following Up
+TD-0011,2026-05-16,VEH-0064,003ak00001QQTVKAA5,CarMax Houston,2026-05-16 11:15:00.000 UTC,KMXMA202500636793,true,Excited about the technology package,Purchased
+TD-0121,2026-01-28,VEH-0102,003ak00001QQTVYAA5,CarMax Orlando,2026-01-28 14:30:00.000 UTC,KMXTO202301026433,true,Customer very knowledgeable about the vehicle specs,Purchased
+TD-0005,2026-03-16,VEH-0056,003ak00001QQTVEAA5,CarMax Orlando,2026-03-16 09:30:00.000 UTC,KMXTE202400555985,false,"Smooth test drive, customer wants to return with spouse",Needs More Time
+TD-0088,2026-01-02,VEH-0187,003ak00001QQTVEAA5,CarMax Charlotte,2026-01-02 18:00:00.000 UTC,KMXGE202001874815,false,Loved the panoramic sunroof and premium audio system,Considering Trade-In First
+TD-0030,2026-05-27,VEH-0038,003ak00001QQTVoAAP,CarMax Nashville,2026-05-27 14:00:00.000 UTC,KMXLE202100377221,false,Customer enjoyed the ride quality and interior features,Not Interested
+TD-0007,2026-05-27,VEH-0056,003ak00001QQTVHAA5,CarMax Orlando,2026-05-27 16:45:00.000 UTC,KMXTE202400555985,false,"Smooth test drive, customer wants to return with spouse",Loved It - Comparing Options
+TD-0110,2026-02-18,VEH-0214,003ak00001QQTVBAA5,CarMax Virginia Beach,2026-02-18 10:15:00.000 UTC,KMXMA202502148882,false,Excited about the technology package,Wants Different Color
+TD-0123,2026-01-25,VEH-0227,003ak00001QQTVmAAP,CarMax Nashville,2026-01-25 18:00:00.000 UTC,KMXRA202402272045,false,"Smooth test drive, customer wants to return with spouse",Wants Different Color
+TD-0072,2026-02-19,VEH-0282,003ak00001QQTVHAA5,CarMax Richmond,2026-02-19 09:15:00.000 UTC,KMXGM202602826650,false,"Smooth test drive, customer wants to return with spouse",Wants Different Color
+TD-0086,2026-02-19,VEH-0166,003ak00001QQTVsAAP,CarMax Richmond,2026-02-19 10:30:00.000 UTC,KMXKI202001666994,false,Asked about trade-in value for current vehicle,Coming Back With Spouse
+TD-0021,2026-02-19,VEH-0014,003ak00001QQTVDAA5,CarMax Raleigh,2026-02-19 14:00:00.000 UTC,KMXCH202000139271,false,"Smooth test drive, customer wants to return with spouse",Not Interested
+TD-0089,2026-02-22,VEH-0186,003ak00001QQTVIAA5,CarMax Dallas,2026-02-22 14:00:00.000 UTC,KMXDO202001863724,false,Wants to test drive a second vehicle before deciding,Coming Back With Spouse
+TD-0061,2026-02-22,VEH-0125,003ak00001QQTVYAA5,CarMax Tampa,2026-02-22 15:30:00.000 UTC,KMXVO202401252035,false,"Compared to competitor model, preferred this vehicle",Coming Back With Spouse
+TD-0079,2026-03-06,VEH-0118,003ak00001QQTVEAA5,CarMax Richmond,2026-03-06 14:15:00.000 UTC,KMXIN202401182081,false,"Enjoyed the EV driving experience, asked about charging",Coming Back With Spouse
+TD-0137,2026-03-20,VEH-0033,003ak00001QQTVJAA5,CarMax Tampa,2026-03-20 11:15:00.000 UTC,KMXME202400328459,false,Liked the fuel efficiency but concerned about cargo space,Financing Review Needed
+TD-0047,2026-03-20,VEH-0229,003ak00001QQTVFAA5,CarMax Atlanta,2026-03-20 15:45:00.000 UTC,KMXVO202002292473,false,"Smooth test drive, customer wants to return with spouse",Considering Trade-In First
+TD-0018,2026-01-21,VEH-0069,003ak00001QQTVvAAP,CarMax Nashville,2026-01-21 11:45:00.000 UTC,KMXMA202300689699,false,Customer enjoyed the ride quality and interior features,Loved It - Comparing Options
+TD-0022,2026-03-13,VEH-0032,003ak00001QQTVrAAP,CarMax Atlanta,2026-03-13 09:00:00.000 UTC,KMXTE202500312633,false,"Smooth test drive, customer wants to return with spouse",Not Interested
+TD-0138,2026-01-18,VEH-0169,003ak00001QQTVJAA5,CarMax Tampa,2026-01-18 15:00:00.000 UTC,KMXBM201901699988,false,"Enjoyed the EV driving experience, asked about charging",Wants Different Color
+TD-0043,2026-03-13,VEH-0199,003ak00001QQTVZAA5,CarMax Houston,2026-03-13 10:15:00.000 UTC,KMXTO201901991911,false,"Smooth test drive, customer wants to return with spouse",Coming Back With Spouse
+TD-0100,2026-03-13,VEH-0112,003ak00001QQTVGAA5,CarMax Nashville,2026-03-13 16:15:00.000 UTC,KMXME202301122808,false,"Very impressed with safety features, considering purchase",Wants Different Color
+TD-0080,2026-05-23,VEH-0043,003ak00001QQTVMAA5,CarMax Virginia Beach,2026-05-23 18:15:00.000 UTC,KMXSU202200425969,false,"Family of five, cargo space was the deciding factor",Wants Different Color
+TD-0057,2026-01-13,VEH-0117,003ak00001QQTVXAA5,CarMax Austin,2026-01-13 12:15:00.000 UTC,KMXVO202001175996,false,Asked about trade-in value for current vehicle,Financing Review Needed
+TD-0035,2026-03-23,VEH-0065,003ak00001QQTVOAA5,CarMax Nashville,2026-03-23 09:30:00.000 UTC,KMXCH202200648219,false,"Test drove with family, kids loved the spacious back seat",Loved It - Comparing Options
+TD-0025,2026-03-23,VEH-0051,003ak00001QQTVKAA5,CarMax Nashville,2026-03-23 16:30:00.000 UTC,KMXBM202400505836,false,"Test drove with family, kids loved the spacious back seat",Interested - Following Up
+TD-0063,2026-03-27,VEH-0102,003ak00001QQTVMAA5,CarMax Orlando,2026-03-27 14:15:00.000 UTC,KMXTO202301026433,false,Customer had questions about warranty coverage,Financing Review Needed
+TD-0108,2026-03-27,VEH-0274,003ak00001QQTVWAA5,CarMax Virginia Beach,2026-03-27 17:15:00.000 UTC,KMXAC202602743773,false,"Family of five, cargo space was the deciding factor",Interested - Following Up
+TD-0085,2026-04-11,VEH-0172,003ak00001QQTVDAA5,CarMax Nashville,2026-04-11 17:45:00.000 UTC,KMXRA202201728927,false,"Compared to competitor model, preferred this vehicle",Coming Back With Spouse
+TD-0068,2026-04-11,VEH-0282,003ak00001QQTVNAA5,CarMax Virginia Beach,2026-04-11 18:30:00.000 UTC,KMXGM202602826650,false,"Smooth test drive, customer wants to return with spouse",Wants Different Color
+TD-0020,2026-05-17,VEH-0021,003ak00001QQTVCAA5,CarMax Orlando,2026-05-17 17:15:00.000 UTC,KMXTO202000206494,false,"Smooth test drive, customer wants to return with spouse",Not Interested
+TD-0004,2026-01-22,VEH-0058,003ak00001QQTVoAAP,CarMax Richmond,2026-01-22 11:15:00.000 UTC,KMXSU202000574034,false,"Compared to competitor model, preferred this vehicle",Interested - Following Up
+TD-0038,2026-04-08,VEH-0025,003ak00001QQTVuAAP,CarMax Charlotte,2026-04-08 13:00:00.000 UTC,KMXLE202000249313,false,Customer had questions about warranty coverage,Needs More Time
+TD-0036,2026-03-06,VEH-0009,003ak00001QQTVNAA5,CarMax Nashville,2026-03-06 15:30:00.000 UTC,KMXNI202400081832,false,Customer enjoyed the ride quality and interior features,Not Interested
+TD-0042,2026-03-18,VEH-0152,003ak00001QQTVEAA5,CarMax Richmond,2026-03-18 10:15:00.000 UTC,KMXSU201901526419,false,Asked about trade-in value for current vehicle,Loved It - Comparing Options
+TD-0132,2026-03-18,VEH-0174,003ak00001QQTVKAA5,CarMax Austin,2026-03-18 13:30:00.000 UTC,KMXTO202401745171,false,"First-time SUV buyer, very enthusiastic about visibility",Not Interested
+TD-0081,2026-04-10,VEH-0064,003ak00001QQTVqAAP,CarMax Houston,2026-04-10 13:00:00.000 UTC,KMXMA202500636793,false,Excited about the technology package,Loved It - Comparing Options
+TD-0122,2026-04-10,VEH-0185,003ak00001QQTVmAAP,CarMax Austin,2026-04-10 14:15:00.000 UTC,KMXVO202101859168,false,"Family of five, cargo space was the deciding factor",Financing Review Needed
+TD-0101,2026-03-01,VEH-0111,003ak00001QQTVSAA5,CarMax Jacksonville,2026-03-01 18:00:00.000 UTC,KMXVO202301113462,true,Asked about trade-in value for current vehicle,Purchased
+TD-0037,2026-02-07,VEH-0078,003ak00001QQTVwAAP,CarMax Virginia Beach,2026-02-07 09:30:00.000 UTC,KMXJE202100774368,false,"Smooth test drive, customer wants to return with spouse",Needs More Time
+TD-0002,2026-01-06,VEH-0072,003ak00001QQTVvAAP,CarMax Orlando,2026-01-06 11:30:00.000 UTC,KMXNI202300713180,false,"Test drove with family, kids loved the spacious back seat",Not Interested
+TD-0044,2026-01-14,VEH-0096,003ak00001QQTVIAA5,CarMax Houston,2026-01-14 12:30:00.000 UTC,KMXHO202200967341,false,Asked about trade-in value for current vehicle,Coming Back With Spouse
+TD-0135,2026-01-14,VEH-0016,003ak00001QQTVJAA5,CarMax Nashville,2026-01-14 18:15:00.000 UTC,KMXKI202500151710,false,Customer impressed by acceleration and handling,Considering Trade-In First
+TD-0033,2026-04-22,VEH-0024,003ak00001QQTVoAAP,CarMax Houston,2026-04-22 16:15:00.000 UTC,KMXFO202000232402,false,"Smooth test drive, customer wants to return with spouse",Interested - Following Up
+TD-DEMO-003,2025-11-12,VEH-DEMO-006,003ak00001QQSUDAA5,CarMax Denver,2025-11-12 15:00:00.000 UTC,5UXTY5C09R9B56789,true,Great experience. Customer purchased same day.,Completed
+TD-0093,2026-05-06,VEH-0162,003ak00001QQTVFAA5,CarMax Dallas,2026-05-06 11:45:00.000 UTC,KMXKI202101626642,false,Customer had questions about warranty coverage,Interested - Following Up
+TD-0039,2026-03-26,VEH-0079,003ak00001QQTVDAA5,CarMax Nashville,2026-03-26 12:00:00.000 UTC,KMXMA202000784466,false,Excited about the technology package,Loved It - Comparing Options
+TD-0028,2026-03-26,VEH-0046,003ak00001QQTVrAAP,CarMax Nashville,2026-03-26 12:15:00.000 UTC,KMXNI202300453599,false,Customer enjoyed the ride quality and interior features,Needs More Time
+TD-0094,2026-03-21,VEH-0171,003ak00001QQTV7AAP,CarMax Nashville,2026-03-21 13:00:00.000 UTC,KMXPO202001713967,true,Customer had questions about warranty coverage,Purchased
+TD-0133,2026-05-21,VEH-0100,003ak00001QQTVqAAP,CarMax Virginia Beach,2026-05-21 13:45:00.000 UTC,KMXPO202301008377,false,"Great experience, customer ready to discuss financing",Loved It - Comparing Options
+TD-0016,2026-03-22,VEH-0054,003ak00001QQTVnAAP,CarMax Richmond,2026-03-22 12:00:00.000 UTC,KMXFO202000531160,true,"Smooth test drive, customer wants to return with spouse",Purchased
+TD-0058,2026-01-05,VEH-0262,003ak00001QQTVWAA5,CarMax Raleigh,2026-01-05 15:45:00.000 UTC,KMXHY202302625854,false,Customer comparing with online listings from other dealers,Considering Trade-In First
+TD-0103,2026-02-25,VEH-0090,003ak00001QQTVUAA5,CarMax Austin,2026-02-25 09:00:00.000 UTC,KMXTO201900906914,true,Customer very knowledgeable about the vehicle specs,Purchased
+TD-0111,2026-02-25,VEH-0295,003ak00001QQTVEAA5,CarMax Houston,2026-02-25 17:30:00.000 UTC,KMXDO202002954079,true,Excited about the technology package,Purchased
+TD-DEMO-004,2026-05-15,VEH-DEMO-009,003ak00001QQSKXAA5,CarMax Austin,2026-05-15 10:00:00.000 UTC,4T1K61AK0RU678901,false,Upcoming test drive. Interested in trading in current Accord.,Scheduled
+TD-0009,2026-04-13,VEH-0071,003ak00001QQTV8AAP,CarMax Atlanta,2026-04-13 14:00:00.000 UTC,KMXNI202200709215,false,"Great experience, customer ready to discuss financing",Interested - Following Up
+TD-0104,2026-02-02,VEH-0219,003ak00001QQTVNAA5,CarMax Jacksonville,2026-02-02 11:00:00.000 UTC,KMXAC202002197687,false,"Great experience, customer ready to discuss financing",Considering Trade-In First
+TD-0091,2026-02-08,VEH-0255,003ak00001QQTVMAA5,CarMax Houston,2026-02-08 16:30:00.000 UTC,KMXAC202402557426,false,"Family of five, cargo space was the deciding factor",Financing Review Needed
+TD-0055,2026-02-17,VEH-0196,003ak00001QQTV7AAP,CarMax Houston,2026-02-17 16:15:00.000 UTC,KMXGM202501965121,false,Customer enjoyed the ride quality and interior features,Interested - Following Up
+TD-0046,2026-04-21,VEH-0021,003ak00001QQTVoAAP,CarMax Charlotte,2026-04-21 11:15:00.000 UTC,KMXTO202000206494,false,Excited about the technology package,Considering Trade-In First
+TD-0139,2026-04-21,VEH-0120,003ak00001QQTVFAA5,CarMax Jacksonville,2026-04-21 15:45:00.000 UTC,KMXRA202201203023,true,"First-time SUV buyer, very enthusiastic about visibility",Purchased
+TD-0075,2026-03-11,VEH-0106,003ak00001QQTVmAAP,CarMax Jacksonville,2026-03-11 17:45:00.000 UTC,KMXBM202401068824,false,Asked about trade-in value for current vehicle,Interested - Following Up
+TD-0126,2026-05-13,VEH-0211,003ak00001QQTV7AAP,CarMax Tampa,2026-05-13 14:15:00.000 UTC,KMXAC202602111143,false,"Test drove with family, kids loved the spacious back seat",Loved It - Comparing Options
+TD-0109,2026-04-19,VEH-0022,003ak00001QQTV9AAP,CarMax Tampa,2026-04-19 10:00:00.000 UTC,KMXHY202000217006,false,Customer enjoyed the ride quality and interior features,Wants Different Color
+TD-0074,2026-04-19,VEH-0081,003ak00001QQTVCAA5,CarMax Atlanta,2026-04-19 14:30:00.000 UTC,KMXCH202000813926,false,Customer had questions about warranty coverage,Wants Different Color
+TD-0024,2026-02-26,VEH-0044,003ak00001QQTVDAA5,CarMax Houston,2026-02-26 17:15:00.000 UTC,KMXMA202000434241,false,Customer had questions about warranty coverage,Loved It - Comparing Options
+TD-0041,2026-01-11,VEH-0117,003ak00001QQTVFAA5,CarMax Houston,2026-01-11 16:30:00.000 UTC,KMXVO202001175996,true,"Great experience, customer ready to discuss financing",Purchased
+TD-0113,2026-03-19,VEH-0145,003ak00001QQTVWAA5,CarMax Virginia Beach,2026-03-19 12:00:00.000 UTC,KMXDO202001458711,false,Concerned about insurance costs for this model,Coming Back With Spouse
+TD-0059,2026-03-19,VEH-0226,003ak00001QQTVQAA5,CarMax Nashville,2026-03-19 16:00:00.000 UTC,KMXHO202602263340,false,"First-time SUV buyer, very enthusiastic about visibility",Needs More Time
+TD-0115,2026-05-28,VEH-0035,003ak00001QQTVtAAP,CarMax Dallas,2026-05-28 09:30:00.000 UTC,KMXHO202500345068,false,Customer very knowledgeable about the vehicle specs,Loved It - Comparing Options
+TD-0106,2026-05-15,VEH-0010,003ak00001QQTVqAAP,CarMax Virginia Beach,2026-05-15 14:15:00.000 UTC,KMXNI202000094846,false,Customer had questions about warranty coverage,Wants Different Color
+TD-0073,2026-05-15,VEH-0285,003ak00001QQTVBAA5,CarMax Nashville,2026-05-15 14:45:00.000 UTC,KMXMA201902855000,false,Liked the fuel efficiency but concerned about cargo space,Coming Back With Spouse
+TD-0001,2026-04-09,VEH-0007,003ak00001QQTVtAAP,CarMax Nashville,2026-04-09 10:00:00.000 UTC,KMXTE202100069590,false,"Smooth test drive, customer wants to return with spouse",Interested - Following Up
+TD-0010,2026-01-12,VEH-0012,003ak00001QQTVMAA5,CarMax Richmond,2026-01-12 12:45:00.000 UTC,KMXHO202000117982,false,"Compared to competitor model, preferred this vehicle",Not Interested
+TD-0076,2026-03-09,VEH-0056,003ak00001QQTVXAA5,CarMax Atlanta,2026-03-09 09:45:00.000 UTC,KMXTE202400555985,false,Loved the panoramic sunroof and premium audio system,Wants Different Color
+TD-0029,2026-03-27,VEH-0054,003ak00001QQTV8AAP,CarMax Orlando,2026-03-27 11:45:00.000 UTC,KMXFO202000531160,false,Liked the fuel efficiency but concerned about cargo space,Loved It - Comparing Options
+TD-0114,2026-02-28,VEH-0130,003ak00001QQTVsAAP,CarMax Richmond,2026-02-28 16:00:00.000 UTC,KMXGM202401307412,false,Customer impressed by acceleration and handling,Needs More Time
+TD-0031,2026-01-15,VEH-0076,003ak00001QQTV8AAP,CarMax Houston,2026-01-15 14:15:00.000 UTC,KMXTO202500751642,false,"Compared to competitor model, preferred this vehicle",Not Interested
+TD-0026,2026-05-21,VEH-0065,003ak00001QQTVPAA5,CarMax Orlando,2026-05-21 09:45:00.000 UTC,KMXCH202200648219,true,"Great experience, customer ready to discuss financing",Purchased
+TD-0134,2026-02-15,VEH-0218,003ak00001QQTVTAA5,CarMax Nashville,2026-02-15 17:45:00.000 UTC,KMXTO202102185598,true,"Enjoyed the EV driving experience, asked about charging",Purchased
+TD-0053,2026-01-17,VEH-0076,003ak00001QQTV7AAP,CarMax Jacksonville,2026-01-17 14:45:00.000 UTC,KMXTO202500751642,false,Appreciated the low mileage and well-maintained condition,Needs More Time
+TD-0019,2026-03-15,VEH-0018,003ak00001QQTVAAA5,CarMax Nashville,2026-03-15 16:30:00.000 UTC,KMXLE202100176326,false,Customer enjoyed the ride quality and interior features,Interested - Following Up
+TD-0008,2026-01-16,VEH-0005,003ak00001QQTVNAA5,CarMax Orlando,2026-01-16 13:15:00.000 UTC,KMXLE202100045852,true,Appreciated the low mileage and well-maintained condition,Purchased
+TD-0118,2026-04-25,VEH-0292,003ak00001QQTVqAAP,CarMax Houston,2026-04-25 14:15:00.000 UTC,KMXTO202302926849,false,Concerned about insurance costs for this model,Not Interested
+TD-0014,2026-05-13,VEH-0056,003ak00001QQTVOAA5,CarMax Richmond,2026-05-13 10:45:00.000 UTC,KMXTE202400555985,false,Appreciated the low mileage and well-maintained condition,Interested - Following Up
+TD-0065,2026-02-14,VEH-0048,003ak00001QQTV8AAP,CarMax Richmond,2026-02-14 10:00:00.000 UTC,KMXBM202400477337,false,"Great experience, customer ready to discuss financing",Needs More Time
+TD-0097,2026-02-14,VEH-0254,003ak00001QQTVWAA5,CarMax Jacksonville,2026-02-14 13:00:00.000 UTC,KMXGM202602547706,false,Customer enjoyed the ride quality and interior features,Loved It - Comparing Options
+TD-0084,2026-02-14,VEH-0188,003ak00001QQTVYAA5,CarMax Nashville,2026-02-14 16:15:00.000 UTC,KMXJE202501889952,true,"Smooth test drive, customer wants to return with spouse",Purchased
+TD-0078,2026-02-03,VEH-0259,003ak00001QQTVvAAP,CarMax Raleigh,2026-02-03 10:45:00.000 UTC,KMXNI202402597226,false,"Compared to competitor model, preferred this vehicle",Needs More Time
+TD-0120,2026-02-03,VEH-0151,003ak00001QQTVMAA5,CarMax Virginia Beach,2026-02-03 15:15:00.000 UTC,KMXFO202101518175,false,Concerned about insurance costs for this model,Financing Review Needed
+TD-0082,2026-01-27,VEH-0055,003ak00001QQTVsAAP,CarMax Atlanta,2026-01-27 17:00:00.000 UTC,KMXLE202300547445,false,"Very impressed with safety features, considering purchase",Coming Back With Spouse
+TD-0102,2026-01-10,VEH-0203,003ak00001QQTVEAA5,CarMax Charlotte,2026-01-10 12:15:00.000 UTC,KMXFO202602032292,false,Customer comparing with online listings from other dealers,Needs More Time
+TD-0129,2026-05-17,VEH-0234,003ak00001QQTVFAA5,CarMax Virginia Beach,2026-05-17 17:00:00.000 UTC,KMXMA202502348736,false,Customer had questions about warranty coverage,Interested - Following Up
+TD-0125,2026-01-16,VEH-0081,003ak00001QQTVRAA5,CarMax Austin,2026-01-16 10:45:00.000 UTC,KMXCH202000813926,false,"Family of five, cargo space was the deciding factor",Interested - Following Up
+TD-0069,2026-01-16,VEH-0123,003ak00001QQTVBAA5,CarMax Virginia Beach,2026-01-16 17:00:00.000 UTC,KMXNI202501233267,false,Excited about the technology package,Not Interested
+TD-0062,2026-03-28,VEH-0115,003ak00001QQTVUAA5,CarMax Orlando,2026-03-28 09:30:00.000 UTC,KMXLE202101157765,false,Loved the panoramic sunroof and premium audio system,Needs More Time
+TD-0136,2026-02-26,VEH-0254,003ak00001QQTVrAAP,CarMax Houston,2026-02-26 09:30:00.000 UTC,KMXGM202602547706,false,Customer enjoyed the ride quality and interior features,Considering Trade-In First
+TD-0071,2026-02-26,VEH-0070,003ak00001QQTVqAAP,CarMax Orlando,2026-02-26 17:15:00.000 UTC,KMXSU202500692889,false,"Test drove with family, kids loved the spacious back seat",Coming Back With Spouse
+TD-0015,2026-05-11,VEH-0034,003ak00001QQTVBAA5,CarMax Richmond,2026-05-11 15:30:00.000 UTC,KMXHY202300336795,false,"Very impressed with safety features, considering purchase",Interested - Following Up
+TD-0127,2026-03-12,VEH-0139,003ak00001QQTVvAAP,CarMax Tampa,2026-03-12 17:30:00.000 UTC,KMXBM202301394763,false,Loved the panoramic sunroof and premium audio system,Needs More Time
+TD-0049,2026-03-23,VEH-0117,003ak00001QQTVYAA5,CarMax Richmond,2026-03-23 09:00:00.000 UTC,KMXVO202001175996,false,Customer very knowledgeable about the vehicle specs,Interested - Following Up
+TD-0052,2026-03-23,VEH-0004,003ak00001QQTVoAAP,CarMax Atlanta,2026-03-23 12:00:00.000 UTC,KMXJE202500039107,false,Loved the panoramic sunroof and premium audio system,Not Interested
+TD-0107,2026-02-09,VEH-0100,003ak00001QQTVIAA5,CarMax Richmond,2026-02-09 14:30:00.000 UTC,KMXPO202301008377,false,Customer comparing with online listings from other dealers,Coming Back With Spouse
+TD-0090,2026-04-06,VEH-0186,003ak00001QQTVtAAP,CarMax Virginia Beach,2026-04-06 11:00:00.000 UTC,KMXDO202001863724,false,"Great experience, customer ready to discuss financing",Considering Trade-In First
+TD-0112,2026-02-04,VEH-0151,003ak00001QQTVNAA5,CarMax Raleigh,2026-02-04 10:00:00.000 UTC,KMXFO202101518175,true,"Enjoyed the EV driving experience, asked about charging",Purchased
+TD-0096,2026-02-04,VEH-0193,003ak00001QQTVsAAP,CarMax Tampa,2026-02-04 10:30:00.000 UTC,KMXLE202001936197,false,"Test drove with family, kids loved the spacious back seat",Financing Review Needed
+TD-0083,2026-05-26,VEH-0002,003ak00001QQTVwAAP,CarMax Tampa,2026-05-26 14:45:00.000 UTC,KMXTO202100019518,true,Loved the panoramic sunroof and premium audio system,Purchased
+TD-0098,2026-05-26,VEH-0220,003ak00001QQTV8AAP,CarMax Nashville,2026-05-26 14:45:00.000 UTC,KMXAC202202205914,false,"First-time SUV buyer, very enthusiastic about visibility",Interested - Following Up
+TD-0066,2026-05-26,VEH-0115,003ak00001QQTVTAA5,CarMax Austin,2026-05-26 15:45:00.000 UTC,KMXLE202101157765,false,"Smooth test drive, customer wants to return with spouse",Loved It - Comparing Options
+TD-0003,2026-01-20,VEH-0021,003ak00001QQTVwAAP,CarMax Richmond,2026-01-20 15:00:00.000 UTC,KMXTO202000206494,false,Appreciated the low mileage and well-maintained condition,Needs More Time
+TD-0067,2026-02-01,VEH-0001,003ak00001QQTVUAA5,CarMax Jacksonville,2026-02-01 15:00:00.000 UTC,KMXNI202000004604,false,Wants to test drive a second vehicle before deciding,Loved It - Comparing Options
+TD-0140,2026-01-23,VEH-0071,003ak00001QQTVoAAP,CarMax Richmond,2026-01-23 13:00:00.000 UTC,KMXNI202200709215,false,Asked about trade-in value for current vehicle,Interested - Following Up
+TD-0070,2026-02-13,VEH-0185,003ak00001QQTVNAA5,CarMax Atlanta,2026-02-13 10:30:00.000 UTC,KMXVO202101859168,false,"Test drove with family, kids loved the spacious back seat",Not Interested
+TD-0095,2026-01-03,VEH-0264,003ak00001QQTVpAAP,CarMax Nashville,2026-01-03 09:00:00.000 UTC,KMXNI202002647708,false,Customer very knowledgeable about the vehicle specs,Financing Review Needed
+TD-0040,2026-05-14,VEH-0058,003ak00001QQTVoAAP,CarMax Virginia Beach,2026-05-14 15:30:00.000 UTC,KMXSU202000574034,false,Customer had questions about warranty coverage,Interested - Following Up
+TD-0130,2026-04-26,VEH-0295,003ak00001QQTVZAA5,CarMax Virginia Beach,2026-04-26 17:00:00.000 UTC,KMXDO202002954079,false,Customer very knowledgeable about the vehicle specs,Coming Back With Spouse
+TD-0056,2026-04-26,VEH-0094,003ak00001QQTVTAA5,CarMax Jacksonville,2026-04-26 17:00:00.000 UTC,KMXIN202600945273,false,"Smooth test drive, customer wants to return with spouse",Coming Back With Spouse
+TD-0092,2026-05-07,VEH-0082,003ak00001QQTVMAA5,CarMax Orlando,2026-05-07 13:15:00.000 UTC,KMXTO202000824764,true,"First-time SUV buyer, very enthusiastic about visibility",Purchased
+TD-0119,2026-05-07,VEH-0043,003ak00001QQTVJAA5,CarMax Nashville,2026-05-07 16:30:00.000 UTC,KMXSU202200425969,false,Customer comparing with online listings from other dealers,Coming Back With Spouse
+TD-0054,2026-05-07,VEH-0037,003ak00001QQTVmAAP,CarMax Dallas,2026-05-07 18:45:00.000 UTC,KMXJE202000366982,false,Customer very knowledgeable about the vehicle specs,Financing Review Needed
+TD-0034,2026-02-11,VEH-0006,003ak00001QQTVBAA5,CarMax Richmond,2026-02-11 14:15:00.000 UTC,KMXBM202500058300,false,Customer had questions about warranty coverage,Loved It - Comparing Options
+TD-0117,2026-01-01,VEH-0200,003ak00001QQTVPAA5,CarMax Charlotte,2026-01-01 18:15:00.000 UTC,KMXDO202202008790,true,Loved the panoramic sunroof and premium audio system,Purchased
+TD-0128,2026-01-21,VEH-0261,003ak00001QQTVBAA5,CarMax Richmond,2026-01-21 13:15:00.000 UTC,KMXVO202602613478,true,"Compared to competitor model, preferred this vehicle",Purchased
+TD-DEMO-002,2026-04-22,VEH-DEMO-007,003ak00001QQO2UAAX,CarMax Charlotte,2026-04-22 11:00:00.000 UTC,2HKRS4H77RH456789,false,Good drive but wants to explore more options. Still comparing with Outback.,Completed
+TD-0032,2026-03-08,VEH-0057,003ak00001QQTVEAA5,CarMax Orlando,2026-03-08 16:30:00.000 UTC,KMXCH202200569656,false,Customer enjoyed the ride quality and interior features,Loved It - Comparing Options
+TD-0027,2026-03-28,VEH-0016,003ak00001QQTVIAA5,CarMax Nashville,2026-03-28 16:30:00.000 UTC,KMXKI202500151710,false,Appreciated the low mileage and well-maintained condition,Interested - Following Up
+TD-DEMO-001,2026-04-28,VEH-DEMO-001,003ak00001QOw50AAD,CarMax Richmond,2026-04-28 14:00:00.000 UTC,1FMJU1KT4REA12345,false,Loved the space and towing capacity. Wants to compare with 4Runner before deciding.,Completed
+TD-0048,2026-04-13,VEH-0217,003ak00001QQTVUAA5,CarMax Jacksonville,2026-04-13 13:30:00.000 UTC,KMXHO202502178148,false,Concerned about insurance costs for this model,Financing Review Needed
+TD-0045,2026-04-13,VEH-0101,003ak00001QQTVJAA5,CarMax Richmond,2026-04-13 18:15:00.000 UTC,KMXPO202101019466,false,Excited about the technology package,Coming Back With Spouse
+TD-0116,2026-04-22,VEH-0126,003ak00001QQTVoAAP,CarMax Charlotte,2026-04-22 12:15:00.000 UTC,KMXTE202501267839,false,Loved the panoramic sunroof and premium audio system,Needs More Time
+TD-0099,2026-04-22,VEH-0293,003ak00001QQTVCAA5,CarMax Richmond,2026-04-22 16:45:00.000 UTC,KMXME202302933829,false,Customer very knowledgeable about the vehicle specs,Coming Back With Spouse

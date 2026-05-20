@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCA Lean Deployment Model</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+  <script src="https://assets.meshmesh.io/system/tailwindcss-browser-4.js"></script>
+  <style type="text/tailwindcss">
+    @font-face {
+      font-family: 'CarMaxSharpSansDisp-Bold';
+      src: url('https://www.carmax.com/shared/fonts/CarMaxSharpSansDisp-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @theme {
+      --color-primary: #001333;
+      --color-secondary: #005DFF;
+      --color-accent: #FFD100;
+      --color-accent-dark: #FEC000;
+      --color-surface: #E6F4FF;
+      --color-surface-light: #F5F6F7;
+      --color-muted: #646E82;
+      --color-border: #CCD0D6;
+      --color-success: #00875A;
+      --color-warning: #FEC000;
+      --color-error: #D32F2F;
+      --color-background: #FFFFFF;
+      --color-foreground: #001333;
+    }
+    body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #001333;
+    }
+    .font-display {
+      font-family: 'CarMaxSharpSansDisp-Bold', 'Lato', Helvetica, Arial, sans-serif;
+    }
+    .slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw;
+      height: calc(100vh - 56px);
+      display: none;
+      overflow-y: auto;
+    }
+    .slide.active {
+      display: flex;
+    }
+    .btn-nav {
+      background: linear-gradient(#FEC000, #FFE000);
+      color: #001333;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      padding: 6px 18px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Lato', sans-serif;
+    }
+    .btn-nav:hover { background: linear-gradient(#FFD100, #FFE800); }
+    .btn-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+    @media print {
+      body { overflow: visible; background: white; }
+      .slide { position: relative; display: flex !important; page-break-after: always; height: 8.5in; width: 11in; }
+      .bottom-nav { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="slides-container relative" style="height: calc(100vh - 56px);">
+
+  <!-- ============ SLIDE 1: The Lean Model at a Glance ============ -->
+  <div class="slide active flex-col justify-center bg-white px-12 lg:px-20" data-slide="0">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Lean Model Walkthrough</p>
+      <h2 class="font-display text-primary text-4xl mb-8">The Lean Model at a Glance</h2>
+      <!-- Visual flow -->
+      <div class="flex items-stretch gap-0 mb-8">
+        <div class="flex-1 bg-secondary/8 rounded-l-2xl p-6 border border-secondary/20">
+          <div class="text-center">
+            <div class="bg-secondary text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 font-bold">1</div>
+            <h3 class="font-display text-primary text-lg mb-2">Dev/UAT Sandbox</h3>
+            <p class="text-xs text-secondary font-bold uppercase tracking-wider mb-3">Build &amp; Test</p>
+            <div class="text-left space-y-1.5">
+              <p class="text-xs text-muted">→ Build flows, segments, templates</p>
+              <p class="text-xs text-muted">→ Re-auth Data Cloud connectors</p>
+              <p class="text-xs text-muted">→ Ingest synthetic test data</p>
+              <p class="text-xs text-muted">→ Enable Email Blackhole</p>
+              <p class="text-xs text-muted">→ Run full flow at volume</p>
+              <p class="text-xs text-muted">→ Validate branching, timing, personalization</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center justify-center px-4">
+          <p class="text-secondary font-bold text-2xl">→</p>
+          <div class="bg-secondary/10 rounded-lg px-3 py-1.5 mt-1">
+            <p class="text-secondary font-bold text-[10px] uppercase tracking-wider text-center">Change Set<br>+ Data Kit</p>
+          </div>
+        </div>
+        <div class="flex-1 bg-primary rounded-r-2xl p-6">
+          <div class="text-center">
+            <div class="bg-accent text-primary w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 font-bold">2</div>
+            <h3 class="font-display text-white text-lg mb-2">Production</h3>
+            <p class="text-xs text-accent font-bold uppercase tracking-wider mb-3">Launch</p>
+            <div class="text-left space-y-1.5">
+              <p class="text-xs text-white/55">→ Metadata arrives (flows, segments, content)</p>
+              <p class="text-xs text-white/55">→ Re-publish segment for live audience</p>
+              <p class="text-xs text-white/55">→ Create campaign record</p>
+              <p class="text-xs text-white/55">→ Attach production DE if needed</p>
+              <p class="text-xs text-white/55">→ Activate campaign</p>
+              <p class="text-xs text-white/55">→ Go live with real sends</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Key benefits -->
+      <div class="grid grid-cols-3 gap-4">
+        <div class="bg-surface rounded-xl p-4 text-center">
+          <p class="text-3xl mb-2">🛡️</p>
+          <h4 class="font-bold text-primary text-sm mb-1">Safe Testing</h4>
+          <p class="text-muted text-xs">Email Blackhole ensures no accidental sends to real customers during development</p>
+        </div>
+        <div class="bg-surface rounded-xl p-4 text-center">
+          <p class="text-3xl mb-2">⚡</p>
+          <h4 class="font-bold text-primary text-sm mb-1">Fast Iteration</h4>
+          <p class="text-muted text-xs">2-environment model minimizes overhead for recurring promotional campaigns</p>
+        </div>
+        <div class="bg-surface rounded-xl p-4 text-center">
+          <p class="text-3xl mb-2">🔒</p>
+          <h4 class="font-bold text-primary text-sm mb-1">Platform-Enforced</h4>
+          <p class="text-muted text-xs">Sandbox isolation, promotion gates, and dependency validation are built into the platform</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 2: Principles to Remember ============ -->
+  <div class="slide flex-col justify-center bg-surface-light px-12 lg:px-20" data-slide="1">
+    <div class="max-w-5xl mx-auto w-full">
+      <p class="text-secondary font-bold text-sm tracking-wider uppercase mb-3">Key Takeaways</p>
+      <h2 class="font-display text-primary text-4xl mb-8">Principles to Remember</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">1</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Sandboxes Are Real Now</h4>
+          <p class="text-muted text-sm">MCN on Core means true lifecycle management exists for the first time in Marketing Cloud.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">2</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Email Blackhole Is a Game-Changer</h4>
+          <p class="text-muted text-sm">Run full flow execution at volume — including multi-channel and agent handoffs — without sending to real customers.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">3</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Metadata Travels, Data Stays</h4>
+          <p class="text-muted text-sm">Flow logic, segment rules, content templates, IR configs move between environments. Audience data, engagement history, and send records stay.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">4</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Data Cloud Needs Re-Hydration</h4>
+          <p class="text-muted text-sm">Metadata copies automatically; connections and data do not. Budget time for re-authentication and re-ingestion.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">5</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Deploy in Dependency Order</h4>
+          <p class="text-muted text-sm">Data Cloud objects first, then content, then flows. MCN validates dependencies — deploy in order and it works every time.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-border">
+          <div class="w-10 h-10 bg-secondary/10 rounded-xl flex items-center justify-center mb-3">
+            <span class="text-secondary font-bold">6</span>
+          </div>
+          <h4 class="font-bold text-primary text-[15px] mb-2">Full Copy for Complex Testing</h4>
+          <p class="text-muted text-sm">Full Copy sandbox is the right tier for Agentforce + marketing flow testing. You need production-like data volumes to validate behavior.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDE 3: Closing ============ -->
+  <div class="slide flex-col justify-center items-center text-center bg-primary px-16" data-slide="2">
+    <div class="max-w-3xl mx-auto">
+      <img src="https://image.s4.sfmc-content.com/lib/fe8e1573716d017e7d/m/1/9efb82fe-b8b5-4d89-bbb7-a8b0da971038.png" alt="CarMax" class="h-10 mx-auto mb-10 opacity-80" />
+      <h2 class="font-display text-accent text-5xl lg:text-6xl mb-6">Build with Confidence.<br>Deploy with Control.</h2>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto mb-10">Marketing Cloud on Salesforce Core gives you real sandboxes, real isolation, and real promotion gates. The blueprint moves between environments. The data stays where it belongs.</p>
+      <div class="flex items-center justify-center gap-6 flex-wrap">
+        <div class="bg-white/10 backdrop-blur rounded-xl px-6 py-4 border border-white/10">
+          <p class="text-accent font-bold text-lg">Blueprints Move</p>
+          <p class="text-white/50 text-sm">Flows, segments, templates</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl px-6 py-4 border border-white/10">
+          <p class="text-accent font-bold text-lg">Data Stays</p>
+          <p class="text-white/50 text-sm">Audiences, history, records</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur rounded-xl px-6 py-4 border border-white/10">
+          <p class="text-accent font-bold text-lg">Test with Safety</p>
+          <p class="text-white/50 text-sm">Email Blackhole, isolation</p>
+        </div>
+      </div>
+      <div class="mt-12 flex items-center justify-center gap-3">
+        <span class="inline-block w-3 h-1 bg-accent/40 rounded-full"></span>
+        <span class="inline-block w-3 h-1 bg-accent/40 rounded-full"></span>
+        <span class="inline-block w-12 h-1 bg-accent rounded-full"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============ BOTTOM NAVIGATION ============ -->
+<nav class="bottom-nav fixed bottom-0 left-0 right-0 h-14 bg-primary/95 backdrop-blur border-t border-white/10 flex items-center justify-between px-4 z-50">
+  <button class="btn-nav" id="prevBtn" onclick="changeSlide(-1)">◀ Prev</button>
+  <span class="text-white/50 text-xs whitespace-nowrap mx-3" id="slideCounter">Slide 1 of 3</span>
+  <button class="btn-nav" id="nextBtn" onclick="changeSlide(1)">Next ▶</button>
+</nav>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  let currentSlide = 0;
+
+  function updateSlide() {
+    slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+    document.getElementById('slideCounter').textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+    document.getElementById('prevBtn').disabled = currentSlide === 0;
+    document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+  }
+
+  function changeSlide(dir) {
+    const next = currentSlide + dir;
+    if (next >= 0 && next < totalSlides) {
+      currentSlide = next;
+      updateSlide();
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') changeSlide(-1);
+  });
+
+  updateSlide();
+</script>
+</body>
+</html>

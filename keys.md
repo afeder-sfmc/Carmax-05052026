@@ -3,3 +3,23 @@ Consumer Key
 
 Consumer Secret
 - 257B63CF824FA523DA1EC6D7D926DB1AC597C72F9E5E6791F357632C20FDDFB0
+
+
+KMX V2
+Consumer Key
+3MVG9OGq41FnYVsHEdsuRLhi26VvjCma.O.Y7FMeDveizPAaXQLni.iASRvTiPCMDfjwoeq0JxAb0.yXRkGWi
+
+Consumer Secret
+D388D1217EC4644FA8FF8EF9DDF74F86C83580EDD6B8AF8F5F690EB3048CE753
+
+CarMax Claude Code Keys
+Consumer Key
+3MVG9JJwBBbcN47Ka7cjHflEXZ5cdtGVJxdc5CWxXIYVK0tLqRNZ_Tl8.5my_8oJF9qsYG5CXPbcZx0jJy.._
+
+Consumer Secret
+73CFA012237298B792F6D72108F15D1866947587820B04AE6CFC83C088FA70E6
+
+
+Shareable Web Assets:
+Lean deployment model https://afeder-sfdemohub-1a05d9aa2d2d.herokuapp.com/demo/mca-lean-deployment
+Password: URSLcrGkmvgF
